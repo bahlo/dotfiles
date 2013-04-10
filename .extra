@@ -1,0 +1,7 @@
+# PATH additions
+export PATH="~/bin:$PATH"
+
+# Git credentials
+# Not in the repository, to prevent people from accidentally committing under my name
+git config --global user.name "Arne Bahlo"
+git config --global user.email "hallo@arne.me"
