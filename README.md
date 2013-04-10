@@ -6,4 +6,9 @@ Here're my dotfiles. Have fun!
 Usage
 =====
 
-Run bootstrap.sh! <3
+Run:
+```bash
+source bootstrap.sh
+`` 
+
+<3
