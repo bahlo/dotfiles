@@ -1,11 +1,11 @@
 # Easier navigation
 alias ..="cd .."
-alias ..."cd ../.."
+alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
-alias dl="cd~/Downloads"
+alias d="cd ~/Dropbox"
+alias dl=" cd~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/Projects"
 alias gh="cd ~/GitHub"
