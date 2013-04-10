@@ -9,6 +9,6 @@ Usage
 Run:
 ```bash
 source bootstrap.sh
-`` 
+``` 
 
 <3
