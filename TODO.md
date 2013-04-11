@@ -1,3 +1,3 @@
 # TODO
 
-- Set `init/Arne.terminal`, now it just doesn't work :(
+- Set `init/Arne.terminal`, for now you have to do ist manually :(
