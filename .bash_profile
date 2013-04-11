@@ -11,3 +11,6 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
+
+# Load Boxen
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
