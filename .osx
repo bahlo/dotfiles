@@ -120,8 +120,8 @@ defaults write com.apple.dashboard mcx-disabled -bool true
 # Safari & WebKit                                                             #
 ###############################################################################
 
-# Set Safari’s home page to `about:blank` for faster loading
-defaults write com.apple.Safari HomePage -string "about:blank"
+# Set Safari’s home page to `https://github.com/launch`
+defaults write com.apple.Safari HomePage -string "https://github.com/launch"
 
 # Prevent Safari from opening ‘safe’ files automatically after downloading
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
