@@ -13,7 +13,4 @@ source bootstrap.sh
 
 For OS X Defaults, run: `~/.osx`
 
-## To do
-- [ ] Set `init/Arne.terminal` automatically
-
-:heart:
+:octocat:
