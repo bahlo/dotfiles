@@ -1,6 +1,0 @@
-# PATH additions
-export PATH="~/bin:$PATH"
-
-# Git credentials
-git config --global user.name "Arne Bahlo"
-git config --global user.email "hallo@arne.me"

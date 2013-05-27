@@ -2,8 +2,6 @@
 
 Here're my dotfiles. Have fun!
 
-Almost all of it shamelessly ripped off [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles).
-
 ## Usage
 
 Run:
@@ -11,6 +9,6 @@ Run:
 source bootstrap.sh
 ```
 
-For OS X Defaults, run: `~/.osx`
+For OS X Defaults, run: `source /path/to/dotfiles/.osx`
 
 :octocat:

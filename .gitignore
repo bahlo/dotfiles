@@ -1,17 +1,10 @@
-# Compiled Python files
-*.pyc
-
-# Folder view configuration files
+# Mac
 .DS_Store
-Desktop.ini
-
-# Thumbnail cache files
-._*
-Thumbs.db
-
-# Files that might appear on external disks
 .Spotlight-V100
 .Trashes
 
-# Ignore .extra
-.extra
+# Thumbnail cache files
+._*
+
+# Python
+*.pyc
