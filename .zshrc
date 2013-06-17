@@ -76,6 +76,11 @@ git config --global user.email hallo@arne.me
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+source /Users/arne/.rvm/scripts/rvm
 
 # Customize to your needs...
-export PATH=$PATH:~/bin:/Users/arne/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/share/npm/bin
+export PATH=$PATH:~/bin:/Users/arne/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+
+PATH=$PATH:/usr/local/share/npm/bin # Add NPM to PATH
+PATH=$PATH:/usr/local/opt/ruby/bin # Add ruby to PATH
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
