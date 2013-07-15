@@ -77,6 +77,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# RVM
+source $HOME/.rvm/scripts/rvm
+
 # Customize to your needs...
 export PATH=$PATH:~/bin:/Users/arne/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 PATH=$PATH:/usr/local/share/npm/bin # Add NPM to PATH

@@ -1,0 +1,14 @@
+{
+	"_comment": "Valid terminals include: 'Terminal.app' or 'iTerm'",
+	"terminal": "Terminal.app",
+	"hosts": [
+		{
+			"name": "Uberspace",
+			"cmd": "ssh arneb3rt@orion.uberspace.de"
+		},
+        {
+            "name": "Minecraft",
+            "cmd": "ssh arne@mc.arne.me"
+        }
+	]
+}
