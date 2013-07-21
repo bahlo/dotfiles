@@ -20,6 +20,7 @@ alias uber="ssh arneb3rt@arne.me"
 alias la="ls -la ${colorflag}"
 # Really important
 alias please="sudo "
+alias update="sudo -v; sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update"
 
 # Functions
 ## Create a new directory and enter it
