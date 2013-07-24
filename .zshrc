@@ -14,12 +14,12 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias dt="cd ~/Desktop"
 alias gh="cd ~/GitHub"
-## Easier access to my Uberspace
-alias uber="ssh arneb3rt@arne.me"
+alias ghp="cd ~/GitHub/abahlo.github.io"
 # List all files colorized in long format, including dot files
 alias la="ls -la ${colorflag}"
 # Really important
 alias please="sudo "
+# Update alias to update OS X, Homebrew, Node packages and Ruby gems
 alias update="sudo -v; sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update"
 
 # Functions
