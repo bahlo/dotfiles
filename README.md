@@ -3,7 +3,7 @@
 Here're my dotfiles. Have fun!
 
 ## Oh My Zsh Theme
-[!arne theme](theme.png)
+![arne theme](theme.png)
 
 ## Usage
 
