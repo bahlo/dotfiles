@@ -14,13 +14,28 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
-# List all files colorized in long format, including dot files
+## List all files colorized in long format, including dot files
 alias la="ls -la ${colorflag}"
-# Really important
-alias please="sudo "
+## OSX aliases
+if [[ $(uname -s) == 'Darwin' ]]; then
+    ### (terminal_clearn, flushdns, lock and update ripped from @korni22)
+    ### Cleanup terminal logfiles (http://osxdaily.com/2010/05/06/speed-up-a-slow-terminal-by-clearing-log-files/)
+    alias terminal_clean="sudo rm -rf /private/var/log/asl/*.asl"
+
+    ### Flush the DNS cache, again, cause I am a moron
+    alias flushdns="dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
+
+    ### Lock the system
+    alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+
+    ### Update alias to update OS X, Homebrew, Node packages and Ruby gems
+    alias update="sudo -v; sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update"
+
+    ### Firefox
+    alias firefox="open /Applications/Firefox.app"
+fi
 
 # Functions
-# =========
 ## Create a new directory and enter it
 function mkd() {
     mkdir -p "$@" && cd "$@"
@@ -38,43 +53,7 @@ function fs() {
         du $arg .[^.]* *
     fi
 }
-## Random commit message (http://alias.sh/random-commit-message)
-rgc() {
-    git commit -m"`curl -s http://whatthecommit.com/index.txt`"
-}
-
-# Github
-git config --global user.name "Arne Bahlo"
-git config --global user.email hallo@arne.me
-
-# ZSH options
-## Comment this out to disable bi-weekly auto-update checks
-DISABLE_AUTO_TITLE="true"
-
-## Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
-
-# OSX aliases
-if [[ $(uname -s) == 'Darwin' ]]; then
-    ## (terminal_clearn, flushdns, lock and update ripped from @korni22)
-    ## Cleanup terminal logfiles (http://osxdaily.com/2010/05/06/speed-up-a-slow-terminal-by-clearing-log-files/)
-    alias terminal_clean="sudo rm -rf /private/var/log/asl/*.asl"
-
-    ## Flush the DNS cache, again, cause I am a moron
-    alias flushdns="dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
-
-    ## Lock the system
-    alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
-
-    ## Update alias to update OS X, Homebrew, Node packages and Ruby gems
-    alias update="sudo -v; sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update"
-
-    ## Firefox
-    alias firefox="open /Applications/Firefox.app"
-fi
-
-# Marks
-## http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
+## Marks (http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html)
 MARKPATH=$HOME/.marks
 function j {
     cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
@@ -89,6 +68,16 @@ function marks {
     ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
 }
 
+# Github
+git config --global user.name "Arne Bahlo"
+git config --global user.email hallo@arne.me
+
+# ZSH options
+## Comment this out to disable bi-weekly auto-update checks
+DISABLE_AUTO_TITLE="true"
+
+## Uncomment following line if you want red dots to be displayed while waiting for completion
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
