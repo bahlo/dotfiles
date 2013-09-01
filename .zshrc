@@ -12,6 +12,8 @@ ZSH_THEME="arne"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
 # List all files colorized in long format, including dot files
 alias la="ls -la ${colorflag}"
 # Really important
@@ -35,6 +37,10 @@ function fs() {
     else
         du $arg .[^.]* *
     fi
+}
+## Random commit message (http://alias.sh/random-commit-message)
+rgc() {
+    git commit -m"`curl -s http://whatthecommit.com/index.txt`"
 }
 
 # Github
@@ -62,7 +68,27 @@ if [[ $(uname -s) == 'Darwin' ]]; then
 
     ## Update alias to update OS X, Homebrew, Node packages and Ruby gems
     alias update="sudo -v; sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update"
+
+    ## Firefox
+    alias firefox="open /Applications/Firefox.app"
 fi
+
+# Marks
+## http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
+MARKPATH=$HOME/.marks
+function j {
+    cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
+}
+function mark {
+    mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
+}
+function unmark {
+    rm -i $MARKPATH/$1
+}
+function marks {
+    ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+}
+
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
