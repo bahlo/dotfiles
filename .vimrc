@@ -1,5 +1,6 @@
 " enable syntax highlighting
 syntax enable
+set nocompatible " Use Vim defaults (much better!)
 
 set autoindent
 set autoread " reload files when changed on disk, i.e. via `git checkout`
