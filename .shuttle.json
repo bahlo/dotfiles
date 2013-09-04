@@ -43,6 +43,10 @@
                     "cmd": "ssh arne@mc.arne.me"
                 },
                 {
+                    "name": "Ocean",
+                    "cmd": "ssh root@ocean.arne.me"
+                },
+                {
                     "name": "Raspbmc",
                     "cmd": "ssh pi@raspbmc.local"
                 }
