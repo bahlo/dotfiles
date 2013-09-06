@@ -11,6 +11,8 @@
 	c = clone --recursive
 	# Commit all changes
 	ca = !git add -A && git commit -av
+	# Undo the last commit
+	undo = reset --hard HEAD~1
 
 [apply]
 	# Detect whitespace errors when applying a patch
@@ -42,3 +44,6 @@
 
 [push]
 	default = simple
+[user]
+	name = Arne Bahlo
+	email = hallo@arne.me
