@@ -2,9 +2,6 @@
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="arne"
 
 # Aliases
@@ -14,8 +11,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
-## List all files colorized in long format, including dot files
-alias la="ls -la ${colorflag}"
+alias la="ls -la ${colorflag}" # List all files colorized in long format, including dot files
+alias crontab="crontab -i" # Add -i to every crontab command to ask everytime before deleting
 ## OSX aliases
 if [[ $(uname -s) == 'Darwin' ]]; then
     ### (terminal_clearn, flushdns, lock and update ripped from @korni22)
