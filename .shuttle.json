@@ -1,6 +1,6 @@
 {
 	"_comment": "Valid terminals include: 'Terminal.app' or 'iTerm'",
-	"terminal": "Terminal.app",
+	"terminal": "iTerm.app",
 	"hosts": [
         {
             "Octopress": [
@@ -44,7 +44,7 @@
                 },
                 {
                     "name": "Ocean",
-                    "cmd": "ssh root@ocean.arne.me"
+                    "cmd": "ssh arne@ocean.arne.me"
                 },
                 {
                     "name": "Raspbmc",
