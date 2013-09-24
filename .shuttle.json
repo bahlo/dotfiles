@@ -47,8 +47,8 @@
                     "cmd": "ssh arne@ocean.arne.me"
                 },
                 {
-                    "name": "Raspbmc",
-                    "cmd": "ssh pi@raspbmc.local"
+                    "name": "Pi",
+                    "cmd": "ssh root@pi.local"
                 }
             ]
         }
