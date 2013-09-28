@@ -6,31 +6,31 @@
             "Octopress": [
                 {
                     "name": "New post",
-                    "cmd": "cd ~/GitHub/abahlo.github.io && rake new_post"
+                    "cmd": "cd ~/GitHub/arne.me && rake new_post"
                 },
                 {
                     "name": "New page",
-                    "cmd": "cd ~/GitHub/abahlo.github.io && rake new_page"
+                    "cmd": "cd ~/GitHub/arne.me && rake new_page"
                 },
                 {
                     "name": "Generate",
-                    "cmd": "cd ~/GitHub/abahlo.github.io && rake generate"
+                    "cmd": "cd ~/GitHub/arne.me && rake generate"
                 },
                 {
                     "name": "Preview",
-                    "cmd": "cd ~/GitHub/abahlo.github.io && rake preview"
+                    "cmd": "cd ~/GitHub/arne.me && rake preview"
                 },
                 {
                     "name": "Deploy",
-                    "cmd": "cd ~/GitHub/abahlo.github.io && rake deploy"
+                    "cmd": "cd ~/GitHub/arne.me && rake deploy"
                 },
                 {
                     "name": "Commit source",
-                    "cmd": "cd ~/GitHub/abahlo.github.io && git add . && git commit -a"
+                    "cmd": "cd ~/GitHub/arne.me && git add . && git commit -a"
                 },
                 {
                     "name": "Open folder",
-                    "cmd": "cd ~/GitHub/abahlo.github.io"
+                    "cmd": "cd ~/GitHub/arne.me"
                 }
             ],
             "SSH": [
