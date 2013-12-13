@@ -1,25 +1,22 @@
+[user]
+  name = Arne Bahlo
+  email = hallo@arne.me
+
 [alias]
-	# View the SHA, description, and history graph of the latest 20 commits
-	l = log --pretty=oneline -n 20 --graph
-	# View the current working tree status using the short format
-	s = status -s
-	# Show the diff between the latest commit and the current state
-	d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
-	# Pull in remote changes for the current repository and all its submodules
-	p = !"git pull; git submodule foreach git pull origin master"
-	# Clone a repository including all submodules
+  authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 	c = clone --recursive
-	# Commit all changes
-	ca = !git add -A && git commit -av
-	# Undo the last commit
-	undo = reset --hard HEAD~1
-    # Checkout branch
-    co = checkout
-    # Merge without fast-forward
-    m = merge --no-ff
+  ca = !git add -A && git commit -av
+  co = checkout
+  d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
+  l = "!git log --graph --pretty='tformat:%C(yellow)%h{%C(green)%ar{%C(bold blue)%an{%C(red)%d%C(reset) %s' $* | column -t -s '{' | less -FXRS"
+  lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  m = merge --no-ff
+  s = status -s
+  st = stash
+  stl = stash list
+  stp = stash pop
 
 [apply]
-	# Detect whitespace errors when applying a patch
 	whitespace = fix
 
 [core]
@@ -27,7 +24,6 @@
 	attributesfile = ~/.gitattributes
 
 [color]
-	# Use colors in Git commands that are capable of colored output when outputting to the terminal
 	ui = auto
 [color "branch"]
 	current = yellow reverse
@@ -42,12 +38,20 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-[merge]
-	# Include summaries of merged commits in newly created merge commit messages
-	log = true
 
 [push]
 	default = simple
-[user]
-	name = Arne Bahlo
-	email = hallo@arne.me
+
+[help]
+  autocorrect = 0
+
+[core]
+  excludesfile = ~/.gitignore
+  whitespace = trailing-space, space-before-tab
+  quotepath = false
+
+[merge]
+  log = true
+
+[status]
+  submodulesummary = true
