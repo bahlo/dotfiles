@@ -4,12 +4,11 @@
 
 [alias]
   authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
-	c = clone --recursive
+  c = clone --recursive
   ca = !git add -A && git commit -av
   co = checkout
   d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
-  l = !"git log --graph --pretty='tformat:%C(yellow)%h{%C(red)%d%C(reset) %s' $* | column -t -s '{' | less -FXRS"
-  lg = !"git log --graph --pretty='tformat:%C(yellow)%h{%C(green)%ar{%C(bold blue)%an{%C(red)%d%C(reset) %s' $* | column -t -s '{' | less -FXRS"
+  l = log --graph --decorate --pretty=oneline --abbrev-commit
   m = merge --no-ff
   s = status -s
   st = stash
@@ -17,30 +16,30 @@
   stp = stash pop
 
 [apply]
-	whitespace = fix
+  whitespace = fix
 
 [core]
-	excludesfile = ~/.gitignore
-	attributesfile = ~/.gitattributes
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
 
 [color]
-	ui = auto
+  ui = auto
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+  added = yellow
+  changed = green
+  untracked = cyan
 
 [push]
-	default = simple
+  default = simple
 
 [help]
   autocorrect = 0
@@ -55,3 +54,6 @@
 
 [status]
   submodulesummary = true
+
+[column]
+   ui = auto
