@@ -10,6 +10,7 @@
   d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
   l = log --graph --decorate --pretty=oneline --abbrev-commit
   m = merge --no-ff
+  md = !sh -c 'git merge --no-ff $1 && git branch -d $1' -
   s = status -s
   st = stash
   stl = stash list
@@ -19,8 +20,9 @@
   whitespace = fix
 
 [core]
-  excludesfile = ~/.gitignore
-  attributesfile = ~/.gitattributes
+  excludesfile = /opt/boxen/config/git/gitignore
+  whitespace = trailing-space, space-before-tab
+  quotepath = false
 
 [color]
   ui = auto
@@ -45,7 +47,7 @@
   autocorrect = 0
 
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = /opt/boxen/config/git/gitignore
   whitespace = trailing-space, space-before-tab
   quotepath = false
 
@@ -57,3 +59,9 @@
 
 [column]
    ui = auto
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
+
+[hub]
+protocol = https
