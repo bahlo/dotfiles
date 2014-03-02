@@ -1,56 +1,8 @@
 {
 	"_comment": "Valid terminals include: 'Terminal.app' or 'iTerm'",
-	"terminal": "iTerm.app",
+	"terminal": "iTerm",
 	"hosts": [
         {
-            "Octopress": [
-                {
-                    "name": "New post",
-                    "cmd": "cd ~/GitHub/arne.me && rake new_post"
-                },
-                {
-                    "name": "New page",
-                    "cmd": "cd ~/GitHub/arne.me && rake new_page"
-                },
-                {
-                    "name": "Generate",
-                    "cmd": "cd ~/GitHub/arne.me && rake generate"
-                },
-                {
-                    "name": "Preview",
-                    "cmd": "cd ~/GitHub/arne.me && rake preview"
-                },
-                {
-                    "name": "Deploy",
-                    "cmd": "cd ~/GitHub/arne.me && rake deploy"
-                },
-                {
-                    "name": "Commit source",
-                    "cmd": "cd ~/GitHub/arne.me && git add . && git commit -a"
-                },
-                {
-                    "name": "Open folder",
-                    "cmd": "cd ~/GitHub/arne.me"
-                }
-            ],
-            "SSH": [
-                {
-                    "name": "Uberspace",
-                    "cmd": "ssh arneb3rt@orion.uberspace.de"
-                },
-                {
-                    "name": "Minecraft",
-                    "cmd": "ssh arne@mc.arne.me"
-                },
-                {
-                    "name": "Ocean",
-                    "cmd": "ssh arne@ocean.arne.me"
-                },
-                {
-                    "name": "Pi",
-                    "cmd": "ssh root@pi.local"
-                }
-            ]
         }
 	]
 }
