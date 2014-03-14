@@ -57,7 +57,7 @@ function fs() {
 function greph () { history 0 | grep -i $1 }
 
 # 'work on', via https://coderwall.com/p/feoi0a
-ffunction wo() {
+function wo() {
   CODE_DIR=~/Code
   cd $(find $CODE_DIR -type d -maxdepth 3 | grep -i $* | grep -Ev Pods --max-count=1)
 }
@@ -67,7 +67,8 @@ DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
 plugins=(git sublime)
 
+# oh my zsh
+source $ZSH/oh-my-zsh.sh
+
 # Embed custom per-machine config
 [[ -f ~/.localrc ]] && source ~/.localrc
-
-source $ZSH/oh-my-zsh.sh
