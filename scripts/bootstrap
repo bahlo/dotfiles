@@ -1,11 +1,23 @@
 #!/bin/bash
-cd "$(dirname "${BASH_SOURCE}")"
+
+DOTFILES_ROOT="`pwd`"
+
 git pull
 
 function doIt() {
-    rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" --exclude "README.md" --exclude ".osx" --exclude "theme.png" -av . ~
+    for source in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`; do
+      dest="$HOME/.`basename \"${source%.*}\"`"
+
+      if [ -f $dest ] || [ -d $dest ];then
+        rm -rf $dest
+      fi
+
+      ln -s $source $dest
+    done
+
 
     if [ "$(uname -s)" == "Darwin" ]; then
+      cd
       brew bundle
     fi
 }
