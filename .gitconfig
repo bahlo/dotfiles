@@ -13,14 +13,12 @@
 
   # Passive
   s = status -sb
-  b = branch -a --no-column
   l = log --graph --decorate --pretty=oneline --abbrev-commit
   d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
   dt = difftool
   m = merge --no-ff
   mt = mergetool
   authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
-  latest = for-each-ref --sort=-committerdate --format='%(refname:short) %(committerdate:short)'
 
 [apply]
   whitespace = fix
@@ -56,25 +54,12 @@
 
 [merge]
   log = true
-	tool = Kaleidoscope
 
 [status]
   submodulesummary = true
 
 [column]
-   ui = auto
+   ui = never
 
 [hub]
   protocol = https
-
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[diff]
-	tool = Kaleidoscope
-[difftool]
-	prompt = false
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-[mergetool]
-	prompt = false

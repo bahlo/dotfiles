@@ -1,8 +1,0 @@
-{
-	"_comment": "Valid terminals include: 'Terminal.app' or 'iTerm'",
-	"terminal": "iTerm",
-	"hosts": [
-        {
-        }
-	]
-}
