@@ -4,33 +4,49 @@ DOTFILES_ROOT="`pwd`"
 
 git pull
 
-function doIt() {
+function install_dotfiles() {
     for source in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`; do
       dest="$HOME/.`basename \"${source%.*}\"`"
 
-      if [ -f $dest ] || [ -d $dest ];then
+      if [ -f $dest ] || [ -d $dest ] ; then
         rm -rf $dest
       fi
 
       ln -s $source $dest
     done
 
+    # oh my zsh
+    if [ ! -d "$HOME/.oh-my-zsh" ] ; then
+      curl -L http://install.ohmyz.sh | sh
+    fi
+    cp -r oh-my-zsh/* "$HOME/.oh-my-zsh/"
 
-    if [ "$(uname -s)" == "Darwin" ]; then
-      cd
-      brew bundle
+    # Load zshrc
+    zsh ~/.zshrc
+
+    # OS X
+    if [ "$(uname -s)" == "Darwin" ] ; then
+      # Install homebrew
+      which -s brew
+      if [[ $? != 0 ]] ; then
+          ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+      fi
+
+      # Install brews
+      brew bundle homebrew
     fi
 }
 
-if [ "$1" = "--force" -o "$1" = "-f" ]; then
-    doIt
+if [ "$1" = "--force" -o "$1" = "-f" ] ; then
+    install_dotfiles
 else
     echo "This may overwrite existing files in your home directory. Are you sure? (y/n)"
-    read -k
+    read -r -n1 REPLY
     echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        doIt
+
+    if [[ $REPLY =~ ^[Yy]$ ]] ; then
+        install_dotfiles
     fi
 fi
-unset doIt
-source ~/.zshrc
+
+unset install_dotfiles
