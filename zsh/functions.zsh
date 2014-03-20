@@ -30,3 +30,24 @@ function title() {
     ;;
   esac
 }
+
+# https://gist.github.com/bahlo/9660970
+function apm() {
+  REAL_APM="/usr/local/bin/apm"
+
+  if [[ $# -eq 0 ]]; then
+    $REAL_APM $1
+    echo "<command> can also be bundle."
+    echo
+  elif [[ $1 == "bundle" ]]; then
+    if [[ -f "Atomfile" ]]; then
+      while read line; do
+        $REAL_APM $line
+      done < Atomfile
+    else
+      echo "Cannot find Atomfile in current directory"
+    fi
+  else
+    $REAL_APM $1
+  fi
+}

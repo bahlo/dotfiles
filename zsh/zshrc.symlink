@@ -5,7 +5,9 @@ DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Config files
-source $HOME/.dotfiles/zsh/*.zsh
+for config_file in  $HOME/.dotfiles/zsh/**/*.zsh; do
+  source $config_file
+done
 
 # oh my zsh
 plugins=(git brew bower coffee node npm xcode)
