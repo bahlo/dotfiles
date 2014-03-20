@@ -1,0 +1,7 @@
+# Atom
+.node-gyp/
+packages/
+storage/
+
+# Vim
+*.swp
