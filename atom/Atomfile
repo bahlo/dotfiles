@@ -1,0 +1,10 @@
+update
+upgrade
+
+install editor-stats
+install gist-it
+install pretty-json
+install unity-ui
+install whitespace
+
+clean
