@@ -1,0 +1,2 @@
+set-option -g status-utf8 on
+setw -g mode-keys vi # j, k, C-u, C-d
