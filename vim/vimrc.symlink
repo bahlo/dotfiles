@@ -4,6 +4,7 @@ set nobackup " We don't need no backup
 set encoding=utf-8
 set showcmd " Display incomplete commands
 let mapleader = ","
+set number
 
 set nowrap " Don't wrap lines
 set tabstop=2 shiftwidth=2 " A tab is 2 spaces
@@ -29,19 +30,16 @@ set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu
 set wildmode=longest,list,full
 
-set rtp+=$HOME/.vim/bundle/vundle
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'vim-scripts/The-NERD-tree'
-Bundle 'tpope/vim-markdown'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tpope/vim-fugitive'
+call pathogen#infect()
 
 syntax enable
 filetype plugin indent on
 
 autocmd BufWritePre * :%s/\s\+$//e " Remove whitespace on save
-set statusline=%{fugitive#statusline()}
+
+"
+" Key bindings
+"
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>u :GundoToggle<CR>
+

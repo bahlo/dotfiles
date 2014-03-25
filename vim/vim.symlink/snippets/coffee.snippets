@@ -1,0 +1,48 @@
+# Class
+snippet class
+	class ${1:class_name}
+		constructor: (${2:argument}) ->
+			${3}
+
+# Prototype
+snippet proto
+	${1:class_name}::${2:function_name} = (${3:argument}) ->
+		${4}
+
+# Function
+snippet fun
+	${1:function_name} = (${2:argument}) ->
+		${3}
+
+# Anonymous Functin
+snippet f
+	(${1:argument}) ->
+		${2}
+
+# if
+snippet if
+	if ${1:true}
+		${2}
+
+# if ... else
+snippet ife
+	if ${1:true}
+		${2}
+	else
+		${3}
+
+# switch
+snippet switch
+	switch ${1:expression}
+		when ${3:case}
+			${4}
+		${5}
+		else:
+			${2}
+
+# for
+	for ${1:item} in ${2:list}
+
+# Method
+	${1:method_name}: (${2:argument}) ->
+		${3}
