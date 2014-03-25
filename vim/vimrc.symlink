@@ -45,4 +45,4 @@ autocmd BufWritePre * :%s/\s\+$//e " Remove whitespace on save
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
-
+nnoremap <leader>a :Ack
