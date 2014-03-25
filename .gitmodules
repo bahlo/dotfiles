@@ -37,3 +37,6 @@
 [submodule "vim/vim.symlink/bundle/vim-surround"]
 	path = vim/vim.symlink/bundle/vim-surround
 	url = git@github.com:tpope/vim-surround.git
+[submodule "vim/vim.symlink/bundle/base16-vim"]
+	path = vim/vim.symlink/bundle/base16-vim
+	url = git@github.com:chriskempson/base16-vim.git
