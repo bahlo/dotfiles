@@ -5,6 +5,7 @@ set encoding=utf-8
 set showcmd " Display incomplete commands
 let mapleader = ","
 set number
+set statusline="%{fugitive#statusline()}"
 
 set nowrap " Don't wrap lines
 set tabstop=2 shiftwidth=2 " A tab is 2 spaces
