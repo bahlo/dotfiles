@@ -12,6 +12,7 @@ done
 # oh my zsh
 plugins=(git brew bower coffee node npm xcode)
 source $ZSH/oh-my-zsh.sh
+source $HOME/.bin/tmuxinator.zsh
 
 # Embed custom per-machine config
 [[ -f ~/.localrc ]] && source ~/.localrc

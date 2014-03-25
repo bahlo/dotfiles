@@ -1,30 +1,47 @@
 set nocompatible " Use Vim defaults (much better!)
-syntax enable " Enable syntax highlighting
+set noswapfile " Don't create a .swp file
+set nobackup " We don't need no backup
 set encoding=utf-8
 set showcmd " Display incomplete commands
-filetype plugin indent on " Load file type plugins + indention
+let mapleader = ","
 
-"" Whitespace
 set nowrap " Don't wrap lines
 set tabstop=2 shiftwidth=2 " A tab is 2 spaces
 set expandtab " Use spaces,not tabs
 set backspace=indent,eol,start " Backspace through everything in insert mode
 
-"" Searching
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+
 set hlsearch " Highlight matches
 set incsearch " Incremental searching
 set ignorecase " Search case insensitive
 set smartcase " ..unless they contain at least one capital letter
 
-"" Files
 set autoread " Reload files when changed on disk
 
-"" Editor
 set backspace=2 " Fix broken backspace in some setups
 set list " Show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
 
-"" Wildmenu
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu
 set wildmode=longest,list,full
+
+set rtp+=$HOME/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-scripts/The-NERD-tree'
+Bundle 'tpope/vim-markdown'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-fugitive'
+
+syntax enable
+filetype plugin indent on
+
+autocmd BufWritePre * :%s/\s\+$//e " Remove whitespace on save
+set statusline=%{fugitive#statusline()}
