@@ -25,3 +25,6 @@
 [submodule "vim/vim.symlink/bundle/vim-multiple-cursors"]
 	path = vim/vim.symlink/bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "vim/vim.symlink/bundle/rainbow_parentheses.vim"]
+	path = vim/vim.symlink/bundle/rainbow_parentheses.vim
+	url = https://github.com/kien/rainbow_parentheses.vim.git

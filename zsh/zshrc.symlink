@@ -1,6 +1,6 @@
 # ZSH config
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="arne"
+ZSH_THEME="bira-arne"
 DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
 
@@ -10,7 +10,7 @@ for config_file in  $HOME/.dotfiles/zsh/**/*.zsh; do
 done
 
 # oh my zsh
-plugins=(git brew bower coffee node npm xcode)
+plugins=(git tmux brew bower coffee node npm xcode)
 source $ZSH/oh-my-zsh.sh
 source $HOME/.bin/tmuxinator.zsh
 
