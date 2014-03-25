@@ -34,15 +34,6 @@ function install_dotfiles() {
 
       # Install brews
       brew bundle homebrew
-
-      # Set up Atom config
-      atom_source="$DOTFILES_ROOT/atom"
-      atom_dest="$HOME/.atom"
-      rm -rf $atom_dest
-      ln -s $atom_source $atom_dest
-
-      cd $atom_dest && apm bundle
-      cd $DOTFILES_ROOT
     fi
 }
 

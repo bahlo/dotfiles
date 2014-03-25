@@ -28,3 +28,12 @@
 [submodule "vim/vim.symlink/bundle/rainbow_parentheses.vim"]
 	path = vim/vim.symlink/bundle/rainbow_parentheses.vim
 	url = https://github.com/kien/rainbow_parentheses.vim.git
+[submodule "vim/vim.symlink/bundle/vim-snipmate"]
+	path = vim/vim.symlink/bundle/vim-snipmate
+	url = git@github.com:garbas/vim-snipmate.git
+[submodule "vim/vim.symlink/bundle/snipmate.vim"]
+	path = vim/vim.symlink/bundle/snipmate.vim
+	url = git@github.com:msanders/snipmate.vim.git
+[submodule "vim/vim.symlink/bundle/vim-easymotion"]
+	path = vim/vim.symlink/bundle/vim-easymotion
+	url = git@github.com:Lokaltog/vim-easymotion.git
