@@ -1,0 +1,4 @@
+# Atom
+.node-gyp/
+packages/
+storage/

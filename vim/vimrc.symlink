@@ -8,7 +8,7 @@ set number
 set statusline="%{fugitive#statusline()}"
 
 " UI
-colorscheme base16-default
+"colorscheme base16-default
 set background=dark
 
 set nowrap " Don't wrap lines

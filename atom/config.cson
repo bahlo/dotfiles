@@ -1,0 +1,23 @@
+'editor':
+  'fontSize': 14
+  'fontFamily': 'Menlo'
+  'showInvisibles': true
+  'invisibles':
+    'cr': ''
+    'eol': ''
+    'space': '·'
+    'tab': '⇥'
+'core':
+  'themes': [
+    'atom-dark-ui'
+    'atom-dark-syntax'
+  ]
+  'ignoredNames': [
+    '.git'
+    '.svn'
+    '.DS_Store'
+  ]
+'release-notes':
+  'viewedVersion': '0.81.0'
+'welcome':
+  'showOnStartup': false
