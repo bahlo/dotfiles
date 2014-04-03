@@ -42,7 +42,9 @@ function apm() {
   elif [[ $1 == "bundle" ]]; then
     if [[ -f "Atomfile" ]]; then
       while read line; do
-        $REAL_APM $line
+        if [[ ! -z $line ]]; then
+          $REAL_APM $line
+        fi
       done < Atomfile
     else
       echo "Cannot find Atomfile in current directory"
