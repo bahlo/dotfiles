@@ -21,22 +21,22 @@
 	url = https://github.com/kien/rainbow_parentheses.vim.git
 [submodule "vim/vim.symlink/bundle/vim-snipmate"]
 	path = vim/vim.symlink/bundle/vim-snipmate
-	url = git@github.com:garbas/vim-snipmate.git
+	url = https://github.com/garbas/vim-snipmate.git
 [submodule "vim/vim.symlink/bundle/snipmate.vim"]
 	path = vim/vim.symlink/bundle/snipmate.vim
-	url = git@github.com:msanders/snipmate.vim.git
+	url = https://github.com/msanders/snipmate.vim.git
 [submodule "vim/vim.symlink/bundle/vim-easymotion"]
 	path = vim/vim.symlink/bundle/vim-easymotion
-	url = git@github.com:Lokaltog/vim-easymotion.git
+	url = https://github.com/Lokaltog/vim-easymotion.git
 [submodule "vim/vim.symlink/bundle/vim-coffee-script"]
 	path = vim/vim.symlink/bundle/vim-coffee-script
-	url = git@github.com:kchmck/vim-coffee-script.git
+	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "vim/vim.symlink/bundle/vim-fugitive"]
 	path = vim/vim.symlink/bundle/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/vim.symlink/bundle/vim-surround"]
 	path = vim/vim.symlink/bundle/vim-surround
-	url = git@github.com:tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/vim.symlink/bundle/base16-vim"]
 	path = vim/vim.symlink/bundle/base16-vim
-	url = git@github.com:chriskempson/base16-vim.git
+	url = https://github.com/chriskempson/base16-vim.git

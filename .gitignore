@@ -3,3 +3,6 @@
 .Spotlight-V100
 .Trashes
 ._*
+
+# Vim
+vim/vim.symlink/bundle
