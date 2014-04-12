@@ -17,11 +17,11 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'bling/vim-airline'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'chriskempson/base16-vim'
+Plugin 'groenewege/vim-less'
+Plugin 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
 
@@ -48,7 +48,8 @@ set number
 syntax enable
 
 " Set color scheme
-colorscheme base16-default
+set background=dark
+colorscheme solarized
 
 " Don't wrap lines
 set nowrap
@@ -110,3 +111,5 @@ nnoremap <silent> <Leader>/ :nohlsearch<CR>
 nnoremap <leader>a :Ack
 nnoremap <c-t> :CtrlP<CR>
 nnoremap <c-b> :CtrlPBuffer<CR>
+nnoremap <leader>cr :%s/\r//<CR>
+

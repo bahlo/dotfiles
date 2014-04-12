@@ -11,6 +11,9 @@ alias -g la="ls -la ${colorflag}"
 # Add -i to every crontab command to ask everytime before deleting (don't ask)
 alias crontab="crontab -i"
 
+# Alias gti to git
+alias gti="git"
+
 # Use colors when GNU grep with color-support
 alias grep="grep --color=auto"
 

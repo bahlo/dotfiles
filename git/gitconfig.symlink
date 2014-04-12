@@ -10,6 +10,7 @@
   st = stash
   stl = stash list
   stp = stash pop
+  psu = push --set-upstream
 
   # Passive
   s = status -sb
