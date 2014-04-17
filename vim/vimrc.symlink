@@ -48,8 +48,8 @@ set number
 syntax enable
 
 " Set color scheme
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
 
 " Don't wrap lines
 set nowrap
