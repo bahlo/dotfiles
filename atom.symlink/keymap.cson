@@ -16,3 +16,6 @@
 #   'ctrl-P': 'core:move-up'
 #   'ctrl-p': 'core:move-down'
 #
+'body':
+  'ctrl-tab': 'pane:show-next-item'
+  'ctrl-shift-tab': 'pane:show-previous-item'
