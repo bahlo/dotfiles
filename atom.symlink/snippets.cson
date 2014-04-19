@@ -13,3 +13,11 @@
 #     'prefix': 'log'
 #     'body': 'console.log $1'
 #
+'.source.css':
+  'Clearfix':
+    'prefix': 'fclear'
+    'body': """:after {
+      content: "";
+      display: table;
+      clear: both;
+    }"""
