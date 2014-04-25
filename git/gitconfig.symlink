@@ -6,6 +6,7 @@
   # Active
   c = clone --recursive
   ca = !git add . && git commit -av
+  caae = commit --allow-empty
   co = checkout
   st = stash
   stl = stash list
