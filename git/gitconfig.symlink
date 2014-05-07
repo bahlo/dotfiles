@@ -13,6 +13,7 @@
   stl = stash list
   stp = stash pop
   psu = push --set-upstream
+  keep = !"sh -c 'touch .gitkeep'"
 
   # Passive
   s = status -sb
