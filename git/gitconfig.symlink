@@ -67,3 +67,5 @@
 
 [hub]
   protocol = https
+[diff "nodiff"]
+	command = /usr/bin/true
