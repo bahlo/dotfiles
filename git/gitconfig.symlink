@@ -66,6 +66,7 @@
    ui = never
 
 [hub]
-  protocol = https
+  protocol = ssh
+
 [diff "nodiff"]
 	command = /usr/bin/true
