@@ -69,4 +69,4 @@
   protocol = ssh
 
 [diff "nodiff"]
-	command = /usr/bin/true
+  command = /usr/bin/true # Any command without output, paths may vary
