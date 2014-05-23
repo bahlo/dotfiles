@@ -1,0 +1,19 @@
+-R
+
+--exclude=.git
+--exclude=node_modules
+--exclude=bower_components
+--exclude=vendor
+
+--langdef=Go
+--langmap=Go:.go
+--regex-Go=/func([ \t]+\([^)]+\))?[ \t]+([a-zA-Z0-9_]+)/\2/d,func/
+--regex-Go=/var[ \t]+([a-zA-Z_][a-zA-Z0-9_]+)/\1/d,var/
+--regex-Go=/type[ \t]+([a-zA-Z_][a-zA-Z0-9_]+)/\1/d,type/
+
+--langdef=coffee
+--langmap=coffee:.coffee
+--regex-coffee=/^[ \t]*class ([a-zA-Z_$][0-9a-zA-Z_$]*).*$/\1/c,class/
+--regex-coffee=/^[ \t]*([a-zA-Z_$@][0-9a-zA-Z_$\.]*)[ \t]*[:=].*[=-]>.*$/\1/f,function/
+--regex-coffee=/^[ \t]*([a-zA-Z_$@][0-9a-zA-Z_$\.]*)[ \t]*=[^->\n]*$/\1/v,variable/
+

@@ -31,6 +31,7 @@
 [core]
   whitespace = trailing-space, space-before-tab
   quotepath = false
+  editor = vim
 
 [color]
   ui = auto
