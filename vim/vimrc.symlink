@@ -42,7 +42,7 @@ set showcmd
 let mapleader = ","
 
 " Show line numbers
-"set number
+set number
 
 " Show colorcolumn
 set colorcolumn=79
@@ -125,3 +125,6 @@ nnoremap <c-t> :CtrlP<CR>
 nnoremap <c-f> :CtrlPTag<CR>
 nnoremap <leader>cr :%s/\r//<CR>
 
+" Highlights
+highlight LineNr ctermbg=233
+highlight ColorColumn ctermbg=233
