@@ -44,6 +44,9 @@ let mapleader = ","
 " Show line numbers
 "set number
 
+" Show colorcolumn
+set colorcolumn=79
+
 " Enable syntax highlighting
 syntax enable
 
