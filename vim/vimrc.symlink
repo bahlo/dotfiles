@@ -114,7 +114,7 @@ set wildmenu
 set wildmode=longest,list,full
 
 " Configure ctrl-p
-let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor'
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor\|tags'
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
