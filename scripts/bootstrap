@@ -33,7 +33,7 @@ function install_dotfiles() {
       fi
 
       # Install brews
-      brew bundle homebrew
+      brew bundle
     fi
 }
 
