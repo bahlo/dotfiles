@@ -8,6 +8,7 @@ call vundle#rc()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'majutsushi/tagbar'
 Plugin 'kien/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -49,6 +50,9 @@ set number
 
 " Show colorcolumn
 set colorcolumn=79
+
+" Auto indent
+set autoindent
 
 " Enable syntax highlighting
 syntax enable
@@ -132,7 +136,7 @@ nnoremap <c-f> :CtrlPTag<CR>
 nnoremap <leader>cr :%s/\r//<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>o :!open .<CR>
+nnoremap <leader>gt :!/usr/local/bin/ctags -R .<CR>
 
 " Highlights
 highlight LineNr ctermbg=233
