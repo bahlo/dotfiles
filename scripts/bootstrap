@@ -21,6 +21,10 @@ function install_dotfiles() {
     fi
     cp -r oh-my-zsh/* "$HOME/.oh-my-zsh/"
 
+    # Fix .zshrc
+    rm ~/.zshrc
+    ln -s "$HOME/.dotfiles/zsh/zshrc.symlink" $HOME/.zshrc
+
     # Load zshrc
     zsh ~/.zshrc
 
