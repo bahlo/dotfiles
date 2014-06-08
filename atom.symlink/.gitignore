@@ -1,8 +1,0 @@
-# Atom
-.node-gyp/
-packages/
-storage/
-compile-cache/
-
-# NPM
-npm-debug.log
