@@ -11,7 +11,10 @@ alias -g la="ls -la ${colorflag}"
 # Add -i to every crontab command to ask everytime before deleting (don't ask)
 alias crontab="crontab -i"
 
-# Alias gti to git
+# Typo aliases (1 char tolerance)
+alias ivm="vim"
+alias vmi="vim"
+alias igt="git"
 alias gti="git"
 
 # Use colors when GNU grep with color-support
