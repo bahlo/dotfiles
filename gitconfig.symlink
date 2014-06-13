@@ -13,16 +13,10 @@
   stl = stash list
   stp = stash pop
   psu = push --set-upstream
-  keep = !"sh -c 'touch .gitkeep'"
-  pm = !git co master && git pull && git cd -
 
   # Passive
   s = status -sb
   l = log --graph --decorate --pretty=oneline --abbrev-commit
-  d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
-  dt = difftool
-  m = merge --no-ff
-  mt = mergetool
   authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 
 [apply]
