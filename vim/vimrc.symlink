@@ -24,7 +24,6 @@ Plugin 'jnwhiteh/vim-golang'
 Plugin 'lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'chriskempson/base16-vim'
 Plugin 'groenewege/vim-less'
-Plugin 'altercation/vim-colors-solarized'
 
 " call vundle#end()
 filetype plugin indent on
@@ -53,6 +52,9 @@ set colorcolumn=79
 
 " Auto indent
 set autoindent
+
+" Faster reloading
+set ttyfast
 
 " Enable syntax highlighting
 syntax enable
@@ -123,16 +125,21 @@ set wildmode=longest,list,full
 " Configure ctrl-p
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor\|tags'
 
+" Use Ag instead of Ack
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Key bindings
+nmap j gj
+nmap k gk
 nnoremap <leader>t :NERDTreeTabsToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
-nnoremap <leader>a :Ack
 nnoremap <c-t> :CtrlP<CR>
 nnoremap <c-f> :CtrlPTag<CR>
+nnoremap <leader>a :Ack
 nnoremap <leader>cr :%s/\r//<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
