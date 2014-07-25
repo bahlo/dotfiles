@@ -9,7 +9,7 @@ install git
 install zsh
 install htop
 install tree
-install ack
+install ag
 install hub
 install wget
 install cowsay
