@@ -1,142 +1,70 @@
-set nocompatible " Use Vim defaults (much better!)
-
-" Vundle
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
-
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'majutsushi/tagbar'
-Plugin 'kien/ctrlp.vim'
-Plugin 'sjl/gundo.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'mileszs/ack.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'chriskempson/base16-vim'
-Plugin 'groenewege/vim-less'
-Plugin 'toyamarinyon/vim-swift'
-Plugin 'SirVer/ultisnips'
-
-" call vundle#end()
-filetype plugin indent on
-
-" Don't create a .swp file
-set noswapfile
-
-" Fix bad autindention of pasted text
-set paste
-
-" We don't need no backup
-set nobackup
-set encoding=utf-8
-
-" Display incomplete commands
-set showcmd
-
-" Set leader to ,
-let mapleader = ","
-
-" Show line numbers
-set number
-
-" Show cursorline
-set cursorline
-
-" Show colorcolumn
-set colorcolumn=79
-
-" Auto indent
-set autoindent
-
-" Faster reloading
-set ttyfast
+" Use Vim defaults
+set nocompatible
 
 " Enable syntax highlighting
 syntax enable
 
-" Set color scheme
-set background=dark
-colorscheme base16-3024
+" Vundle
+filetype on " Without this vim emits a zero exit status, later, because of :ft off
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#rc()
 
-" Powerline
-set laststatus=2
-set guifont=Hermit:h13
-let g:Powerline_symbols = 'fancy'
+" Install Bundles
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+  source ~/.vimrc.bundles.local
+endif
+
+" Ensure ftdetect is working
+filetype plugin indent on
+
+" General configuration
+set autoindent
+set autoread    " Reload files on change
+set background=dark
+set backspace=indent,eol,start " Backspace through everything in insert mode
+set backupcopy=yes " See :help crontab
+set clipboard=unnamed " Yank and paste with system keyboard
+set colorcolumn=79 " Show column
+set directory-=. "Don't store swapfiles in the current directory
+set encoding=utf-8
+set expandtab "Expand tabs to spaced
+set ffs=unix " Default to Unix LF
+set formatoptions=qrn1
+set hlsearch " Highlight search results
+set ignorecase " Search case insensitive
+set incsearch " Search as you type
+set laststatus=2 "Always show statusline
+set list " Show trailing whitespace
+set listchars=tab:▸\ ,trail:▫
+set number
+set ruler " Show where you are
+set scrolloff=3 " Show context above/below cursorline
+set shiftwidth=2 " Normale mode indentation command use 2 spaces
+set showbreak=↪
+set showcmd " Display incomplete commands
+set smartcase " Search is case sensitive if any caps
+set softtabstop=2 " Insert mode tab and backspace use 2 spaces
+set tabstop=8 " Actual tabs occupy 8 characters
+set textwidth=79
+set ttyfast " Faster reloading
+set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
+set wildmenu
+set wildmode=longest,list,full
+set wrap
+
+" Configuration for Powerline
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
 
-" Don't wrap lines
-set nowrap
+" Set color scheme
+colorscheme base16-3024
 
-" A tab is 2 spaces
-set tabstop=2 shiftwidth=2
-
-" Use spaces,not tabs
-set expandtab
-set sw=2
-set sts=2
-
-" Default to Unix LF line endings
-set ffs=unix
-
-" Backspace through everything in insert mode
-set backspace=indent,eol,start
-
-" Wrap at 79 chars
-set wrap
-set textwidth=79
-set formatoptions=qrn1
-set showbreak=↪
-
-" Highlight matches
-set hlsearch
-
-" Incremental searching
-set incsearch
-
-" Search case insensitive
-set ignorecase
-
-" ..unless they contain at least one capital letter
-set smartcase
-
-" Reload files when changed on disk
-set autoread
-
-" Fix broken backspace in some setups
-set backspace=2
-
-" Show trailing whitespace
-set list
-set listchars=tab:▸\ ,trail:▫
-
-" Configure wildmenu
-set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
-set wildmenu
-set wildmode=longest,list,full
-
-" Configure ctrl-p
-let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor\|tags'
-
-" Use Ag instead of Ack
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" Trigger configuration for UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-
-" Remove whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-
-" Key bindings
+" Keyboard shortcuts
+let mapleader = ","
 nmap j gj
 nmap k gk
 nnoremap <leader>t :NERDTreeTabsToggle<CR>
@@ -147,24 +75,27 @@ nnoremap <c-f> :CtrlPTag<CR>
 nnoremap <leader>a :Ack
 nnoremap <leader>cr :%s/\r//<CR>
 
+" Configure Plugins
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor\|tags'
+let g:Powerline_symbols = 'fancy'
+let g:UltiSnipsExpandTrigger="<tab>"
+
+" Remove whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
 " Go stuff
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap gd <Plug>(go-def)
 
-" Highlights
+" Theme fixes
 highlight LineNr ctermbg=233
 highlight ColorColumn ctermbg=233
 highlight Visual ctermbg=236
-
-" Tabs
 highlight TabLineFill ctermfg=LightGreen ctermbg=233
 highlight TabLine ctermfg=LightGrey ctermbg=233
 highlight TabLineSel ctermfg=LightGrey ctermbg=235
 highlight Title ctermfg=LightBlue ctermbg=None
 highlight CursorLine ctermfg=None ctermbg=233
 
-" CtrlP
-"highlight CursorLine ctermfg=White
-"highlight CtrlPMatch ctermfg=White ctermbg=235
