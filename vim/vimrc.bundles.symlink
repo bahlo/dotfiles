@@ -18,4 +18,5 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'toyamarinyon/vim-swift'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
+Bundle 'wookiehangover/jshint.vim'
 
