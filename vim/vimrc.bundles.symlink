@@ -7,7 +7,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'lokaltog/vim-easymotion'
 Bundle 'lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'majutsushi/tagbar'
-Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
