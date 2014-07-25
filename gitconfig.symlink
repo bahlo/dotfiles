@@ -72,3 +72,6 @@
 
 [diff "nodiff"]
   command = /usr/bin/true # Any command without output, paths may vary
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

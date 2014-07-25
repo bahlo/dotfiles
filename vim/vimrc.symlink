@@ -20,11 +20,12 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'jnwhiteh/vim-golang'
 Plugin 'lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'chriskempson/base16-vim'
 Plugin 'groenewege/vim-less'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'toyamarinyon/vim-swift'
+Plugin 'fatih/vim-go'
 
 " call vundle#end()
 filetype plugin indent on
@@ -47,6 +48,9 @@ let mapleader = ","
 
 " Show line numbers
 set number
+
+" Show cursorline
+set cursorline
 
 " Show colorcolumn
 set colorcolumn=79
@@ -148,7 +152,8 @@ highlight TabLineFill ctermfg=LightGreen ctermbg=233
 highlight TabLine ctermfg=LightGrey ctermbg=233
 highlight TabLineSel ctermfg=LightGrey ctermbg=235
 highlight Title ctermfg=LightBlue ctermbg=None
+highlight CursorLine ctermfg=None ctermbg=233
 
 " CtrlP
-highlight CursorLine ctermfg=White
+"highlight CursorLine ctermfg=White
 "highlight CtrlPMatch ctermfg=White ctermbg=235
