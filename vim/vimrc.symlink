@@ -13,7 +13,6 @@ call vundle#rc()
 " Install Bundles
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
-  source ~/.vimrc.bundles.local
 endif
 
 " Ensure ftdetect is working
@@ -90,12 +89,20 @@ au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap gd <Plug>(go-def)
 
 " Theme fixes
-highlight LineNr ctermbg=233
-highlight ColorColumn ctermbg=233
-highlight Visual ctermbg=236
-highlight TabLineFill ctermfg=LightGreen ctermbg=233
-highlight TabLine ctermfg=LightGrey ctermbg=233
-highlight TabLineSel ctermfg=LightGrey ctermbg=235
-highlight Title ctermfg=LightBlue ctermbg=None
-highlight CursorLine ctermfg=None ctermbg=233
+" TODO: Make a variable for 233
+hi LineNr ctermbg=233
+hi ColorColumn ctermbg=233
+hi Visual ctermbg=236
+hi TabLineFill ctermfg=LightGreen ctermbg=233
+hi TabLine ctermfg=LightGrey ctermbg=233
+hi TabLineSel ctermfg=LightGrey ctermbg=235
+hi Title ctermfg=LightBlue ctermbg=None
+hi CursorLine ctermfg=None ctermbg=233
+
+" Plugin highlighting
+hi clear SignColumn
+hi GitGutterAdd ctermbg=233
+hi GitGutterChange ctermbg=233
+hi GitGutterDelete ctermbg=233
+hi GitGutterChangeDelete ctermbg=233
 
