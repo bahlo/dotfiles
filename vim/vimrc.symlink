@@ -44,7 +44,7 @@ set shiftwidth=2 " Normale mode indentation command use 2 spaces
 set showbreak=↪
 set showcmd " Display incomplete commands
 set smartcase " Search is case sensitive if any caps
-set softtabstop=2 " Insert mode tab and backspace use 2 spaces
+"set softtabstop=2 " Insert mode tab and backspace use 2 spaces
 set tabstop=8 " Actual tabs occupy 8 characters
 set textwidth=79
 set ttyfast " Faster reloading
@@ -72,6 +72,11 @@ nnoremap <silent> <Leader>/ :nohlsearch<CR>
 nnoremap <c-t> :CtrlP<CR>
 nnoremap <c-f> :CtrlPTag<CR>
 nnoremap <leader>cr :%s/\r//<CR>
+
+" Automagically close brackets
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap [<CR>  [<CR>]<Esc>O
+inoremap (<CR>  (<CR>)<Esc>O
 
 " Configure Plugins
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor\|tags'
