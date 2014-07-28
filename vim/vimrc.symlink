@@ -66,7 +66,8 @@ colorscheme base16-3024
 let mapleader = ","
 nmap j gj
 nmap k gk
-nnoremap <leader>t :NERDTreeTabsToggle<CR>
+nnoremap <leader><leader>t :NERDTreeTabsToggle<CR>
+nnoremap <leader><leader>b :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
 nnoremap <c-t> :CtrlP<CR>
