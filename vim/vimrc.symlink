@@ -81,10 +81,9 @@ inoremap [<CR>  [<CR>]<Esc>O
 inoremap (<CR>  (<CR>)<Esc>O
 
 " Configure Plugins
-let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor\|tags'
-let g:Powerline_symbols = 'fancy'
-let g:UltiSnipsExpandTrigger = "<tab>"
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor\|tags\|_workspace'
 let g:airline_powerline_fonts = 1
+let g:airline_theme = 'powerlineish'
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
