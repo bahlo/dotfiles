@@ -90,6 +90,9 @@ let g:airline#extensions#tabline#enabled = 1
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Close vim when only NERDTREE is open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 " Go stuff
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
@@ -119,3 +122,8 @@ hi GitGutterChangeDelete ctermbg=233
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=234
 hi IndentGuidesEven ctermbg=233
+
+" Project setup
+if filereadable(expand("project.vim"))
+  source project.vim
+endif
