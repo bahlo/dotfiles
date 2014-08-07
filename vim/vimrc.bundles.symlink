@@ -1,4 +1,5 @@
 Bundle 'airblade/vim-gitgutter'
+Bundle 'bling/vim-airline'
 Bundle 'chriskempson/base16-vim'
 Plugin 'fatih/vim-go'
 Bundle 'gmarik/Vundle.vim'
@@ -6,7 +7,6 @@ Bundle 'groenewege/vim-less'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'kien/ctrlp.vim'
 Bundle 'lokaltog/vim-easymotion'
-Bundle 'lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'majutsushi/tagbar'
 Bundle 'msanders/snipmate.vim'
 Bundle 'nathanaelkane/vim-indent-guides'

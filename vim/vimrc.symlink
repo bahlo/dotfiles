@@ -60,6 +60,7 @@ set term=xterm-256color
 set termencoding=utf-8
 
 " Set color scheme
+let base16colorspace=256
 colorscheme base16-3024
 
 " Keyboard shortcuts
@@ -82,7 +83,8 @@ inoremap (<CR>  (<CR>)<Esc>O
 " Configure Plugins
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor\|tags'
 let g:Powerline_symbols = 'fancy'
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:airline_powerline_fonts = 1
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -116,5 +118,3 @@ hi GitGutterChangeDelete ctermbg=233
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=234
 hi IndentGuidesEven ctermbg=233
-
-
