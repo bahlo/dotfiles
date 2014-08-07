@@ -104,6 +104,7 @@ hi TabLineSel ctermfg=LightGrey ctermbg=235
 hi Title ctermfg=LightBlue ctermbg=None
 hi CursorLine ctermfg=None ctermbg=233
 hi Todo ctermbg=None
+hi Pmenu ctermbg=None ctermfg=LightGrey
 
 " Plugin highlighting
 hi clear SignColumn
