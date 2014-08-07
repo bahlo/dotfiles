@@ -44,7 +44,7 @@ set shiftwidth=2 " Normale mode indentation command use 2 spaces
 set showbreak=↪
 set showcmd " Display incomplete commands
 set smartcase " Search is case sensitive if any caps
-"set softtabstop=2 " Insert mode tab and backspace use 2 spaces
+set softtabstop=2 " Insert mode tab and backspace use 2 spaces
 set tabstop=8 " Actual tabs occupy 8 characters
 set textwidth=79
 set ttyfast " Faster reloading
@@ -52,6 +52,7 @@ set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu
 set wildmode=longest,list,full
 set wrap
+set noswapfile " Do not create swap files
 
 " Configuration for Powerline
 set t_Co=256
