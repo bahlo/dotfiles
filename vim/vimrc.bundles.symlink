@@ -1,6 +1,7 @@
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
 Bundle 'chriskempson/base16-vim'
+Bundle 'edkolev/tmuxline.vim'
 Plugin 'fatih/vim-go'
 Bundle 'gmarik/Vundle.vim'
 Bundle 'groenewege/vim-less'
