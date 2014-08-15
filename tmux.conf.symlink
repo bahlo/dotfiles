@@ -9,8 +9,3 @@ setw -g mode-keys vi
 
 # Reattach to user namespace
 set-option -g default-command "reattach-to-user-namespace -l zsh"
-
-# Set C-a as prefix
-unbind C-b
-set -g prefix C-a
-bind C-a send-prefix

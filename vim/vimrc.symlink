@@ -37,14 +37,14 @@ set incsearch " Search as you type
 set laststatus=2 "Always show statusline
 set list " Show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
-set number
+"set number
 set ruler " Show where you are
 set scrolloff=3 " Show context above/below cursorline
 set shiftwidth=2 " Normale mode indentation command use 2 spaces
 set showbreak=↪
 set showcmd " Display incomplete commands
 set smartcase " Search is case sensitive if any caps
-set softtabstop=2 " Insert mode tab and backspace use 2 spaces
+set softtabstop=8 " Insert mode tab and backspace use 2 spaces
 set tabstop=8 " Actual tabs occupy 8 characters
 set textwidth=79
 set ttyfast " Faster reloading
@@ -53,6 +53,7 @@ set wildmenu
 set wildmode=longest,list,full
 set wrap
 set noswapfile " Do not create swap files
+set relativenumber
 
 " Configuration for Powerline
 set t_Co=256
@@ -98,10 +99,12 @@ au FileType go nmap <leader>r <Plug>(go-run)
 " au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap gd <Plug>(go-def)
+au FileType go nmap <leader>c <Plug>(go-coverage)
 
 " Theme fixes
 " TODO: Make a variable for 233
 hi LineNr ctermbg=233
+hi CursorLineNr ctermbg=232
 hi ColorColumn ctermbg=233
 hi Visual ctermbg=236
 hi TabLineFill ctermfg=LightGreen ctermbg=233
