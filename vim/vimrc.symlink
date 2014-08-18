@@ -44,7 +44,7 @@ set shiftwidth=2 " Normale mode indentation command use 2 spaces
 set showbreak=↪
 set showcmd " Display incomplete commands
 set smartcase " Search is case sensitive if any caps
-set softtabstop=8 " Insert mode tab and backspace use 2 spaces
+set softtabstop=2 " Insert mode tab and backspace use 2 spaces
 set tabstop=8 " Actual tabs occupy 8 characters
 set textwidth=79
 set ttyfast " Faster reloading
