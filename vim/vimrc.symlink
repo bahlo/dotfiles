@@ -75,7 +75,7 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
 nnoremap <c-t> :CtrlP<CR>
 nnoremap <c-f> :CtrlPTag<CR>
-nnoremap <leader>cr :%s/\r//<CR>
+nnoremap <leader>cr :%s/\r//<CR> "Replace CRLF with LF
 
 " Automagically close brackets
 inoremap {<CR>  {<CR>}<Esc>O
@@ -125,11 +125,3 @@ hi GitGutterChangeDelete ctermbg=233
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=234
 hi IndentGuidesEven ctermbg=233
-
-" .vim-project
-if filereadable(expand(".vim-project"))
-  source .vim-project
-endif
-
-" Exit NERDTree if it's the only pane
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
