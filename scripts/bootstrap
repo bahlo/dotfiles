@@ -30,15 +30,12 @@ function install_dotfiles() {
 
     # OS X
     if [ "$(uname -s)" == "Darwin" ] ; then
-      # Install homebrew
-      which -s brew
-      if [[ $? != 0 ]] ; then
-          ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-      fi
-
       # Install brews
       brew bundle
     fi
+
+    # Vim
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
 if [ "$1" = "--force" -o "$1" = "-f" ] ; then
