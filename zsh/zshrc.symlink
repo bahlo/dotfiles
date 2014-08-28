@@ -10,7 +10,7 @@ for config_file in  $HOME/.dotfiles/zsh/**/*.zsh; do
 done
 
 # oh my zsh
-plugins=(git tmux brew bower coffee node npm xcode sublime)
+plugins=(tmux brew bower coffee node npm xcode)
 source $ZSH/oh-my-zsh.sh
 
 # Embed custom per-machine config

@@ -2,6 +2,7 @@
 alias gca="git ca"
 alias gcaa="git caa"
 alias gco="git co"
+alias gd="git d"
 alias gl="git l"
 alias gps="git push"
 alias gpsu="git psu"

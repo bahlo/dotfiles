@@ -16,6 +16,7 @@
 
   # Passive
   s = status -sb
+  d = diff --stat --patch
   l = log --graph --decorate --pretty=oneline --abbrev-commit
   authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 
