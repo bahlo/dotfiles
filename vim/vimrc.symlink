@@ -62,15 +62,15 @@ set term=xterm-256color
 set termencoding=utf-8
 
 " Set color scheme
-let base16colorspace=256
+"let base16colorspace=256
 colorscheme base16-3024
 
 " Keyboard shortcuts
 let mapleader = ","
 nmap j gj
 nmap k gk
-nnoremap <leader>d :NERDTreeTabsToggle<CR>
-nnoremap <leader>b :TagbarToggle<CR>
+nnoremap <F5> :NERDTreeTabsToggle<CR>
+nnoremap <F6> :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
 nnoremap <c-t> :CtrlP<CR>
