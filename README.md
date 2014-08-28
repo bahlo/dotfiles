@@ -7,7 +7,11 @@ First, you'll need ZSH. On a Mac, install [Homebre](http://brew.sh) first:
 ```bash
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 ```
-Then run `bash scripts/bootstrap` and you're set!
+
+Then run the bootstrap script and you're set:
+```bash
+bash scripts/bootstrap
+```
 
 _Note:_ You may want to use [iTerm](http://iterm2.com) with `xterm-256color`
 and a 256-color scheme, I prefer
