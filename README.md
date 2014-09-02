@@ -3,7 +3,7 @@
 These are my dotfiles, have fun!
 
 ## Install
-First, you'll need ZSH. On a Mac, install [Homebre](http://brew.sh) first:
+First, you'll need ZSH. On a Mac, install [Homebrew](http://brew.sh) first:
 ```bash
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 ```
