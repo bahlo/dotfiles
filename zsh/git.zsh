@@ -1,9 +1,13 @@
 # For more information to the git aliases, look into .gitconfig
+alias g="git"
 alias gca="git ca"
 alias gcaa="git caa"
+alias gcl="git clone"
 alias gco="git co"
 alias gd="git d"
 alias gl="git l"
+alias gm="git merge"
+alias gpl="git pull"
 alias gps="git push"
 alias gpsu="git psu"
 alias gr="git rebase"
