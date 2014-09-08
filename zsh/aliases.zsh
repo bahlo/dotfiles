@@ -12,8 +12,10 @@ alias -g la="ls -la ${colorflag}"
 alias crontab="crontab -i"
 
 # Typo aliases (1 char tolerance)
+alias v="vim"
 alias ivm="vim"
 alias vmi="vim"
+alias g="git"
 alias igt="git"
 alias gti="git"
 
