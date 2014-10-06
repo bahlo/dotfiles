@@ -63,7 +63,7 @@ set termencoding=utf-8
 
 " Set color scheme
 "let base16colorspace=256
-colorscheme gotham
+colorscheme base16-3024
 
 " Keyboard shortcuts
 let mapleader = ","
