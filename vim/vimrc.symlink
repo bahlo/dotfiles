@@ -63,7 +63,7 @@ set termencoding=utf-8
 
 " Set color scheme
 "let base16colorspace=256
-colorscheme base16-3024
+colorscheme gotham
 
 " Keyboard shortcuts
 let mapleader = ","
@@ -85,7 +85,7 @@ inoremap (<CR>  (<CR>)<Esc>O
 " Configure Plugins
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor\|tags\|_workspace'
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'powerlineish'
+"let g:airline_theme = 'powerlineish'
 let g:airline#extensions#tabline#enabled = 1
 
 " Remove whitespace on save
