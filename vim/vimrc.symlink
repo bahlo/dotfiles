@@ -57,7 +57,7 @@ set termencoding=utf-8
 
 " Set color scheme
 "let base16colorspace=256
-colorscheme base16-3024
+colorscheme glacier
 
 " Keyboard shortcuts
 let mapleader = ","
@@ -81,6 +81,20 @@ let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor\|tags\|_work
 let g:airline_powerline_fonts = 1
 "let g:airline_theme = 'powerlineish'
 let g:airline#extensions#tabline#enabled = 1
+
+" Configure Startify
+let g:startify_custom_header =
+  \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
+let g:startify_list_order = [
+  \ ['   LRU:'],
+  \ 'files',
+  \ ['   LRU within this dir:'],
+  \ 'dir',
+  \ ['   Sessions:'],
+  \ 'sessions',
+  \ ['   Bookmarks:'],
+  \ 'bookmarks',
+  \ ]
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
