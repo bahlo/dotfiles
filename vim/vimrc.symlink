@@ -57,7 +57,7 @@ set termencoding=utf-8
 
 " Set color scheme
 "let base16colorspace=256
-colorscheme glacier
+colorscheme base16-3024
 
 " Keyboard shortcuts
 let mapleader = ","
