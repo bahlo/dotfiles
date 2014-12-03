@@ -4,7 +4,7 @@ set nocompatible
 " Enable syntax highlighting
 syntax enable
 
-" Install Bundles
+" Set up plug
 if filereadable(expand("~/.vimrc.plug"))
   source ~/.vimrc.plug
 endif
@@ -12,90 +12,58 @@ endif
 " Ensure ftdetect is working
 filetype plugin indent on
 
+" Theme
+set background=dark
+colorscheme solarized
+
 " General configuration
 set autoindent
-set autoread    " Reload files on change
-set background=dark
+set autoread                   " Reload files on change
 set backspace=indent,eol,start " Backspace through everything in insert mode
-set backupcopy=yes " See :help crontab
-set clipboard=unnamed " Yank and paste with system keyboard
-set colorcolumn=79 " Show column
-set directory-=. "Don't store swapfiles in the current directory
+set backupcopy=yes
+set clipboard=unnamed
+set colorcolumn=79
 set encoding=utf-8
-set expandtab "Expand tabs to spaced
-set ffs=unix " Default to Unix LF
-set formatoptions=qrn1
-set hlsearch " Highlight search results
-set ignorecase " Search case insensitive
-set incsearch " Search as you type
-set laststatus=2 "Always show statusline
-set list " Show trailing whitespace
+set expandtab                  " Expand tabs to spaces
+set ffs=unix                   " Default to LF
+set hlsearch                   " Highlight search results
+set smartcase                  " Search is case sensitive if any caps
+set incsearch                  " Seach as you type
+set laststatus=2               " Always show statusline
+set list                       " Show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
-"set number
-set ruler " Show where you are
-set scrolloff=3 " Show context above/below cursorline
-set shiftwidth=2 " Normale mode indentation command use 2 spaces
+set ruler
+set scrolloff=3
+set shiftwidth=2
 set showbreak=↪
-set showcmd " Display incomplete commands
-set smartcase " Search is case sensitive if any caps
-set softtabstop=2 " Insert mode tab and backspace use 2 spaces
-set tabstop=8 " Actual tabs occupy 8 characters
+set showcmd
+set softtabstop=2
+set tabstop=4
 set textwidth=79
-set ttyfast " Faster reloading
+set ttyfast
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu
 set wildmode=longest,list,full
 set wrap
-set noswapfile " Do not create swap files
 set relativenumber
+set cursorline
 
-" Configuration for Powerline
-set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
-set term=xterm-256color
-set termencoding=utf-8
-
-" Set color scheme
-"let base16colorspace=256
-colorscheme base16-3024
-
-" Keyboard shortcuts
+" Shortcuts
 let mapleader = ","
-nmap j gj
-nmap k gk
-nnoremap <F5> :NERDTreeTabsToggle<CR>
-nnoremap <F6> :TagbarToggle<CR>
-nnoremap <leader>u :GundoToggle<CR>
-nnoremap <silent> <Leader>/ :nohlsearch<CR>
-nnoremap <c-t> :CtrlP<CR>
-nnoremap <c-f> :CtrlPTag<CR>
-nnoremap <leader>cr :%s/\r//<CR> "Replace CRLF with LF
-nnoremap <leader>r <><CR> "Repair broken layout
+nnoremap          <F5>      :NERDTreeTabsToggle<CR>
+nnoremap          <F6>      :TagbarToggle<CR>
+nnoremap          <leader>u :GundoToggle<CR>
+nnoremap <silent> <leader>/ :nohlsearch<CR>
+nnoremap          <c-t>     :CtrlP<CR>
 
-" Automagically close brackets
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap [<CR>  [<CR>]<Esc>O
-inoremap (<CR>  (<CR>)<Esc>O
+" CTRL-P
+let g:ctrlp_custom_ignore='node_modules\|bower_components\|vendor\|tags\|_workspace'
 
-" Configure Plugins
-let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|vendor\|tags\|_workspace'
-let g:airline_powerline_fonts = 1
-"let g:airline_theme = 'powerlineish'
+" Airline
+let g:airline_powerline_fonts            = 1
 let g:airline#extensions#tabline#enabled = 1
-
-" Configure Startify
-let g:startify_custom_header =
-  \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
-let g:startify_list_order = [
-  \ ['   LRU:'],
-  \ 'files',
-  \ ['   LRU within this dir:'],
-  \ 'dir',
-  \ ['   Sessions:'],
-  \ 'sessions',
-  \ ['   Bookmarks:'],
-  \ 'bookmarks',
-  \ ]
+let g:airline_enable_branch              = 1
+let g:airline_enable_syntastic           = 1
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -103,34 +71,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Close vim when only NERDTREE is open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Go stuff
+" Go shortcuts
 au FileType go nmap <leader>r <Plug>(go-run)
-" au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap gd <Plug>(go-def)
+au FileType go nmap gd        <Plug>(go-def)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
-" Theme fixes
-" TODO: Make a variable for 233
-hi LineNr ctermbg=233
-hi CursorLineNr ctermbg=232
-hi ColorColumn ctermbg=233
-hi Visual ctermbg=236
-hi TabLineFill ctermfg=LightGreen ctermbg=233
-hi TabLine ctermfg=LightGrey ctermbg=233
-hi TabLineSel ctermfg=LightGrey ctermbg=235
-hi Title ctermfg=LightBlue ctermbg=None
-hi CursorLine ctermfg=None ctermbg=233
-hi Todo ctermbg=None
-hi Pmenu ctermbg=None ctermfg=LightGrey
-
-" Plugin highlighting
+" Clear background of Gitgutter
 hi clear SignColumn
-hi GitGutterAdd ctermbg=233
-hi GitGutterChange ctermbg=233
-hi GitGutterDelete ctermbg=233
-hi GitGutterChangeDelete ctermbg=233
-
-let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg=234
-hi IndentGuidesEven ctermbg=233
