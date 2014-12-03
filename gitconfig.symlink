@@ -4,7 +4,7 @@
 
 [alias]
   # Active
-  c = clone --recursive
+  c = !git commit -av
   ca = !git add --all . && git commit -av
   caae = commit --allow-empty
   caa = !git ca --amend

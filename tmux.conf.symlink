@@ -2,7 +2,7 @@
 set-option -g status-utf8 on
 
 # 256 COlors
-set -g default-terminal "screen-256color"
+#set -g default-terminal "screen-256color"
 
 # Vi keys
 setw -g mode-keys vi

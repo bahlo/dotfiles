@@ -1,6 +1,7 @@
 # For more information to the git aliases, look into .gitconfig
 alias g="git"
 alias gb="git branch"
+alias gc="git c"
 alias gca="git ca"
 alias gcaa="git caa"
 alias gcl="git clone"
