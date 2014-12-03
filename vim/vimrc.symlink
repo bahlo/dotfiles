@@ -14,7 +14,7 @@ filetype plugin indent on
 
 " Theme
 set background=dark
-colorscheme solarized
+colorscheme gotham
 
 " General configuration
 set autoindent
