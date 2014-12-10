@@ -10,23 +10,27 @@ Plug 'kien/ctrlp.vim',                 { 'on': 'CtrlP' }
 Plug 'sjl/gundo.vim',                  { 'on': 'GundoToggle' }
 
 " Special functionality
-Plug 'godlygeek/tabular',              { 'on': 'Tab' }
+Plug 'godlygeek/tabular',           { 'on': 'Tab' }
 Plug 'lokaltog/vim-easymotion'
-Plug 'rking/ag.vim',                   { 'on': 'Ag' }
+Plug 'rking/ag.vim',                { 'on': 'Ag' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'Valloric/YouCompleteMe',      { 'do': './install.sh --clang-completer' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
 
 " Language syntax highlighting
 Plug 'groenewege/vim-less'
 Plug 'kchmck/vim-coffee-script'
 
 " Language extensions
-Plug 'fatih/vim-go',                   { 'for': 'go' }
-Plug 'othree/yajs.vim',                { 'for': 'javascript' }
-Plug 'vim-scripts/HTML-AutoCloseTag',  { 'for': 'html' }
+Plug 'fatih/vim-go',                  { 'for': 'go' }
+Plug 'othree/yajs.vim',               { 'for': 'javascript' }
+Plug 'vim-scripts/HTML-AutoCloseTag', { 'for': 'html' }
 
 " Themes
 "Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
