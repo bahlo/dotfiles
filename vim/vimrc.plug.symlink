@@ -1,26 +1,35 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'airblade/vim-gitgutter'
+" Visual plugins
 Plug 'bling/vim-airline'
-Plug 'edkolev/tmuxline.vim'
-Plug 'fatih/vim-go'
-Plug 'godlygeek/tabular'
-Plug 'groenewege/vim-less'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'kien/ctrlp.vim'
-Plug 'lokaltog/vim-easymotion'
+Plug 'scrooloose/nerdtree',            { 'on': 'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
-Plug 'rking/ag.vim'
-Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'edkolev/tmuxline.vim'
+Plug 'kien/ctrlp.vim',                 { 'on': 'CtrlP' }
+Plug 'sjl/gundo.vim',                  { 'on': 'GundoToggle' }
+
+" Special functionality
+Plug 'godlygeek/tabular',              { 'on': 'Tab' }
+Plug 'lokaltog/vim-easymotion'
+Plug 'rking/ag.vim',                   { 'on': 'Ag' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'sjl/gundo.vim'
-Plug 'kchmck/vim-coffee-script'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'vim-scripts/HTML-AutoCloseTag'
+
+" Language syntax highlighting
+Plug 'groenewege/vim-less'
+Plug 'kchmck/vim-coffee-script'
+
+" Language extensions
+Plug 'fatih/vim-go',                   { 'for': 'go' }
+Plug 'othree/yajs.vim',                { 'for': 'javascript' }
+Plug 'vim-scripts/HTML-AutoCloseTag',  { 'for': 'html' }
+
+" Themes
+Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
 Plug 'whatyouhide/vim-gotham'
 
 call plug#end()
