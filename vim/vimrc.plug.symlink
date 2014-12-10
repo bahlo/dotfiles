@@ -19,6 +19,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-fugitive'
 
 " Snippets
 Plug 'Valloric/YouCompleteMe',      { 'do': './install.sh --clang-completer' }
