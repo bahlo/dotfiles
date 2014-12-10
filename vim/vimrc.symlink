@@ -14,7 +14,8 @@ filetype plugin indent on
 
 " Theme
 set background=dark
-colorscheme gotham
+let base16colorspace=256
+colorscheme base16-default
 
 " General configuration
 set autoindent
@@ -51,7 +52,7 @@ set noswapfile
 
 " Shortcuts
 let mapleader = ","
-nnoremap          <F5>      :NERDTreeToggle<CR>
+nnoremap          <F5>      :NERDTreeTabsToggle<CR>
 nnoremap          <F6>      :TagbarToggle<CR>
 nnoremap          <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
@@ -68,9 +69,6 @@ let g:airline_enable_syntastic           = 1
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
-
-" Close vim when only NERDTREE is open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Make shortcuts
 nmap <leader>m  :!make<CR>

@@ -1,5 +1,5 @@
 # UTF-8 Encoding
-set-option -g status-utf8 on
+#set-option -g status-utf8 on
 
 # 256 Colors
 set -g default-terminal "screen-256color"

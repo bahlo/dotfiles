@@ -2,10 +2,10 @@ call plug#begin('~/.vim/plugged')
 
 " Visual plugins
 Plug 'bling/vim-airline'
-Plug 'scrooloose/nerdtree',            { 'on': 'NERDTreeToggle' }
-Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree',            { 'on': 'NERDTreeTabsToggle' }
+Plug 'jistr/vim-nerdtree-tabs'       " { 'on': 'NERDTreeTabsToggle' }
+Plug 'majutsushi/tagbar'             " { 'on': 'TagbarToggle'       }
 Plug 'airblade/vim-gitgutter'
-Plug 'edkolev/tmuxline.vim'
 Plug 'kien/ctrlp.vim',                 { 'on': 'CtrlP' }
 Plug 'sjl/gundo.vim',                  { 'on': 'GundoToggle' }
 
@@ -29,7 +29,8 @@ Plug 'othree/yajs.vim',                { 'for': 'javascript' }
 Plug 'vim-scripts/HTML-AutoCloseTag',  { 'for': 'html' }
 
 " Themes
-Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
-Plug 'whatyouhide/vim-gotham'
+"Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
+"Plug 'whatyouhide/vim-gotham'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
