@@ -18,11 +18,13 @@ Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate'
+
+" Snippets
 Plug 'Valloric/YouCompleteMe',      { 'do': './install.sh --clang-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
-Plug 'Raimondi/delimitMate'
 
 " Language syntax highlighting
 Plug 'groenewege/vim-less'
