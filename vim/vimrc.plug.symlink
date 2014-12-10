@@ -22,6 +22,7 @@ Plug 'Valloric/YouCompleteMe',      { 'do': './install.sh --clang-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
+Plug 'Raimondi/delimitMate'
 
 " Language syntax highlighting
 Plug 'groenewege/vim-less'
@@ -30,7 +31,8 @@ Plug 'kchmck/vim-coffee-script'
 " Language extensions
 Plug 'fatih/vim-go',                  { 'for': 'go' }
 Plug 'othree/yajs.vim',               { 'for': 'javascript' }
-Plug 'vim-scripts/HTML-AutoCloseTag', { 'for': 'html' }
+"Plug 'vim-scripts/HTML-AutoCloseTag', { 'for': 'html' }
+Plug 'othree/html5.vim',              { 'for': 'html' }
 
 " Themes
 "Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
