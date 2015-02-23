@@ -16,9 +16,13 @@ alias v="vim"
 alias vi="vim"
 alias ivm="vim"
 alias vmi="vim"
+alias mvi="mvim"
 alias g="git"
 alias igt="git"
 alias gti="git"
+alias subl="sublime"
+
+alias gls="git ls-files"
 
 # Use colors when GNU grep with color-support
 alias grep="grep --color=auto"

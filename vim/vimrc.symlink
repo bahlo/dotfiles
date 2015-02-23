@@ -14,12 +14,11 @@ filetype plugin indent on
 
 " Theme
 set background=dark
-let base16colorspace=256
-colorscheme base16-default
+colorscheme jellybeans
 
 " General configuration
-set autoindent
 set autoread                   " Reload files on change
+set autoindent
 set backspace=indent,eol,start " Backspace through everything in insert mode
 set backupcopy=yes
 set clipboard=unnamed
@@ -52,7 +51,7 @@ set noswapfile
 
 " Shortcuts
 let mapleader = ","
-nnoremap          <F5>      :NERDTreeTabsToggle<CR>
+nnoremap          <F5>      :NERDTreeToggle<CR>
 nnoremap          <F6>      :TagbarToggle<CR>
 nnoremap          <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
@@ -66,6 +65,7 @@ let g:airline_powerline_fonts            = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_enable_branch              = 1
 let g:airline_enable_syntastic           = 1
+let g:airline#extensions#hunks#enabled   = 0
 
 " YCM
 let g:ycm_key_list_select_completion   = ['<C-n>', '<Down>']
@@ -75,9 +75,13 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger       = '<tab>'
-let g:UltiSnipsJumpForwardTrigger  = '<tab>'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+" EasyAlign (vip<Enter>= or gaip=)
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
