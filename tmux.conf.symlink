@@ -1,8 +1,16 @@
 # UTF-8 Encoding
-#set-option -g status-utf8 on
+set-option -g status-utf8 on
+set-window-option -g utf8 on
+
+# Mouse stuff
+# set -g mode-mouse on
+# set -g mouse-resize-pane on
+# set -g mouse-select-pane on
+# set -g mouse-select-window on
 
 # 256 Colors
 set -g default-terminal "screen-256color"
+set -g status-utf8 on
 
 # Vi keys
 setw -g mode-keys vi
