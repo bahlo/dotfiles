@@ -14,7 +14,8 @@ filetype plugin indent on
 
 " Theme
 set background=dark
-colorscheme jellybeans
+colorscheme hybrid
+let g:hybrid_use_Xresources = 1
 
 " General configuration
 set autoread                   " Reload files on change

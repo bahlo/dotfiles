@@ -27,6 +27,12 @@ alias gls="git ls-files"
 # Use colors when GNU grep with color-support
 alias grep="grep --color=auto"
 
+# Edit files fast
+alias vimrc="$EDITOR $HOME/.vimrc"
+alias vimrcp="$EDITOR $HOME/.vimrc.plug"
+alias zshrc="$EDITOR $HOME/.zshrc && source $HOME/.zshrc"
+alias localrc="$EDITOR $HOME/.localrc && source $HOME/.localrc"
+
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
