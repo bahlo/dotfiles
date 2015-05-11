@@ -6,8 +6,7 @@ function ssh_connection() {
 
 # Backup: ‹›
 
-local ret_status="%(?:$:%{$fg_bold[red]%}$%s)%{$reset_color%}"
-PROMPT='%{$fg_bold[red]%}%n%{$reset_color%} › %{$fg_bold[green]%}%m%{$reset_color%} › %{$fg_bold[yellow]%}%~%{$reset_color%} $(git_prompt_info)% %{$reset_color%}${ret_status} '
+PROMPT='%{$fg_bold[red]%}%n%{$reset_color%} › %{$fg_bold[green]%}%m%{$reset_color%} › %{$fg_bold[yellow]%}%~%{$reset_color%} $(git_prompt_info)% %{$reset_color%}$ '
 
 ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
 ZSH_THEME_GIT_PROMPT_PREFIX="› %{$fg_bold[blue]%}"
