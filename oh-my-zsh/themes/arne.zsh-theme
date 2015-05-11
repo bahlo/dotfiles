@@ -1,7 +1,16 @@
-# arne at Arnes-Air in ~/GitHub/dotfiles at source* $
-PROMPT='%{$fg_bold[red]%}%n%{$reset_color%} at %{$fg_bold[green]%}%m%{$reset_color%} in %{$fg_bold[yellow]%}%~%{$reset_color%} $(git_prompt_info)% %{$reset_color%}$ '
+function ssh_connection() {
+  if [[ -n $SSH_CONNECTION ]]; then
+    echo "%{$fg_bold[magenta]%}(ssh) ›"
+  fi
+}
 
-ZSH_THEME_GIT_PROMPT_PREFIX="at %{$fg_bold[blue]%}"
+# Backup: ‹›
+
+local ret_status="%(?:$:%{$fg_bold[red]%}$%s)%{$reset_color%}"
+PROMPT='%{$fg_bold[red]%}%n%{$reset_color%} › %{$fg_bold[green]%}%m%{$reset_color%} › %{$fg_bold[yellow]%}%~%{$reset_color%} $(git_prompt_info)% %{$reset_color%}${ret_status} '
+
+ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="› %{$fg_bold[blue]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_DIRTY="*"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
