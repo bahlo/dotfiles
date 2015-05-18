@@ -14,8 +14,12 @@ filetype plugin indent on
 
 " Theme
 set background=dark
-colorscheme hybrid
-let g:hybrid_use_Xresources = 1
+colorscheme jellybeans
+
+" Startify
+let g:startify_bookmarks = [ '~/.vimrc', '~/.vimrc.plug' ]
+let g:startify_custom_header =
+    \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
 
 " General configuration
 set autoread                   " Reload files on change

@@ -11,9 +11,10 @@ Plug 'tpope/vim-vinegar'
 Plug 'edkolev/tmuxline.vim'
 
 " Special functionality
+Plug 'mhinz/vim-startify'
 Plug 'junegunn/vim-easy-align' ",     { 'on': 'EasyAlign' }
 Plug 'lokaltog/vim-easymotion'
-Plug 'rking/ag.vim',                { 'on': 'Ag' }
+Plug 'rking/ag.vim',                  { 'on': 'Ag' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
@@ -23,7 +24,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
 
 " Snippets
-Plug 'Valloric/YouCompleteMe',      { 'do': './install.sh --clang-completer' }
+Plug 'Valloric/YouCompleteMe',        { 'do': './install.sh --clang-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
@@ -32,7 +33,7 @@ Plug 'ervandew/supertab'
 Plug 'groenewege/vim-less'
 Plug 'kchmck/vim-coffee-script'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'othree/yajs.vim' ",               { 'for': 'javascript' }
+Plug 'othree/yajs.vim' ",             { 'for': 'javascript' }
 
 " Language extensions
 Plug 'fatih/vim-go',                  { 'for': 'go' }
@@ -42,10 +43,12 @@ Plug 'othree/html5.vim',              { 'for': 'html' }
 " Themes
 "Plug 'chriskempson/base16-vim'
 "Plug 'altercation/vim-colors-solarized'
-"Plug 'nanotech/jellybeans.vim'
+Plug 'nanotech/jellybeans.vim'
 "Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
-Plug 'w0ng/vim-hybrid'
+"Plug 'w0ng/vim-hybrid'
 "Plug 'trusktr/seti.vim'
+"Plug 'zenorocha/dracula-theme', { 'rtp': 'vim' }
+"Plug 'notpratheek/vim-luna'
 
 " Addons
 Plug 'ryanss/vim-hackernews'
