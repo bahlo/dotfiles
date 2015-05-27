@@ -8,7 +8,7 @@ function greph () { history 0 | grep -i $1 }
 
 # 'work on', via https://coderwall.com/p/feoi0a
 function wo() {
-  CODE_DIR=~/Code
+  CODE_DIR=~/Developer
   cd $(find $CODE_DIR \( -type l -o -type d \) -maxdepth 3 | grep -i $* | grep -Ev Pods --max-count=1)
 }
 

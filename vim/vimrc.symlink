@@ -56,7 +56,7 @@ set noswapfile
 
 " Shortcuts
 let mapleader = ","
-nnoremap          <F5>      :NERDTreeToggle<CR>
+nnoremap          <F5>      :NERDTreeTabsToggle<CR>
 nnoremap          <F6>      :TagbarToggle<CR>
 nnoremap          <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
