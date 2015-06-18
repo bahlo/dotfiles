@@ -15,6 +15,7 @@ filetype plugin indent on
 " Theme
 set background=dark
 colorscheme jellybeans
+"let base16colorspace=256
 
 " Startify
 let g:startify_bookmarks = [ '~/.vimrc', '~/.vimrc.plug' ]
