@@ -14,6 +14,7 @@ antigen bundle git
 antigen bundle tmux
 antigen bundle brew
 antigen bundle xcode
+antigen bundle rimraf/k
 
 antigen theme bahlo/dotfiles zsh/arne
 
