@@ -15,7 +15,7 @@ antigen bundle tmux
 antigen bundle brew
 antigen bundle xcode
 
-antigen theme bahlo/dotfiles oh-my-zsh/themes/arne
+antigen theme bahlo/dotfiles zsh/arne
 
 # Embed custom per-machine config
 [[ -f ~/.localrc ]] && source ~/.localrc
