@@ -3,48 +3,54 @@
   email = hallo@arne.me
 
 [alias]
-  # Active
-  c = !git commit -av
-  ca = !git add --all . && git commit -av
-  caae = commit --allow-empty
-  caa = !git ca --amend
-  co = checkout
-  st = stash
-  stl = stash list
-  stp = stash pop
-  psu = push --set-upstream
-
-  # Passive
-  s = status -sb
-  d = diff --stat --patch
-  l = log --graph --decorate --pretty=oneline --abbrev-commit
   authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
+  b       = branch
+  c       = !git commit -av
+  ca      = !git add --all . && git commit -av
+  caa     = !git ca --amend
+  caae    = commit --allow-empty
+  cl      = clone
+  co      = checkout
+  cob     = checkout --branch
+  d       = diff --stat --patch
+  l       = log --graph --decorate --pretty=oneline --abbrev-commit
+  ps      = push
+  psu     = push --set-upstream
+  r       = rebase
+  ri      = rebase --interactive
+  rc      = rebase --continue
+  ra      = rebase --abort
+  rs      = reset
+  s       = status -sb
+  st      = stash
+  stl     = stash list
+  stp     = stash pop
 
 [apply]
   whitespace = fix
 
 [core]
   whitespace = trailing-space, space-before-tab
-  quotepath = false
-  editor = vim
+  quotepath  = false
+  editor     = vim
 
 [color]
   ui = auto
 
 [color "branch"]
   current = yellow reverse
-  local = yellow
-  remote = green
+  local   = yellow
+  remote  = green
 
 [color "diff"]
   meta = yellow bold
   frag = magenta bold
-  old = red bold
-  new = green bold
+  old  = red bold
+  new  = green bold
 
 [color "status"]
-  added = yellow
-  changed = green
+  added     = yellow
+  changed   = green
   untracked = cyan
 
 [push]
@@ -67,6 +73,7 @@
 
 [diff "nodiff"]
   command = /usr/bin/true # Any command without output, paths may vary
+
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+  clean  = git-media-clean %f
+  smudge = git-media-smudge %f
