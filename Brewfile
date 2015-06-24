@@ -1,15 +1,20 @@
 # Make sure we're using the latest homebrew
 update
 
-# Update any modules
-# upgrade
-
 # Install
+install caskroom/cask/brew-cask
+install ctags
 install git
-install zsh
-install htop
-install ag
-install tmux
+install go
+install mtr
+install nginx
+install node
 install reattach-to-user-namespace
+install ruby
+install rust
+install tmux
+install tree
+install vim
+install zsh
 
 cleanup
