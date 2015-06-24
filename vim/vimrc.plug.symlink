@@ -36,6 +36,8 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'othree/yajs.vim' ",             { 'for': 'javascript' }
 Plug 'rust-lang/rust.vim',            { 'for': 'rust' }
+Plug 'cespare/vim-toml',              { 'for': 'toml'}
+Plug 'evanmiller/nginx-vim-syntax'
 
 " Language extensions
 Plug 'fatih/vim-go',                  { 'for': 'go' }

@@ -64,14 +64,14 @@ nnoremap <silent> <leader>/ :nohlsearch<CR>
 nnoremap          <c-t>     :CtrlP<CR>
 
 " CTRL-P
-let g:ctrlp_custom_ignore='node_modules\|bower_components\|vendor\|tags\|_workspace'
+let g:ctrlp_custom_ignore='node_modules\|bower_components\|vendor\|tags\|_workspace\|target'
 
 " Airline
-let g:airline_powerline_fonts            = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_enable_branch              = 1
-let g:airline_enable_syntastic           = 1
-let g:airline#extensions#hunks#enabled   = 0
+let g:airline_powerline_fonts              = 1
+let g:airline#extensions#tabline#enabled   = 1
+let g:airline#extensions#branch#enabled    = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#hunks#enabled     = 0
 
 " YCM
 let g:ycm_key_list_select_completion   = ['<C-n>', '<Down>']
@@ -105,3 +105,18 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 
 " Clear background of Gitgutter
 hi clear SignColumn
+
+" Tagbar
+let g:tagbar_type_rust = {
+  \ 'ctagstype' : 'rust',
+  \ 'kinds' : [
+      \'T:types,type definitions',
+      \'f:functions,function definitions',
+      \'g:enum,enumeration names',
+      \'s:structure names',
+      \'m:modules,module names',
+      \'c:consts,static constants',
+      \'t:traits,traits',
+      \'i:impls,trait implementations',
+  \]
+  \}
