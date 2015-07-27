@@ -12,7 +12,6 @@ done
 
 antigen use oh-my-zsh
 
-antigen bundle git
 antigen bundle tmux
 antigen bundle brew
 antigen bundle xcode
