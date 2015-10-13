@@ -37,6 +37,7 @@ Plug 'othree/yajs.vim',               { 'for': 'javascript' }
 Plug 'rust-lang/rust.vim',            { 'for': 'rust' }
 Plug 'cespare/vim-toml',              { 'for': 'toml'}
 Plug 'evanmiller/nginx-vim-syntax'
+Plug 'keith/swift.vim',               { 'for': 'swift' }
 
 " Language extensions
 Plug 'fatih/vim-go',                  { 'for': 'go' }
