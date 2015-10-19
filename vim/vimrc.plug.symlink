@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
 Plug 'scrooloose/nerdtree',            { 'on': 'NERDTreeTabsToggle' }
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'majutsushi/tagbar' ",              { 'on': 'TagbarToggle' }
+Plug 'majutsushi/tagbar' ",            { 'on': 'TagbarToggle' }
 Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim',                 { 'on': 'CtrlP' }
 Plug 'sjl/gundo.vim',                  { 'on': 'GundoToggle' }
@@ -24,20 +24,21 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
 
 " Snippets
-Plug 'Valloric/YouCompleteMe',        { 'do': './install.sh --clang-completer --gocode-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --gocode-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 
 " Language syntax highlighting
-Plug 'groenewege/vim-less',           { 'for': 'less'  }
-Plug 'kchmck/vim-coffee-script',      { 'for': 'coffee'}
+Plug 'groenewege/vim-less',              { 'for': 'less'  }
+Plug 'kchmck/vim-coffee-script',         { 'for': 'coffee'}
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'othree/yajs.vim',               { 'for': 'javascript' }
-Plug 'rust-lang/rust.vim',            { 'for': 'rust' }
-Plug 'cespare/vim-toml',              { 'for': 'toml'}
+Plug 'othree/yajs.vim',                  { 'for': 'javascript' }
+Plug 'rust-lang/rust.vim',               { 'for': 'rust' }
+Plug 'cespare/vim-toml',                 { 'for': 'toml'}
 Plug 'evanmiller/nginx-vim-syntax'
 Plug 'keith/swift.vim',               { 'for': 'swift' }
+Plug 'mustache/vim-mustache-handlebars', { 'for': 'mustache' }
 
 " Language extensions
 Plug 'fatih/vim-go',                  { 'for': 'go' }
@@ -50,9 +51,9 @@ Plug 'nanotech/jellybeans.vim'
 "Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
 "Plug 'w0ng/vim-hybrid'
 "Plug 'trusktr/seti.vim'
-"Plug 'zenorocha/dracula-theme', { 'rtp': 'vim' }
+"Plug 'zenorocha/dracula-theme',        { 'rtp': 'vim' }
 
 " Addons
-Plug 'ryanss/vim-hackernews',         { 'on': 'HackerNews' }
+Plug 'ryanss/vim-hackernews', { 'on': 'HackerNews' }
 
 call plug#end()

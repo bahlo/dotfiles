@@ -2,7 +2,7 @@
 alias g="git"
 
 alias gauthors="git authors"
-alias gb="git b"
+#alias gb="git b"
 alias gc="git c"
 alias gca="git ca"
 alias gcaa="git caa"

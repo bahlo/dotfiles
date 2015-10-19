@@ -11,3 +11,8 @@ vim/vim.symlink/.netrwhist
 # Atom
 compile-cache/
 *.swp
+atom.symlink/storage/
+atom.symlink/packages/
+atom.symlink/.node-gyp/
+atom.symlink/.apm/
+atom.symlink/projects.cson

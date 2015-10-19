@@ -97,6 +97,12 @@ nmap <leader>m  :!make<CR>
 nmap <leader>mr :!make run<CR>
 nmap <leader>mc :!make clean<CR>
 
+" Git shortcuts
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gp :Gpush<CR>
+nmap <leader>gd :Gdiff<CR>
+
 " Go shortcuts
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>t <Plug>(go-test)
