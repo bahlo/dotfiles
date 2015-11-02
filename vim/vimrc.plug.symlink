@@ -39,6 +39,7 @@ Plug 'cespare/vim-toml',                 { 'for': 'toml'}
 Plug 'evanmiller/nginx-vim-syntax'
 Plug 'keith/swift.vim',               { 'for': 'swift' }
 Plug 'mustache/vim-mustache-handlebars', { 'for': 'mustache' }
+Plug 'Matt-Deacalion/vim-systemd-syntax'
 
 " Language extensions
 Plug 'fatih/vim-go',                  { 'for': 'go' }
@@ -52,6 +53,7 @@ Plug 'nanotech/jellybeans.vim'
 "Plug 'w0ng/vim-hybrid'
 "Plug 'trusktr/seti.vim'
 "Plug 'zenorocha/dracula-theme',        { 'rtp': 'vim' }
+"Plug 'reedes/vim-colors-pencil'
 
 " Addons
 Plug 'ryanss/vim-hackernews', { 'on': 'HackerNews' }

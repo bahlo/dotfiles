@@ -15,7 +15,6 @@ antigen use oh-my-zsh
 antigen bundle tmux
 antigen bundle brew
 antigen bundle xcode
-antigen bundle rimraf/k
 antigen bundle voronkovich/gitignore.plugin.zsh
 
 antigen theme bahlo/dotfiles zsh/arne
