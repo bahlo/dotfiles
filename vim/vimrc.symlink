@@ -12,9 +12,13 @@ endif
 " Ensure ftdetect is working
 filetype plugin indent on
 
+" Theme configuration
+"let base16colorspace=256
+"let g:onedark_termcolors=256
+"let g:airline_theme                        = 'onedark'
+
 " Theme
 set background=dark
-"let base16colorspace=256
 colorscheme jellybeans
 
 " Startify
@@ -44,7 +48,7 @@ set shiftwidth=2
 set showbreak=↪
 set showcmd
 set softtabstop=2
-set tabstop=4
+set tabstop=2
 set textwidth=79
 set ttyfast
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
@@ -95,7 +99,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Make shortcuts
 nmap <leader>m  :!make<CR>
 nmap <leader>mr :!make run<CR>
-nmap <leader>mc :!make clean<CR>
 
 " Git shortcuts
 nmap <leader>gs :Gstatus<CR>
@@ -133,3 +136,9 @@ let g:tagbar_type_rust = {
       \'i:impls,trait implementations',
   \]
   \}
+
+" RainbowParentheses
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces

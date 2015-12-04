@@ -22,6 +22,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
+Plug 'kien/rainbow_parentheses.vim'
+"Plug 'speeddating.vim'
 
 " Snippets
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --gocode-completer' }
@@ -37,7 +39,7 @@ Plug 'othree/yajs.vim',                  { 'for': 'javascript' }
 Plug 'rust-lang/rust.vim',               { 'for': 'rust' }
 Plug 'cespare/vim-toml',                 { 'for': 'toml'}
 Plug 'evanmiller/nginx-vim-syntax'
-Plug 'keith/swift.vim',               { 'for': 'swift' }
+Plug 'apple/swift',                      { 'rtp': 'utils/vim', 'for': 'swift' }
 Plug 'mustache/vim-mustache-handlebars', { 'for': 'mustache' }
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 
@@ -54,6 +56,8 @@ Plug 'nanotech/jellybeans.vim'
 "Plug 'trusktr/seti.vim'
 "Plug 'zenorocha/dracula-theme',        { 'rtp': 'vim' }
 "Plug 'reedes/vim-colors-pencil'
+Plug 'joshdick/onedark.vim'
+Plug 'joshdick/airline-onedark.vim'
 
 " Addons
 Plug 'ryanss/vim-hackernews', { 'on': 'HackerNews' }
