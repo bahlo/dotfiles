@@ -1,0 +1,33 @@
+---
+- name: Update Homebrew
+  homebrew: update_homebrew=yes
+
+- name: Install libraries with Homebrew
+  homebrew: name={{ item }} state=latest
+  with_items:
+    brew-cask
+    carthage
+    ctags
+    curl
+    git
+    go
+    hub
+    htop-osx
+    httpie
+    node
+    the_silver_searcher
+    thefuck
+    tmux
+    tree
+    vim
+    youtube-dl
+    zsh
+
+- name: Install Homebrew Cask apps
+  homebrew_cask: name={{ item }} state=present
+  with_items:
+    seil
+
+- name: Cleanup Brew packages
+  command: brew cleanup
+
