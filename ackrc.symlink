@@ -1,8 +1,0 @@
-# Taste the rainbow
---color
-
-# Ignore directories
---ignore-dir=bower_components
---ignore-dir=vendor
---ignore-dir=node_components
-
