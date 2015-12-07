@@ -26,7 +26,7 @@ alias grep="grep --color=auto"
 
 # Edit files fast
 alias vimrc="$EDITOR $HOME/.vimrc"
-alias vimrcp="$EDITOR $HOME/.vimrc.plug"
+alias vimrcp="$EDITOR $HOME/dotfiles/vim/plug.vimrc"
 alias zshrc="$EDITOR $HOME/.zshrc && source $HOME/.zshrc"
 alias localrc="$EDITOR $HOME/.localrc && source $HOME/.localrc"
 
@@ -56,4 +56,7 @@ if [[ $(uname -s) == 'Darwin' ]]; then
 
     # Copy the working dir to the clipboard
     alias cpwd='pwd|xargs echo -n|pbcopy'
+
+    # Update from AppStore, Homebrew, NPM and Gem, via https://gist.github.com/Korni22/6046739
+    alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update'
 fi
