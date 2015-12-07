@@ -13,7 +13,7 @@ done
 # Load antigen plugins
 antigen use oh-my-zsh
 antigen bundle rimraf/k
-antigen theme bahlo/dotfiles zsh/arne
+antigen theme bahlo/dotfiles home/zsh/themes/arne
 
 # Embed custom per-machine config
 [[ -f ~/.localrc ]] && source ~/.localrc
