@@ -26,7 +26,7 @@ alias grep="grep --color=auto"
 
 # Edit files fast
 alias vimrc="$EDITOR $HOME/.vimrc"
-alias vimrcp="$EDITOR $HOME/dotfiles/vim/plug.vimrc"
+alias vimrcp="$EDITOR $HOME/dotfiles/home/vim/plug.vimrc"
 alias zshrc="$EDITOR $HOME/.zshrc && source $HOME/.zshrc"
 alias localrc="$EDITOR $HOME/.localrc && source $HOME/.localrc"
 
