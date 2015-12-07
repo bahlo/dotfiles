@@ -21,5 +21,5 @@
   command: curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# - name: Install/update VIM plugins
-#  command: vim +PluginInstall! +qall
+- name: Install/update VIM plugins
+  command: vim +PlugInstall! +qall

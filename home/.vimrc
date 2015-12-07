@@ -1,26 +1,7 @@
-" Use Vim defaults
-set nocompatible
-
-" Enable syntax highlighting
-syntax enable
-
-" Set up plug
-source ~/dotfiles/home/vim/plug.vimrc
-
-" Ensure ftdetect is working
-filetype plugin indent on
-
-" Theme
-set background=dark
-"let base16colorspace=256
-colorscheme jellybeans
-
-" Startify
-let g:startify_bookmarks = [ '~/.vimrc', '~/.vimrc.plug' ]
-let g:startify_custom_header =
-    \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
-
 " General configuration
+syntax enable " Enable syntax highlighting
+filetype plugin indent on " Ensure ftdetect is working
+set nocompatible " Use Vim defaults
 set autoread                   " Reload files on change
 set autoindent
 set backspace=indent,eol,start " Backspace through everything in insert mode
@@ -53,13 +34,28 @@ set relativenumber
 set cursorline
 set noswapfile
 
-" Shortcuts
+" Include plug file
+source ~/dotfiles/home/vim/plug.vimrc
+
+" Theme
+set background=dark
+try
+  colorscheme jellybeans
+catch
+endtry
+
+" Shortcuts and everything that can be configured without plugins
 let mapleader = ","
 nnoremap          <F5>      :NERDTreeTabsToggle<CR>
 nnoremap          <F6>      :TagbarToggle<CR>
 nnoremap          <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 nnoremap          <c-t>     :CtrlP<CR>
+
+" Startify
+let g:startify_bookmarks = [ '~/.vimrc', '~/.vimrc.plug' ]
+let g:startify_custom_header =
+    \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
 
 " CTRL-P
 let g:ctrlp_custom_ignore='node_modules\|bower_components\|vendor\|tags\|_workspace\|target'
@@ -131,3 +127,4 @@ let g:tagbar_type_rust = {
       \'i:impls,trait implementations',
   \]
   \}
+
