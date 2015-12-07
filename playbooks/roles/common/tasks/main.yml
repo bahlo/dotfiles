@@ -1,3 +1,7 @@
+- name: Install Antigen
+  command: curl -fLo ~/dotfiles/home/zsh/antigen.zsh --create-dirs \
+    https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh
+
 - name: Symlink dotfiles
   file: src=~/dotfiles/home/{{ item }}
         dest=~/{{ item }}

@@ -6,12 +6,9 @@ ZSH_THEME="arne"
 COMPLETION_WAITING_DOTS="true"
 
 # Load all .zsh-Files in the zsh directory
-for config_file in  $HOME/dotfiles/zsh/*.zsh; do
+for config_file in  $HOME/dotfiles/home/zsh/*.zsh; do
   source $config_file
 done
-
-# Load antigen
-source $HOME/dotfiles/zsh/antigen/antigen.zsh
 
 # Load antigen plugins
 antigen use oh-my-zsh
