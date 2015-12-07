@@ -15,8 +15,10 @@
     - hub
     - htop-osx
     - httpie
+    - mtr
     - node
     - openssl
+    - pv
     - the_silver_searcher
     - thefuck
     - tmux

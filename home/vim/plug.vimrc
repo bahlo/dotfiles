@@ -61,5 +61,6 @@ Plug 'joshdick/airline-onedark.vim'
 
 " Addons
 Plug 'ryanss/vim-hackernews', { 'on': 'HackerNews' }
+Plug 'mhinz/vim-startify'
 
 call plug#end()

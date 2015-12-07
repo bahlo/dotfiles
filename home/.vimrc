@@ -53,9 +53,10 @@ nnoremap <silent> <leader>/ :nohlsearch<CR>
 nnoremap          <c-t>     :CtrlP<CR>
 
 " Startify
-let g:startify_bookmarks = [ '~/.vimrc', '~/.vimrc.plug' ]
+let g:startify_bookmarks = [ '~/.vimrc', '~/dotfiles/home/vim/plug.vimrc' ]
 let g:startify_custom_header =
     \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
+let g:startify_files_number = 4
 
 " CTRL-P
 let g:ctrlp_custom_ignore='node_modules\|bower_components\|vendor\|tags\|_workspace\|target'
