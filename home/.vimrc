@@ -5,9 +5,7 @@ set nocompatible
 syntax enable
 
 " Set up plug
-if filereadable(expand("~/.vimrc.plug"))
-  source ~/.vimrc.plug
-endif
+source ~/dotfiles/home/vim/plug.vimrc
 
 " Ensure ftdetect is working
 filetype plugin indent on
