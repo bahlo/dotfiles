@@ -16,10 +16,16 @@ alias v="vim"
 alias vi="vim"
 alias ivm="vim"
 alias vmi="vim"
-
 alias g="git"
 alias igt="git"
 alias gti="git"
+
+# Shortcuts for gb
+alias gbv="gb vendor"
+alias gbvr="gbv restore"
+alias gbvrp="gbvr -precaire"
+alias gbvu="gbv update"
+alias gbvup="gbvu -precaire"
 
 # Use colors when GNU grep with color-support
 alias grep="grep --color=auto"
