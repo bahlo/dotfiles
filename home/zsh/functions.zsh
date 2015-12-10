@@ -30,3 +30,14 @@ man() {
     LESS_TERMCAP_us=$(printf "\e[1;32m") \
     man "$@"
 }
+
+# resetgb can be found in aliases.zsh
+function setupgb() {
+  if ! [ -d "src" -a -d "vendor" ] ; then
+    >&2 echo "No GB environment detected, are you in the right directory?"
+    return 1
+  fi
+
+  resetgb
+  GOPATH=$(pwd):$(pwd)/vendor:$GOPATH
+}

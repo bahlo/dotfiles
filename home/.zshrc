@@ -5,6 +5,9 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="arne"
 COMPLETION_WAITING_DOTS="true"
 
+# Disable tmux auto-renaming windows
+DISABLE_AUTO_TITLE="true"
+
 # Load all .zsh-Files in the zsh directory
 for config_file in  $HOME/dotfiles/home/zsh/*.zsh; do
   source $config_file

@@ -26,7 +26,7 @@ Plug 'kien/rainbow_parentheses.vim'
 "Plug 'speeddating.vim'
 
 " Snippets
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --gocode-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
@@ -48,16 +48,17 @@ Plug 'fatih/vim-go',                  { 'for': 'go' }
 Plug 'othree/html5.vim',              { 'for': 'html' }
 
 " Themes
+Plug 'nanotech/jellybeans.vim'
 "Plug 'chriskempson/base16-vim'
 "Plug 'altercation/vim-colors-solarized'
-Plug 'nanotech/jellybeans.vim'
 "Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
 "Plug 'w0ng/vim-hybrid'
 "Plug 'trusktr/seti.vim'
 "Plug 'zenorocha/dracula-theme',        { 'rtp': 'vim' }
 "Plug 'reedes/vim-colors-pencil'
-Plug 'joshdick/onedark.vim'
-Plug 'joshdick/airline-onedark.vim'
+"Plug 'joshdick/onedark.vim'
+"Plug 'joshdick/airline-onedark.vim'
+Plug 'tomasr/molokai'
 
 " Addons
 Plug 'ryanss/vim-hackernews', { 'on': 'HackerNews' }
