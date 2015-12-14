@@ -58,7 +58,7 @@ Plug 'nanotech/jellybeans.vim'
 "Plug 'reedes/vim-colors-pencil'
 "Plug 'joshdick/onedark.vim'
 "Plug 'joshdick/airline-onedark.vim'
-Plug 'tomasr/molokai'
+"Plug 'tomasr/molokai'
 
 " Addons
 Plug 'ryanss/vim-hackernews', { 'on': 'HackerNews' }
