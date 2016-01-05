@@ -70,8 +70,8 @@ let g:airline#extensions#hunks#enabled     = 0
 let g:airline_theme                        = 'jellybeans'
 let g:tmuxline_preset = {
     \'a'       : '#S',
-    \'win'     : '#I #W',
-    \'cwin'    : '#I #W',
+    \'win'     : ['#I', '#W'],
+    \'cwin'     : ['#I', '#W'],
     \'x'       : '#{prefix_highlight}',
     \'y'       : '%Y-%m-%d %R',
     \'z'       : '#H',
