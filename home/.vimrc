@@ -67,6 +67,15 @@ let g:airline#extensions#tabline#enabled   = 1
 let g:airline#extensions#branch#enabled    = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#hunks#enabled     = 0
+let g:airline_theme                        = 'jellybeans'
+let g:tmuxline_preset = {
+    \'a'       : '#S',
+    \'win'     : '#I #W',
+    \'cwin'    : '#I #W',
+    \'x'       : '#{prefix_highlight}',
+    \'y'       : '%Y-%m-%d %R',
+    \'z'       : '#H',
+    \'options' : {'status-justify' : 'left'}}
 
 " YCM
 let g:ycm_key_list_select_completion   = ['<C-n>', '<Down>']
