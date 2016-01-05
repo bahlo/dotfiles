@@ -24,6 +24,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/rainbow_parentheses.vim'
 "Plug 'speeddating.vim'
+Plug 'mikewest/vimroom'
 
 " Snippets
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
