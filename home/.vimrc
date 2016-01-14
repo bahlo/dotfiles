@@ -102,10 +102,9 @@ nmap <leader>mr :!make run<CR>
 nmap <leader>mc :!make clean<CR>
 
 " Git shortcuts
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gp :Gpush<CR>
-nmap <leader>gd :Gdiff<CR>
+nnoremap gca :Git add --all .<CR><CR>\| :Gcommit -v -q --all<CR>
+nnoremap gs :Gstatus<CR>
+nnoremap gps :Gpush<CR><CR>
 
 " Go shortcuts
 au FileType go nmap <leader>r <Plug>(go-run)
@@ -119,6 +118,9 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+
+" Autoformat rust
+let g:rustfmt_autosave = 1
 
 " Clear background of Gitgutter
 hi clear SignColumn

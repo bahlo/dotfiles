@@ -38,12 +38,12 @@ Plug 'groenewege/vim-less',              { 'for': 'less'  }
 Plug 'kchmck/vim-coffee-script',         { 'for': 'coffee'}
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'othree/yajs.vim',                  { 'for': 'javascript' }
-Plug 'rust-lang/rust.vim',               { 'for': 'rust' }
 Plug 'cespare/vim-toml',                 { 'for': 'toml'}
 Plug 'evanmiller/nginx-vim-syntax'
 Plug 'apple/swift',                      { 'rtp': 'utils/vim', 'for': 'swift' }
 Plug 'mustache/vim-mustache-handlebars', { 'for': 'mustache' }
 Plug 'Matt-Deacalion/vim-systemd-syntax'
+Plug 'rust-lang/rust.vim'
 
 " Language extensions
 Plug 'fatih/vim-go',                  { 'for': 'go' }
