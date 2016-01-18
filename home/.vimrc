@@ -106,6 +106,9 @@ nnoremap gca :Git add --all .<CR><CR>\| :Gcommit -v -q --all<CR>
 nnoremap gs :Gstatus<CR>
 nnoremap gps :Gpush<CR><CR>
 
+" Rust
+let g:rustfmt_autosave = 1
+
 " Go shortcuts
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>t <Plug>(go-test)

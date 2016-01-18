@@ -5,7 +5,6 @@
 - name: Install libraries with Homebrew
   homebrew: name={{ item }} state=latest
   with_items:
-    - brew-cask
     - carthage
     - cmake
     - ctags
