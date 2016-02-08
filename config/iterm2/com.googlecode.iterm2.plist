@@ -3883,6 +3883,8 @@
 	<string></string>
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
+	<key>NSScrollViewShouldScrollUnderTitlebar</key>
+	<false/>
 	<key>NSTableView Columns KeyBingingTable</key>
 	<array>
 		<data>
@@ -3894,7 +3896,7 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>302</string>
+		<string>322</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
@@ -3910,11 +3912,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>2084 221 608 284 1920 0 1920 1057 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>654 292 924 485 0 0 1920 1080 </string>
+	<string>654 321 924 485 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>360 364 650 434 0 0 1920 1057 </string>
+	<string>250 79 1418 978 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1088 234 650 434 0 0 1920 1057 </string>
+	<string>1088 243 650 434 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>719 155 650 451 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -4654,10 +4656,12 @@
 			<string>/Users/arne</string>
 		</dict>
 	</array>
+	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
+	<real>475059945.93773502</real>
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>456323497.44894701</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>473764420.81338203</real>
+	<real>475573157.71236902</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -4719,12 +4723,14 @@
 	<integer>3</integer>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
+	<key>SUFeedAlternateAppNameKey</key>
+	<string>iTerm</string>
 	<key>SUFeedURL</key>
 	<string>https://iterm2.com/appcasts/testing.xml</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-01-06T09:13:37Z</date>
+	<date>2016-01-27T07:39:05Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -4764,7 +4770,7 @@
 	<key>WebKitStandardFont</key>
 	<string>.AppleSystemUIFont</string>
 	<key>WindowNumber</key>
-	<true/>
+	<false/>
 	<key>WindowStyle</key>
 	<integer>0</integer>
 	<key>WordCharacters</key>

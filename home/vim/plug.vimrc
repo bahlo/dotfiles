@@ -51,7 +51,7 @@ Plug 'othree/html5.vim',              { 'for': 'html' }
 
 " Themes
 Plug 'nanotech/jellybeans.vim'
-"Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
 "Plug 'w0ng/vim-hybrid'
