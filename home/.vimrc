@@ -56,12 +56,6 @@ nnoremap          <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 nnoremap          <c-t>     :CtrlP<CR>
 
-" Startify
-let g:startify_bookmarks = [ '~/.vimrc', '~/dotfiles/home/vim/plug.vimrc' ]
-let g:startify_custom_header =
-    \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
-let g:startify_files_number = 4
-
 " CTRL-P
 let g:ctrlp_custom_ignore='node_modules\|bower_components\|vendor\|tags\|_workspace\|target'
 
@@ -102,18 +96,16 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Make shortcuts
 nmap <leader>m  :!make<CR>
-nmap <leader>mr :!make run<CR>
-nmap <leader>mc :!make clean<CR>
+nmap <leader>mt :!make test<CR>
 
-" Git shortcuts
+" Git
 nnoremap gca :Git add --all .<CR><CR>\| :Gcommit -v -q --all<CR>
 nnoremap gs :Gstatus<CR>
 nnoremap gps :Gpush
 
-" Rust
-let g:rustfmt_autosave = 1
+hi clear SignColumn " Clear background of Gitgutter
 
-" Go shortcuts
+" Go
 au FileType go nmap <leader>r  <Plug>(go-run)
 au FileType go nmap <leader>b  <Plug>(go-build)
 au FileType go nmap <leader>t  <Plug>(go-test)
@@ -122,7 +114,6 @@ au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <leader>c  <Plug>(go-coverage)
 
-" Highlight go stuff
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -131,17 +122,12 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 
-" Syntasic + Go
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
-" Autoformat rust
+
+" Rust
 let g:rustfmt_autosave = 1
-
-" Clear background of Gitgutter
-hi clear SignColumn
-
-" Tagbar
 let g:tagbar_type_rust = {
   \ 'ctagstype' : 'rust',
   \ 'kinds' : [

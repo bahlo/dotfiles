@@ -23,8 +23,6 @@ Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/rainbow_parentheses.vim'
-"Plug 'speeddating.vim'
-Plug 'mikewest/vimroom'
 Plug 'tpope/vim-obsession'
 
 " Snippets
@@ -50,7 +48,7 @@ Plug 'fatih/vim-go',                  { 'for': 'go' }
 Plug 'othree/html5.vim',              { 'for': 'html' }
 
 " Themes
-Plug 'nanotech/jellybeans.vim'
+"Plug 'nanotech/jellybeans.vim'
 Plug 'chriskempson/base16-vim'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
@@ -64,6 +62,6 @@ Plug 'chriskempson/base16-vim'
 
 " Addons
 Plug 'ryanss/vim-hackernews', { 'on': 'HackerNews' }
-Plug 'mhinz/vim-startify'
+"Plug 'mhinz/vim-startify'
 
 call plug#end()
