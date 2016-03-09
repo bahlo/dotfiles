@@ -4559,13 +4559,13 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>260 282 231 329 0 0 1920 1057 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>2084 221 608 284 1920 0 1920 1057 </string>
+	<string>164 227 608 491 0 0 1920 1080 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>654 437 606 456 0 0 1920 1057 </string>
+	<string>654 582 606 456 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>639 78 650 979 0 0 1920 1080 </string>
+	<string>619 302 650 724 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1120 93 770 956 0 0 1920 1057 </string>
+	<string>898 399 650 435 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>719 155 650 451 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -5130,7 +5130,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>FiraMono-Regular 14</string>
+			<string>Hasklig-Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -5389,7 +5389,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-02-26T08:06:27Z</date>
+	<date>2016-03-08T12:00:37Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>

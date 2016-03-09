@@ -24,6 +24,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-dispatch'
 
 " Snippets
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
@@ -45,6 +46,7 @@ Plug 'rust-lang/rust.vim'
 
 " Language extensions
 Plug 'fatih/vim-go',                  { 'for': 'go' }
+Plug 't-yuki/vim-go-coverlay',        { 'for': 'go' }
 Plug 'othree/html5.vim',              { 'for': 'html' }
 
 " Themes

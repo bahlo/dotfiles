@@ -77,3 +77,6 @@
 [filter "media"]
   clean  = git-media-clean %f
   smudge = git-media-smudge %f
+
+[git-up "rebase"]
+	log-hook = gl $1..$2

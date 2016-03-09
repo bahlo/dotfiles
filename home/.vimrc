@@ -103,16 +103,13 @@ nnoremap gca :Git add --all .<CR><CR>\| :Gcommit -v -q --all<CR>
 nnoremap gs :Gstatus<CR>
 nnoremap gps :Gpush
 
+" Syntax
 hi clear SignColumn " Clear background of Gitgutter
 
 " Go
-au FileType go nmap <leader>r  <Plug>(go-run)
-au FileType go nmap <leader>b  <Plug>(go-build)
-au FileType go nmap <leader>t  <Plug>(go-test)
-au FileType go nmap gd         <Plug>(go-def)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap gd         <Plug>(go-def-split)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <leader>c  <Plug>(go-coverage)
+au BufWritePost *.go call go#coverlay#Coverlay()
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
