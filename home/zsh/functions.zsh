@@ -9,7 +9,7 @@ function greph () { history 0 | grep -i $1 }
 # 'work on', via https://coderwall.com/p/feoi0a
 function wo() {
   CODE_DIR=~/Developer
-  cd $(find $CODE_DIR \( -type l -o -type d \) -maxdepth 3 | grep -i $* | grep -Ev Pods --max-count=1)
+  cdl $(find $CODE_DIR \( -type l -o -type d \) -maxdepth 3 | grep -i $* | grep -Ev Pods --max-count=1)
 }
 
 # Mux with fuzzy matching
@@ -31,13 +31,16 @@ man() {
     man "$@"
 }
 
-# resetgb can be found in aliases.zsh
-function setupgb() {
-  if ! [ -d "src" -a -d "vendor" ] ; then
-    >&2 echo "No GB environment detected, are you in the right directory?"
-    return 1
+# CD into destination directory of symlink or directory if not a symlink
+function cdl() {
+  DEST_DIR=$(readlink $1)
+
+  # Check if destination is symlink and cd into directory
+  if [[ -n $DEST_DIR ]]; then
+    cd $DEST_DIR
+    return
   fi
 
-  resetgb
-  GOPATH=$(pwd):$(pwd)/vendor:$GOPATH
+  # Otherwise just cd to destination
+  cd $1
 }

@@ -79,4 +79,4 @@
   smudge = git-media-smudge %f
 
 [git-up "rebase"]
-	log-hook = gl $1..$2
+	log-hook = git l $1..$2

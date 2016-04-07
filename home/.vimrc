@@ -16,7 +16,8 @@ set smartcase                  " Search is case sensitive if any caps
 set incsearch                  " Seach as you type
 set laststatus=2               " Always show statusline
 set list                       " Show trailing whitespace
-set listchars=tab:▸\ ,trail:▫
+"set listchars=tab:▸\ ,trail:▫
+set listchars=tab:▹\ ,trail:▫
 set ruler
 set scrolloff=3
 set shiftwidth=2
@@ -44,7 +45,7 @@ let base16colorspace=256
 set background=dark
 try
   " colorscheme jellybeans
-  colorscheme base16-tomorrow
+  colorscheme base16-eighties
 catch
 endtry
 
@@ -105,11 +106,15 @@ nnoremap gps :Gpush
 
 " Syntax
 hi clear SignColumn " Clear background of Gitgutter
+"hi covered ctermfg=green ctermbg=none
+"hi uncovered ctermfg=red ctermbg=none
 
 " Go
 au FileType go nmap gd         <Plug>(go-def-split)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
-au BufWritePost *.go call go#coverlay#Coverlay()
+au FileType go nmap <Leader>c  <Plug>(go-coverlay)
+au FileType go nmap <Leader>C  <Plug>(go-clearlay)
+"au BufWritePost *.go call go#coverlay#Coverlay()
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -119,7 +124,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_go_checkers = ['gometalinter', 'golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 

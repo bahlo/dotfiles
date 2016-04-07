@@ -22,3 +22,6 @@ antigen theme bahlo/dotfiles home/zsh/themes/arne
 [[ -f ~/.localrc ]] && source ~/.localrc
 
 antigen apply
+
+# added by travis gem
+[ -f /Users/arne/.travis/travis.sh ] && source /Users/arne/.travis/travis.sh
