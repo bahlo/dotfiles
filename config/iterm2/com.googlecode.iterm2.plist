@@ -4562,10 +4562,12 @@
 	<string>164 227 608 491 0 0 1920 1080 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>654 582 606 456 0 0 1920 1057 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>-1270 498 620 392 -1920 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>619 554 650 459 0 0 1920 1080 </string>
+	<string>630 418 650 459 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>898 399 650 435 0 0 1920 1057 </string>
+	<string>1052 594 650 459 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>719 155 650 451 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -5390,6 +5392,8 @@
 			<string>/Users/arne</string>
 		</dict>
 	</array>
+	<key>NoSyncInstallationId</key>
+	<string>5752E03E-31EA-472B-A648-EA9944B3783E</string>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -5455,6 +5459,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/arne/dotfiles/config/iterm2</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -5470,11 +5476,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing3.xml</string>
+	<string>https://iterm2.com/appcasts/testing3.xml?shard=41</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-03-11T12:00:46Z</date>
+	<date>2016-05-17T07:29:57Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -5528,6 +5534,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20160206</string>
+	<string>2.9.20160426</string>
 </dict>
 </plist>

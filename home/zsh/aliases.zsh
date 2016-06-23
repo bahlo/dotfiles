@@ -20,13 +20,6 @@ alias g="git"
 alias igt="git"
 alias gti="git"
 
-# Shortcuts for gb
-alias gbv="gb vendor"
-alias gbvr="gbv restore"
-alias gbvrp="gbvr -precaire"
-alias gbvu="gbv update"
-alias gbvup="gbvu -precaire"
-
 # Use colors when GNU grep with color-support
 alias grep="grep --color=auto"
 
@@ -36,9 +29,6 @@ alias vimrcp="$EDITOR $HOME/dotfiles/home/vim/plug.vimrc"
 alias zshrc="$EDITOR $HOME/.zshrc && source $HOME/.zshrc"
 alias localrc="$EDITOR $HOME/.localrc && source $HOME/.localrc"
 
-# Set up gb path
-alias resetgb="GOPATH=$HOME/Go"
-
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
@@ -46,6 +36,11 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# Make shortcuts
+alias mb="make build"
+alias mbf="make build-fast"
+alias mt="make test"
 
 # from @nvie https://coderwall.com/p/4tkkpq
 #

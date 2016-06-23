@@ -48,12 +48,13 @@ Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go',                  { 'for': 'go' }
 Plug 't-yuki/vim-go-coverlay',        { 'for': 'go' }
 Plug 'othree/html5.vim',              { 'for': 'html' }
+Plug 'posva/vim-vue'
 
 " Themes
 "Plug 'nanotech/jellybeans.vim'
 Plug 'chriskempson/base16-vim'
 "Plug 'altercation/vim-colors-solarized'
-"Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
+Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
 "Plug 'w0ng/vim-hybrid'
 "Plug 'trusktr/seti.vim'
 "Plug 'zenorocha/dracula-theme',        { 'rtp': 'vim' }
@@ -64,6 +65,6 @@ Plug 'chriskempson/base16-vim'
 
 " Addons
 Plug 'ryanss/vim-hackernews', { 'on': 'HackerNews' }
-"Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 
 call plug#end()

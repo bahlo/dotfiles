@@ -100,14 +100,25 @@ nmap <leader>m  :!make<CR>
 nmap <leader>mt :!make test<CR>
 
 " Git
-nnoremap gca :Git add --all .<CR><CR>\| :Gcommit -v -q --all<CR>
+nnoremap gca :Gadd --all .<CR><CR>\| :Gcommit -v -q --all<CR>
 nnoremap gs :Gstatus<CR>
 nnoremap gps :Gpush
 
 " Syntax
 hi clear SignColumn " Clear background of Gitgutter
-"hi covered ctermfg=green ctermbg=none
-"hi uncovered ctermfg=red ctermbg=none
+
+" Startify
+let g:startify_list_order = ['dir', 'bookmarks', 'sessions']
+let g:startify_bookmarks = [ {'v': '~/.vimrc'}, {'vp': '~/dotfiles/home/vim/plug.vimrc'}, { 'z': '~/.zshrc' }, { 'l': '~/.localrc'} ]
+let g:startify_session_persistence = 1
+let g:startify_session_autoload = 1
+let g:startify_session_delete_buffers = 1
+let g:startify_change_to_vcs_root = 1
+let g:startify_custom_header =
+  \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
+
+" Language settings below
+" =======================
 
 " Go
 au FileType go nmap gd         <Plug>(go-def-split)
@@ -126,7 +137,7 @@ let g:go_fmt_command = "goimports"
 
 let g:syntastic_go_checkers = ['gometalinter', 'golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Rust
 let g:rustfmt_autosave = 1
