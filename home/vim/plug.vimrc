@@ -45,19 +45,19 @@ Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'rust-lang/rust.vim'
 
 " Language extensions
-Plug 'fatih/vim-go',                  { 'for': 'go' }
-Plug 't-yuki/vim-go-coverlay',        { 'for': 'go' }
-Plug 'othree/html5.vim',              { 'for': 'html' }
+Plug 'fatih/vim-go',           { 'for': 'go' }
+Plug 't-yuki/vim-go-coverlay', { 'for': 'go' }
+Plug 'othree/html5.vim',       { 'for': 'html' }
 Plug 'posva/vim-vue'
 
 " Themes
-"Plug 'nanotech/jellybeans.vim'
+Plug 'nanotech/jellybeans.vim'
 Plug 'chriskempson/base16-vim'
 "Plug 'altercation/vim-colors-solarized'
-Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
+"Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
 "Plug 'w0ng/vim-hybrid'
 "Plug 'trusktr/seti.vim'
-"Plug 'zenorocha/dracula-theme',        { 'rtp': 'vim' }
+"Plug 'dracula/vim'
 "Plug 'reedes/vim-colors-pencil'
 "Plug 'joshdick/onedark.vim'
 "Plug 'joshdick/airline-onedark.vim'

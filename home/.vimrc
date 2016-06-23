@@ -44,8 +44,8 @@ let base16colorspace=256
 " Theme
 set background=dark
 try
-  " colorscheme jellybeans
-  colorscheme base16-eighties
+  colorscheme jellybeans
+  "colorscheme base16-eighties
 catch
 endtry
 
@@ -100,16 +100,24 @@ nmap <leader>m  :!make<CR>
 nmap <leader>mt :!make test<CR>
 
 " Git
-nnoremap gca :Gadd --all .<CR><CR>\| :Gcommit -v -q --all<CR>
+nnoremap gca :Git add --all .<CR><CR>\| :Gcommit -v -q --all<CR>
 nnoremap gs :Gstatus<CR>
 nnoremap gps :Gpush
 
 " Syntax
 hi clear SignColumn " Clear background of Gitgutter
 
+" Re-open last file
+nnoremap <Leader>. :e#<CR>
+
 " Startify
 let g:startify_list_order = ['dir', 'bookmarks', 'sessions']
-let g:startify_bookmarks = [ {'v': '~/.vimrc'}, {'vp': '~/dotfiles/home/vim/plug.vimrc'}, { 'z': '~/.zshrc' }, { 'l': '~/.localrc'} ]
+let g:startify_bookmarks = [
+  \ {'v': '~/.vimrc'},
+  \ {'vp': '~/dotfiles/home/vim/plug.vimrc'},
+  \ { 'z': '~/.zshrc' },
+  \ { 'l': '~/.localrc'}
+\]
 let g:startify_session_persistence = 1
 let g:startify_session_autoload = 1
 let g:startify_session_delete_buffers = 1
