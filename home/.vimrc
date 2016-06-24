@@ -16,8 +16,7 @@ set smartcase                  " Search is case sensitive if any caps
 set incsearch                  " Seach as you type
 set laststatus=2               " Always show statusline
 set list                       " Show trailing whitespace
-"set listchars=tab:▸\ ,trail:▫
-set listchars=tab:▹\ ,trail:▫
+set listchars=tab:▹\ ,trail:▫,nbsp:⋅
 set ruler
 set scrolloff=3
 set shiftwidth=2
@@ -34,6 +33,8 @@ set wrap
 set relativenumber
 set cursorline
 set noswapfile
+set formatoptions-=o " Dont continue comments when pushing o/O
+set hidden
 
 " Include plug file
 source ~/dotfiles/home/vim/plug.vimrc
@@ -56,6 +57,9 @@ nnoremap          <F6>      :TagbarToggle<CR>
 nnoremap          <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 nnoremap          <c-t>     :CtrlP<CR>
+
+" Only show, what you must
+let g:NERDTreeMinimalUI=1
 
 " CTRL-P
 let g:ctrlp_custom_ignore='node_modules\|bower_components\|vendor\|tags\|_workspace\|target'
