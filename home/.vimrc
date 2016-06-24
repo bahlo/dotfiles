@@ -120,7 +120,7 @@ let g:startify_bookmarks = [
 \]
 let g:startify_session_persistence = 1
 let g:startify_session_autoload = 1
-let g:startify_session_delete_buffers = 1
+let g:startify_session_delete_buffers = 0
 let g:startify_change_to_vcs_root = 1
 let g:startify_custom_header =
   \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
@@ -148,7 +148,7 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:syntastic_javascript_checkers = ['eslint']
 
 " Rust
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave = 0
 let g:tagbar_type_rust = {
   \ 'ctagstype' : 'rust',
   \ 'kinds' : [

@@ -25,6 +25,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-dispatch'
+Plug 'AndrewRadev/splitjoin.vim'
 
 " Snippets
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
