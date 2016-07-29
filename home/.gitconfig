@@ -13,7 +13,9 @@
   co      = checkout
   cob     = checkout --branch
   d       = diff --stat --patch
-  l       = log --graph --decorate --pretty=oneline --abbrev-commit
+  # l       = log --graph --decorate --pretty=oneline --abbrev-commit
+  # l       = !git --no-pager log --color --pretty=format:'%C(yellow)%h%C(reset)%C(bold red)%d%C(reset) %s %C(black)— %an (%ad)%C(reset)' --relative-date | emojify | less --RAW-CONTROL-CHARS
+  l       = !git log --graph --color --decorate --pretty=format:'%C(green)%h %C(yellow)[%ad]%Cred%d %Creset%s%Cblue [%cn]' --date=relative --abbrev-commit | emojify | less --RAW-CONTROL-CHARS
   ps      = push
   psu     = push --set-upstream
   r       = rebase
