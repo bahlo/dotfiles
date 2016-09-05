@@ -35,6 +35,9 @@ bindkey "^[[4~" end-of-line             # End
 alias -g ..='cd ..'
 alias l='k -h'
 alias la='k -ha'
+alias grep="grep --color=auto"
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 
 # Git
 alias gs='git status -sb'
@@ -62,6 +65,21 @@ alias glr='legit resync'
 function mkd() {
   mkdir -p $1 && cd $1
 }
+
+# macOS specific config
+if [[ $(uname -s) == 'Darwin' ]]; then
+    # Cleanup terminal logfiles, via http://osxdaily.com/2010/05/06/speed-up-a-slow-terminal-by-clearing-log-files/
+    alias terminal_clean="sudo rm -rf /private/var/log/asl/*.asl"
+
+    # Flush the DNS cache, again
+    alias flushdns="dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
+
+    # Lock the system
+    alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+
+    # Update from AppStore, Homebrew, NPM and Gem, via https://gist.github.com/Korni22/6046739
+    alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update'
+fi
 
 # Load external scripts
 . `brew --prefix`/etc/profile.d/z.sh
