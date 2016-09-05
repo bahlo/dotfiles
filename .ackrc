@@ -5,4 +5,4 @@
 --ignore-dir=bower_components
 --ignore-dir=vendor
 --ignore-dir=node_components
-
+--ignore-dir=Godeps

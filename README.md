@@ -1,26 +1,13 @@
 # dotfiles
 
-These are my dotfiles. Vim, ZSH, Tmux, Brew, all the good stuff.
+This repository manages my personal configuration for: Vim, Git, Tmux and ZSH
 
 ## Usage
 
-### Installation
+Everything is done by a simple `Makefile` with the following commands:
 
-1. Install Xcode and run the following code in your terminal:
-
-```bash
-# Install Developer Tools
-xcode-select --install
-
-# Install Homebrew (http://brew.sh) 
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-
-# Install Ansible  (http://www.ansible.com)
-brew install ansible
-
-# Clone dotfiles
-git clone https://github.com/bahlo/dotfiles.git ~/dotfiles
-
-# Run playbook
-cd ~/dotfiles/playbooks && ansible-playbook -i inventory osx.yml
-```
+- `make brew`: Install [Homebrew](https://brew.sh) + packages
+- `make link`: Link `.*` to `$HOME` (**NOTE:** This will overwrite your current
+  files)
+- `make tpm`: Install [TPM](https://github.com/tmux-plugins/tpm) + plugins
+- `make vim-plug`: Install [vim-plug](https://github.com/junegunn/vim-plug) + plugins

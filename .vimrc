@@ -1,7 +1,7 @@
 " General configuration
-syntax enable " Enable syntax highlighting
-filetype plugin indent on " Ensure ftdetect is working
-set nocompatible " Use Vim defaults
+syntax enable                  " Enable syntax highlighting
+filetype plugin indent on      " Ensure ftdetect is working
+set nocompatible               " Use Vim defaults
 set autoread                   " Reload files on change
 set autoindent
 set backspace=indent,eol,start " Backspace through everything in insert mode
@@ -33,20 +33,67 @@ set wrap
 set relativenumber
 set cursorline
 set noswapfile
-set formatoptions-=o " Dont continue comments when pushing o/O
+set formatoptions-=o           " Dont continue comments when pushing o/O
 set hidden
 
-" Include plug file
-source ~/dotfiles/home/vim/plug.vimrc
+call plug#begin('~/.vim/plugged')
 
-" Access colors present in 256 colorspace
-let base16colorspace=256
+" Visual plugins
+Plug 'bling/vim-airline'
+Plug 'scrooloose/nerdtree',            { 'on': 'NERDTreeTabsToggle' }
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'majutsushi/tagbar' ",            { 'on': 'TagbarToggle' }
+Plug 'airblade/vim-gitgutter'
+Plug 'kien/ctrlp.vim',                 { 'on': 'CtrlP' }
+Plug 'sjl/gundo.vim',                  { 'on': 'GundoToggle' }
+Plug 'tpope/vim-vinegar'
+Plug 'edkolev/tmuxline.vim'
+
+" Special functionality
+Plug 'junegunn/vim-easy-align' ",     { 'on': 'EasyAlign' }
+Plug 'lokaltog/vim-easymotion'
+Plug 'rking/ag.vim',                  { 'on': 'Ag' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-fugitive'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-dispatch'
+Plug 'AndrewRadev/splitjoin.vim'
+
+" Snippets
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
+
+" Language syntax highlighting
+Plug 'sheerun/vim-polyglot'
+Plug 'fatih/vim-go',           { 'for': 'go' }
+Plug 'posva/vim-vue'
+
+" Themes
+Plug 'joshdick/onedark.vim'
+"Plug 'nanotech/jellybeans.vim'
+"Plug 'chriskempson/base16-vim'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
+"Plug 'dracula/vim'
+"Plug 'vim-airline/vim-airline-themes'
+
+" Addons
+Plug 'mhinz/vim-startify'
+
+call plug#end()
 
 " Theme
 set background=dark
 try
-  colorscheme jellybeans
-  "colorscheme base16-eighties
+  colorscheme onedark
 catch
 endtry
 
@@ -58,7 +105,7 @@ nnoremap          <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 nnoremap          <c-t>     :CtrlP<CR>
 
-" Only show, what you must
+" Only show what you must
 let g:NERDTreeMinimalUI=1
 
 " CTRL-P
@@ -70,7 +117,7 @@ let g:airline#extensions#tabline#enabled   = 1
 let g:airline#extensions#branch#enabled    = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#hunks#enabled     = 0
-let g:airline_theme                        = 'jellybeans'
+let g:airline_theme                        = 'onedark'
 let g:tmuxline_preset = {
     \'a'       : '#S',
     \'win'     : ['#I', '#W'],
@@ -99,15 +146,6 @@ nmap ga <Plug>(EasyAlign)
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Make shortcuts
-nmap <leader>m  :!make<CR>
-nmap <leader>mt :!make test<CR>
-
-" Git
-nnoremap gca :Git add --all .<CR><CR>\| :Gcommit -v -q --all<CR>
-nnoremap gs :Gstatus<CR>
-nnoremap gps :Gpush
-
 " Syntax
 hi clear SignColumn " Clear background of Gitgutter
 
@@ -118,9 +156,9 @@ nnoremap <Leader>. :e#<CR>
 let g:startify_list_order = ['dir', 'bookmarks', 'sessions']
 let g:startify_bookmarks = [
   \ {'v': '~/.vimrc'},
-  \ {'vp': '~/dotfiles/home/vim/plug.vimrc'},
-  \ { 'z': '~/.zshrc' },
-  \ { 'l': '~/.localrc'}
+  \ {'p': '~/.dotfiles/home/vim/plug.vimrc'},
+  \ {'z': '~/.zshrc' },
+  \ {'l': '~/.localrc'}
 \]
 let g:startify_session_persistence = 1
 let g:startify_session_autoload = 1
@@ -129,16 +167,7 @@ let g:startify_change_to_vcs_root = 1
 let g:startify_custom_header =
   \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
 
-" Language settings below
-" =======================
-
 " Go
-au FileType go nmap gd         <Plug>(go-def-split)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>c  <Plug>(go-coverlay)
-au FileType go nmap <Leader>C  <Plug>(go-clearlay)
-"au BufWritePost *.go call go#coverlay#Coverlay()
-
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -146,13 +175,12 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
-
 let g:syntastic_go_checkers = ['gometalinter', 'golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:syntastic_javascript_checkers = ['eslint']
 
 " Rust
-let g:rustfmt_autosave = 0
+let g:rustfmt_autosave = 1
 let g:tagbar_type_rust = {
   \ 'ctagstype' : 'rust',
   \ 'kinds' : [
