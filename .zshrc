@@ -58,6 +58,11 @@ alias gls='legit sync'
 alias glsw='legit switch'
 alias glr='legit resync'
 
+# Functions
+function mkd() {
+  mkdir -p $1 && cd $1
+}
+
 # Load external scripts
 . `brew --prefix`/etc/profile.d/z.sh
 
