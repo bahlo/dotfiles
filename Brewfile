@@ -21,6 +21,7 @@ vim
 ctags
 the_silver_searcher
 tmux
+reattach-to-user-namespace
 
 # Misc
 httpie
