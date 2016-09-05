@@ -36,7 +36,7 @@ alias -g ..='cd ..'
 alias l='k -h'
 alias la='k -ha'
 
-## Git
+# Git
 alias gs='git status -sb'
 alias gco='git checkout'
 alias gd='git diff --stat --patch'
@@ -47,7 +47,7 @@ alias gcl='git clone'
 alias gri='git rebase -i'
 alias gl="git log --graph --color --decorate --pretty=format:'%C(green)%h %C(yellow)[%ad]%Cred%d %Creset%s%Cblue [%cn]' --date=relative --abbrev-commit | less --RAW-CONTROL-CHARS"
 
-## Legit
+# Legit
 alias glb='legit branches'
 alias glg='legit graft'
 alias glh='legit harvest'
@@ -58,5 +58,9 @@ alias gls='legit sync'
 alias glsw='legit switch'
 alias glr='legit resync'
 
-## Load external scripts
+# Load external scripts
 . `brew --prefix`/etc/profile.d/z.sh
+
+# Load local configuration
+[[ -f ~/.localrc ]] && source ~/.localrc
+
