@@ -64,6 +64,7 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-dispatch'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'rizzatti/dash.vim'
 
 " Snippets
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
@@ -104,6 +105,7 @@ nnoremap          <F6>      :TagbarToggle<CR>
 nnoremap          <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 nnoremap          <c-t>     :CtrlP<CR>
+nnoremap          <leader>d :Dash<CR>
 
 " Only show what you must
 let g:NERDTreeMinimalUI=1
@@ -151,12 +153,12 @@ hi clear SignColumn " Clear background of Gitgutter
 
 " Re-open last file
 nnoremap <Leader>. :e#<CR>
+nnoremap <Leader>p :source ~/.vimrc<CR> :PlugInstall<CR> :q<CR>
 
 " Startify
 let g:startify_list_order = ['dir', 'bookmarks', 'sessions']
 let g:startify_bookmarks = [
   \ {'v': '~/.vimrc'},
-  \ {'p': '~/.dotfiles/home/vim/plug.vimrc'},
   \ {'z': '~/.zshrc' },
   \ {'l': '~/.localrc'}
 \]
