@@ -19,4 +19,4 @@ vim-plug: ## Install vim-plug + plugins
 	      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	vim +PlugInstall! +qall
 
-.PHONY: help brew link tpm vim_plug
+.PHONY: help brew link tpm vim-plug
