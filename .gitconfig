@@ -9,6 +9,7 @@
   whitespace = trailing-space, space-before-tab
   quotepath  = false
   editor     = vim
+  excludesfile = ~/.gitignore
 
 [color]
   ui = auto
@@ -42,7 +43,7 @@
   submodulesummary = true
 
 [column]
-   ui = never
+  ui = never
 
 [hub]
   protocol = ssh
