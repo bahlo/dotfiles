@@ -9,11 +9,16 @@ zplug "b4b4r07/enhancd", use:init.sh
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "horosgrisa/autoenv"
 zplug "zsh-users/zsh-completions"
+zplug "voronkovich/gitignore.plugin.zsh"
 
 zplug "mafredri/zsh-async" # Needed by sindresorhus/pure
 zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
 zplug "lib/git", from:oh-my-zsh
 
+# Configure plugins
+PURE_PROMPT_SYMBOL=λ
+
+# Load plugins
 if ! zplug check; then
   zplug install
 fi
