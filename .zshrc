@@ -35,6 +35,7 @@ bindkey "^[[4~" end-of-line             # End
 alias -g ..='cd ..'
 alias l='k -h'
 alias la='k -ha'
+alias vi='vim'
 alias grep="grep --color=auto"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
