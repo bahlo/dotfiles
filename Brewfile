@@ -27,3 +27,4 @@ reattach-to-user-namespace
 httpie
 htop-osx
 youtube-dl
+pwgen
