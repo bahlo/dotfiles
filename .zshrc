@@ -37,7 +37,7 @@ bindkey "^[[1~" beginning-of-line       # Pos1
 bindkey "^[[4~" end-of-line             # End
 
 # Aliases
-alias -g ..='cd ..'
+alias ..='cd ..'
 alias l='k -h'
 alias la='k -ha'
 alias vi='vim'
@@ -61,9 +61,8 @@ alias gpsu='git push --set-upstream'
 alias grao='git remote add origin'
 
 # Functions
-function mkd() {
-  mkdir -p $1 && cd $1
-}
+function mkd() { mkdir -p $1 && cd $1 }
+function greph () { history 0 | grep -i $1 }
 
 # macOS specific config
 if [[ $(uname -s) == 'Darwin' ]]; then
