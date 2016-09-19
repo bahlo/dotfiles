@@ -46,6 +46,7 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 
 # Git
+alias gu='git up'
 alias gs='git status -sb'
 alias gco='git checkout'
 alias gd='git diff --stat --patch'
@@ -55,17 +56,9 @@ alias gcaa='git add --all . && git commit -v --amend'
 alias gcl='git clone'
 alias gri='git rebase -i'
 alias gl="git log --graph --color --decorate --pretty=format:'%C(green)%h %C(yellow)[%ad]%Cred%d %Creset%s%Cblue [%cn]' --date=relative --abbrev-commit | less --RAW-CONTROL-CHARS"
-
-# Legit
-alias glb='legit branches'
-alias glg='legit graft'
-alias glh='legit harvest'
-alias glp='legit publish'
-alias glu='legit unpublish'
-alias glsp='legit sprout'
-alias gls='legit sync'
-alias glsw='legit switch'
-alias glr='legit resync'
+alias gps='git push'
+alias gpsu='git push --set-upstream'
+alias grao='git remote add origin'
 
 # Functions
 function mkd() {

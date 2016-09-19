@@ -12,7 +12,6 @@ cmake
 coreutils # For k
 
 # Git
-legit
 git
 hub
 
