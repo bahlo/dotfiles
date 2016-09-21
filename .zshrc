@@ -12,6 +12,7 @@ zplug "zsh-users/zsh-completions"
 
 zplug "mafredri/zsh-async" # Needed by sindresorhus/pure
 zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
+zplug "lib/history", from:oh-my-zsh
 zplug "lib/git", from:oh-my-zsh
 
 # Configure plugins
