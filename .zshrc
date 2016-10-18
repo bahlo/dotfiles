@@ -9,6 +9,7 @@ zplug "b4b4r07/enhancd", use:init.sh
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "horosgrisa/autoenv"
 zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
 
 zplug "mafredri/zsh-async" # Needed by sindresorhus/pure
 zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
@@ -36,6 +37,8 @@ bindkey "^[[B"  down-line-or-search     # Down arrow for fwd-history-search.
 bindkey " "     magic-space             # Do history expansion on space.
 bindkey "^[[1~" beginning-of-line       # Pos1
 bindkey "^[[4~" end-of-line             # End
+bindkey "^[[1;3C" forward-word          # Alt+Right
+bindkey "^[[1;3D" backward-word         # Alt-Left
 
 # Aliases
 alias ..='cd ..'
