@@ -10,6 +10,7 @@ thefuck
 # Compile basics
 cmake
 coreutils # For k
+go
 
 # Git
 git
