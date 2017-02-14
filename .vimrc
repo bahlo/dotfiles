@@ -61,30 +61,29 @@ Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-dispatch'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'rizzatti/dash.vim'
 
 " Snippets
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neosnippet.vim'
 Plug 'ervandew/supertab'
 
 " Language syntax highlighting
 Plug 'sheerun/vim-polyglot'
-Plug 'fatih/vim-go',           { 'for': 'go' }
+Plug 'fatih/vim-go',               { 'for': 'go' }
 Plug 'posva/vim-vue'
+Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
 
 " Themes
+Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
+"Plug 'mhartington/oceanic-next'
 "Plug 'nanotech/jellybeans.vim'
 "Plug 'chriskempson/base16-vim'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
 "Plug 'dracula/vim'
-"Plug 'vim-airline/vim-airline-themes'
 
 " Addons
 Plug 'mhinz/vim-startify'
@@ -104,8 +103,7 @@ nnoremap          <F5>      :NERDTreeTabsToggle<CR>
 nnoremap          <F6>      :TagbarToggle<CR>
 nnoremap          <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
-nnoremap          <c-t>     :CtrlP<CR>
-nnoremap          <leader>d :Dash<CR>
+nnoremap          <c-p>     :CtrlP<CR>
 
 " Only show what you must
 let g:NERDTreeMinimalUI=1
@@ -129,17 +127,13 @@ let g:tmuxline_preset = {
     \'z'       : '#H',
     \'options' : {'status-justify' : 'left'}}
 
-" YCM
-let g:ycm_key_list_select_completion   = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" neosnippets
+let g:neosnippet#disable_runtime_snippets = { "_": 1, }
 
-" SuperTab
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 2
 
 " EasyAlign (vip<Enter>= or gaip=)
 vmap <Enter> <Plug>(EasyAlign)
@@ -177,12 +171,15 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
+
 let g:syntastic_go_checkers = ['gometalinter', 'golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_javascript_checkers = ['eslint']
 
 " Rust
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave = 0
 let g:tagbar_type_rust = {
   \ 'ctagstype' : 'rust',
   \ 'kinds' : [
@@ -196,4 +193,3 @@ let g:tagbar_type_rust = {
       \'i:impls,trait implementations',
   \]
   \}
-
