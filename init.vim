@@ -1,9 +1,14 @@
+" Plugins
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'ayu-theme/ayu-vim' " Color scheme
+call plug#end()
+
 " Behavior
 set clipboard=unnamed                " Use macOS clipboard
 set ai                               " Automatic indent
 set splitright                       " Open panels on the right side
 setlocal spell spelllang=en_gb       " Spell check
-set whichwrap+=<,>,h,l,[,]           " Allow cursor keys to wrap at begining/eol
+set whichwrap+=<,>,h,l,[,]           " Allow cursor keys to wrap at beginning/end of line
 set hidden                           " Allow hidden buffers
 set list                             " Highlight whitespace
 set listchars=tab:▹\ ,trail:▫,nbsp:⋅ " Which char to represent what
@@ -32,6 +37,9 @@ set ffs=unix
 set termguicolors
 set bg=dark
 syntax enable
+let ayucolor="mirage"
+colorscheme ayu
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
+

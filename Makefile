@@ -15,8 +15,8 @@ tpm: ## Install TPM + plugins
 	- ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 vim-plug: ## Install vim-plug + plugins
-	- curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-	      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	- vim +PlugInstall! +qall
+	- curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	# - vim +PlugInstall! +qall
 
 .PHONY: help brew link tpm vim-plug
