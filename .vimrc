@@ -87,9 +87,6 @@ Plug 'joshdick/onedark.vim'
 "Plug 'primedirective/Glacier-Remixes', { 'rtp': 'vim' }
 "Plug 'dracula/vim'
 
-" Addons
-Plug 'mhinz/vim-startify'
-
 call plug#end()
 
 " Theme
@@ -109,13 +106,12 @@ nnoremap <silent> <leader>/ :nohlsearch<CR>
 nnoremap          <c-p>     :CtrlP<CR>
 
 " CtrlP
+let g:ctrlp_switch_buffer = 0 " Don't open in same buffer
+let g:ctrlp_working_path = 0 " Let CtrlP respect workspace changes
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] " Ignore files in .gitignore
 
 " Only show what you must
 let g:NERDTreeMinimalUI=1
-
-" CTRL-P
-let g:ctrlp_custom_ignore='node_modules\|bower_components\|vendor\|tags\|_workspace\|target'
 
 " Airline
 let g:airline_powerline_fonts              = 1
@@ -144,25 +140,13 @@ hi clear SignColumn " Clear background of Gitgutter
 
 " Re-open last file
 nnoremap <Leader>. :e#<CR>
+
+" Relaod vimrc and install packages
 nnoremap <Leader>p :source ~/.vimrc<CR> :PlugInstall<CR> :q<CR>
 
 " YCM
 nnoremap <Leader>] :YcmCompleter GoTo<CR>
 let g:ycm_rust_src_path = '$HOME/rust/src'
-
-" Startify
-let g:startify_list_order = ['dir', 'bookmarks', 'sessions']
-let g:startify_bookmarks = [
-  \ {'v': '~/.vimrc'},
-  \ {'z': '~/.zshrc' },
-  \ {'l': '~/.localrc'}
-\]
-let g:startify_session_persistence = 1
-let g:startify_session_autoload = 1
-let g:startify_session_delete_buffers = 0
-let g:startify_change_to_vcs_root = 1
-let g:startify_custom_header =
-  \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
 
 " Go
 let g:go_highlight_functions = 1
