@@ -44,7 +44,7 @@ Plug 'scrooloose/nerdtree',            { 'on': 'NERDTreeTabsToggle' }
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'majutsushi/tagbar' ",            { 'on': 'TagbarToggle' }
 Plug 'airblade/vim-gitgutter'
-Plug 'kien/ctrlp.vim',                 { 'on': 'CtrlP' }
+Plug 'ctrlpvim/ctrlp.vim',             { 'on': 'CtrlP' }
 Plug 'sjl/gundo.vim',                  { 'on': 'GundoToggle' }
 Plug 'tpope/vim-vinegar'
 Plug 'edkolev/tmuxline.vim'
@@ -106,7 +106,11 @@ nnoremap          <F5>      :NERDTreeTabsToggle<CR>
 nnoremap          <F6>      :TagbarToggle<CR>
 nnoremap          <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
-nnoremap          <c-p>     :CtrlP<CR>
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+" Ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " Only show what you must
 let g:NERDTreeMinimalUI=1
