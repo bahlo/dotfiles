@@ -12,14 +12,14 @@ Plug 'tpope/vim-commentary'                                   " Comment stuff ou
 Plug 'tpope/vim-surround'                                     " Quoting/Parenthesizing made simple
 Plug 'tweekmonster/startuptime.vim'                           " Get startuptime for plugins
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }        " File explorer
-Plug 'majutsushi/tagbar'                                      " Display tags in a sidebar
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }            " Display tags in a sidebar
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completion system
 Plug 'zchee/deoplete-go'                                      " deoplete.nvim source for Go
 Plug 'Shougo/neosnippet.vim'                                  " Neocomplcache snippets source
 Plug 'Shougo/neosnippet-snippets'                             " Standard snippets repo
 Plug 'fatih/vim-go'                                           " Go development plugin for vim
-Plug 'vim-syntastic/syntastic'                                " Syntax checking
+Plug 'vim-syntastic/syntastic', { 'on': 'SyntasticCheck' }    " Syntax checking
 Plug 'mhinz/vim-grepper'                                      " Silver searcher wrapper
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }       " JavaScript syntax highlighting
 Plug 'ervandew/supertab'                                      " Insert mode completion with tab
@@ -32,7 +32,6 @@ let mapleader = ","
 set clipboard=unnamed                " Use macOS clipboard
 set ai                               " Automatic indent
 set splitright                       " Open panels on the right side
-setlocal spell spelllang=en_gb       " Spell check
 set whichwrap+=<,>,h,l,[,]           " Allow cursor keys to wrap at beginning/end of line
 set hidden                           " Allow hidden buffers
 set list                             " Highlight whitespace
@@ -77,8 +76,12 @@ nnoremap          <F6>      :TagbarToggle<CR>
 " Airline
 let g:airline_theme='simple'                 " Set Airline theme
 let g:airline#extensions#branch#enabled=1    " Show git branch on Airline
-let g:airline#extensions#syntastic#enabled=1 " Add Syntastic support to airline
 let g:airline#extensions#hunks#enabled=1     " Show VCS changes
+
+" Disabled since it produces errors when Tagbar/Syntastic are not available
+" at start
+let g:airline#extensions#syntastic#enabled=0 " Add Syntastic support to airline
+let g:airline#extensions#tagbar#enabled=0    " Add Tagbar support to airline
 
 " CtrlP
 let g:ctrlp_working_path_mode='ra'           " Tell CtrlP to use the next VCS path
@@ -96,8 +99,8 @@ let g:go_list_type="quickfix"
 
 " Syntastic
 let g:syntastic_loc_list_height=3
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_check_on_open=1
+" let g:syntastic_always_populate_loc_list=1
+let g:syntastic_check_on_open=0 " It's sooo slow otherwise
 let g:syntastic_check_on_wq=0
 let g:syntastic_enable_signs=1
 set statusline+=%#warningmsg#
