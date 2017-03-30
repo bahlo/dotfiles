@@ -21,6 +21,8 @@ Plug 'Shougo/neosnippet-snippets'                             " Standard snippet
 Plug 'fatih/vim-go'                                           " Go development plugin for vim
 Plug 'vim-syntastic/syntastic'                                " Syntax checking
 Plug 'mhinz/vim-grepper'                                      " Silver searcher wrapper
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }       " JavaScript syntax highlighting
+Plug 'ervandew/supertab'                                      " Insert mode completion with tab
 call plug#end()
 
 " Leader
@@ -83,26 +85,37 @@ let g:ctrlp_working_path_mode='ra'           " Tell CtrlP to use the next VCS pa
 let g:ctrlp_user_command=['.git', 'cd %s && git ls-files -co --exclude-standard'] " Ignore everything in .gitignore
 
 " Go
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = 'goimports'
-let g:go_list_type = "quickfix"
+let g:go_highlight_functions=1
+let g:go_highlight_methods=1
+let g:go_highlight_fields=1
+let g:go_highlight_types=1
+let g:go_highlight_operators=1
+let g:go_highlight_build_constraints=1
+let g:go_fmt_command='goimports'
+let g:go_list_type="quickfix"
 
 " Syntastic
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_loc_list_height=3
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_enable_signs=1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+" Language specific
+let g:syntastic_go_checkers=['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map={ 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:syntastic_javascript_checkers=['eslint']
+
+" Try local eslint if exists
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if executable(local_eslint)
+  let g:syntastic_javascript_eslint_exec = local_eslint
+endif
+
+" JavaScript
+let g:javascript_plugin_jsdoc=1
 
 " Mappings
 " Start interactive EasyAlign in visual mode (e.g. vipga)
