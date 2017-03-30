@@ -11,6 +11,8 @@ Plug 'junegunn/vim-easy-align', { 'on': '<Plug>(EasyAlign)' } " Easily align mul
 Plug 'tpope/vim-commentary'                                   " Comment stuff out
 Plug 'tpope/vim-surround'                                     " Quoting/Parenthesizing made simple
 Plug 'tweekmonster/startuptime.vim'                           " Get startuptime for plugins
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }        " File explorer
+Plug 'majutsushi/tagbar'                                      " Display tags in a sidebar
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completion system
 Plug 'zchee/deoplete-go'                                      " deoplete.nvim source for Go
@@ -18,6 +20,7 @@ Plug 'Shougo/neosnippet.vim'                                  " Neocomplcache sn
 Plug 'Shougo/neosnippet-snippets'                             " Standard snippets repo
 Plug 'fatih/vim-go'                                           " Go development plugin for vim
 Plug 'vim-syntastic/syntastic'                                " Syntax checking
+Plug 'mhinz/vim-grepper'                                      " Silver searcher wrapper
 call plug#end()
 
 " Leader
@@ -60,8 +63,14 @@ syntax enable
 let ayucolor="mirage"
 colorscheme ayu
 
-" Auto commands
+" Auto commands, general shortcuts
 autocmd BufWritePre * :%s/\s\+$//e " Remove whitespace on save
+" Clear search results on <leader>/
+nnoremap <silent> <leader>/ :nohlsearch<CR>
+" Open NERDTree on F5
+nnoremap          <F5>      :NERDTreeToggle<CR>
+" Open Tagbar on F6
+nnoremap          <F6>      :TagbarToggle<CR>
 
 " Airline
 let g:airline_theme='simple'                 " Set Airline theme
@@ -90,6 +99,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
