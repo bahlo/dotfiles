@@ -17,7 +17,7 @@ git
 hub
 
 # Editor
-vim
+neovim/neovim/neovim
 ctags
 the_silver_searcher
 tmux

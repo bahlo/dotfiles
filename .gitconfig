@@ -8,7 +8,7 @@
 [core]
   whitespace = trailing-space, space-before-tab
   quotepath  = false
-  editor     = vim
+  editor     = nvim
   excludesfile = ~/.gitignore
 
 [color]

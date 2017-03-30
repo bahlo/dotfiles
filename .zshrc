@@ -43,7 +43,8 @@ bindkey "^[[1;3D" backward-word         # Alt-Left
 alias ..='cd ..'
 alias l='k -h'
 alias la='k -ha'
-alias vi='vim'
+alias vi='nvim'
+alias vim='nvim'
 alias grep="grep --color=auto"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
