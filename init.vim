@@ -1,6 +1,10 @@
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'ayu-theme/ayu-vim' " Color scheme
+Plug 'ayu-theme/ayu-vim'              " Color scheme
+Plug 'vim-airline/vim-airline'        " Airline
+Plug 'vim-airline/vim-airline-themes' " Airline themes
+Plug 'mhinz/vim-signify'              " Show git status indicator
+Plug 'ctrlpvim/ctrlp.vim'             " CtrlP - Fuzzy file finder
 call plug#end()
 
 " Behavior
@@ -40,6 +44,10 @@ syntax enable
 let ayucolor="mirage"
 colorscheme ayu
 
-" Remove whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
+" Auto commands
+autocmd BufWritePre * :%s/\s\+$//e " Remove whitespace on save
 
+" Configure plugins
+let g:airline_theme='simple'                                                      " Set airline theme
+let g:ctrlp_working_path_mode='ra'                                                " Tell CtrlP to use the next VCS path
+let g:ctrlp_user_command=['.git', 'cd %s && git ls-files -co --exclude-standard'] " Ignore everything in .gitignore
