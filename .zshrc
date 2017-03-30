@@ -5,6 +5,7 @@ source $ZPLUG_HOME/init.zsh
 zplug "zsh-users/zsh-history-substring-search"
 zplug "supercrabtree/k"
 zplug "sindresorhus/pure"
+# zplug "halfo/lambda-mod-zsh-theme"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"

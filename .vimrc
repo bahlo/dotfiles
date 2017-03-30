@@ -1,21 +1,21 @@
-" General configuration
-syntax enable                  " Enable syntax highlighting
-filetype plugin indent on      " Ensure ftdetect is working
-set nocompatible               " Use Vim defaults
-set autoread                   " Reload files on change
+"" General vim options
+syntax enable
+filetype plugin indent on
+set nocompatible
+set autoread
 set autoindent
-set backspace=indent,eol,start " Backspace through everything in insert mode
+set backspace=indent,eol,start
 set backupcopy=yes
 set clipboard=unnamed
 set colorcolumn=79
 set encoding=utf-8
-set expandtab                  " Expand tabs to spaces
-set ffs=unix                   " Default to LF
-set hlsearch                   " Highlight search results
-set smartcase                  " Search is case sensitive if any caps
-set incsearch                  " Seach as you type
-set laststatus=2               " Always show statusline
-set list                       " Show trailing whitespace
+set expandtab
+set ffs=unix
+set hlsearch
+set smartcase
+set incsearch
+set laststatus=2
+set list
 set listchars=tab:▹\ ,trail:▫,nbsp:⋅
 set ruler
 set scrolloff=3
@@ -65,15 +65,17 @@ Plug 'tpope/vim-dispatch'
 Plug 'AndrewRadev/splitjoin.vim'
 
 " Snippets
-Plug 'Shougo/neocomplete.vim'
-Plug 'Shougo/neosnippet.vim'
+Plug 'valloric/YouCompleteMe', { 'do': './install.py --gocode-completer --racer-completer'}
+Plug 'racer-rust/vim-racer'
+Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 
 " Language syntax highlighting
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go',               { 'for': 'go' }
-Plug 'posva/vim-vue'
+Plug 'posva/vim-vue',              { 'for': 'vue' }
 Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
+Plug 'rust-lang/rust.vim'
 
 " Themes
 Plug 'vim-airline/vim-airline-themes'
@@ -91,6 +93,7 @@ Plug 'mhinz/vim-startify'
 call plug#end()
 
 " Theme
+" NOTE: We do a try/catch to permit usage without plugins installed
 set background=dark
 try
   colorscheme onedark
@@ -127,17 +130,8 @@ let g:tmuxline_preset = {
     \'z'       : '#H',
     \'options' : {'status-justify' : 'left'}}
 
-" neosnippets
-let g:neosnippet#disable_runtime_snippets = { "_": 1, }
-
-" neocomplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 2
-
-" EasyAlign (vip<Enter>= or gaip=)
+" EasyAlign (vip<Enter>=)
 vmap <Enter> <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -148,6 +142,10 @@ hi clear SignColumn " Clear background of Gitgutter
 " Re-open last file
 nnoremap <Leader>. :e#<CR>
 nnoremap <Leader>p :source ~/.vimrc<CR> :PlugInstall<CR> :q<CR>
+
+" YCM
+nnoremap <Leader>] :YcmCompleter GoTo<CR>
+let g:ycm_rust_src_path = '$HOME/rust/src'
 
 " Startify
 let g:startify_list_order = ['dir', 'bookmarks', 'sessions']
