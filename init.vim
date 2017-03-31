@@ -68,6 +68,8 @@ colorscheme ayu
 
 " Auto commands, general shortcuts
 autocmd BufWritePre * :%s/\s\+$//e " Remove whitespace on save
+" Close vim if NERDTree is the last buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Clear search results on <leader>/
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 " Open NERDTree on F5
