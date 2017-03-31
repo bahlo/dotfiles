@@ -1,18 +1,20 @@
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'ayu-theme/ayu-vim'                                      " Color scheme
-Plug 'vim-airline/vim-airline'                                " Airline
-Plug 'vim-airline/vim-airline-themes'                         " Airline themes
-Plug 'mhinz/vim-signify'                                      " Show git status indicator
-Plug 'ctrlpvim/ctrlp.vim'                                     " CtrlP - Fuzzy file finder
-Plug 'easymotion/vim-easymotion'                              " Vim motions on speed
-Plug 'tpope/vim-fugitive'                                     " Git wrapper
-Plug 'junegunn/vim-easy-align', { 'on': '<Plug>(EasyAlign)' } " Easily align multiple lines
-Plug 'tpope/vim-commentary'                                   " Comment stuff out
-Plug 'tpope/vim-surround'                                     " Quoting/Parenthesizing made simple
-Plug 'tweekmonster/startuptime.vim'                           " Get startuptime for plugins
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }        " File explorer
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }            " Display tags in a sidebar
+Plug 'ayu-theme/ayu-vim'                                         " Color scheme
+Plug 'vim-airline/vim-airline'                                   " Airline
+Plug 'vim-airline/vim-airline-themes'                            " Airline themes
+Plug 'mhinz/vim-signify'                                         " Show git status indicator
+Plug 'ctrlpvim/ctrlp.vim'                                        " CtrlP - Fuzzy file finder
+Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion-prefix)' } " Vim motions on speed
+Plug 'tpope/vim-fugitive'                                        " Git wrapper
+Plug 'junegunn/vim-easy-align', { 'on': '<Plug>(EasyAlign)' }    " Easily align multiple lines
+Plug 'tpope/vim-commentary'                                      " Comment stuff out
+Plug 'tpope/vim-surround'                                        " Quoting/Parenthesizing made simple
+Plug 'tweekmonster/startuptime.vim'                              " Get startuptime for plugins
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }           " File explorer
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }               " Display tags in a sidebar
+Plug 'terryma/vim-multiple-cursors'                              " Multiple cursor support
+Plug 'tpope/vim-vinegar'                                         " Easy, fast directory browsing
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completion system
 Plug 'zchee/deoplete-go'                                      " deoplete.nvim source for Go
@@ -72,6 +74,8 @@ nnoremap <silent> <leader>/ :nohlsearch<CR>
 nnoremap          <F5>      :NERDTreeToggle<CR>
 " Open Tagbar on F6
 nnoremap          <F6>      :TagbarToggle<CR>
+" Rebind easy-motion shortcut to allow lazy loading
+map <Leader><Leader> <Plug>(easymotion-prefix)
 
 " Airline
 let g:airline_theme='simple'               " Set Airline theme
