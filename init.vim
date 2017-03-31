@@ -74,9 +74,10 @@ nnoremap          <F5>      :NERDTreeToggle<CR>
 nnoremap          <F6>      :TagbarToggle<CR>
 
 " Airline
-let g:airline_theme='simple'                 " Set Airline theme
-let g:airline#extensions#branch#enabled=1    " Show git branch on Airline
-let g:airline#extensions#hunks#enabled=1     " Show VCS changes
+let g:airline_theme='simple'               " Set Airline theme
+let g:airline#extensions#branch#enabled=1  " Show git branch on Airline
+let g:airline#extensions#hunks#enabled=1   " Show VCS changes
+let g:airline#extensions#tabline#enabled=1 " Highligh tabs as well
 
 " Disabled since it produces errors when Tagbar/Syntastic are not available
 " at start
@@ -84,7 +85,7 @@ let g:airline#extensions#syntastic#enabled=0 " Add Syntastic support to airline
 let g:airline#extensions#tagbar#enabled=0    " Add Tagbar support to airline
 
 " CtrlP
-let g:ctrlp_working_path_mode='ra'           " Tell CtrlP to use the next VCS path
+let g:ctrlp_working_path_mode='ra'                                                " Tell CtrlP to use the next VCS path
 let g:ctrlp_user_command=['.git', 'cd %s && git ls-files -co --exclude-standard'] " Ignore everything in .gitignore
 
 " Go
