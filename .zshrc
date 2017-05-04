@@ -41,7 +41,7 @@ bindkey "^[[1;3D" backward-word         # Alt-Left
 
 # Aliases
 alias ..='cd ..'
-alias l='k -h'
+alias l='ls -lah'
 alias la='k -ha'
 alias vi='nvim'
 alias vim='nvim'

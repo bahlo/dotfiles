@@ -11,7 +11,8 @@ Plug 'junegunn/vim-easy-align', { 'on': '<Plug>(EasyAlign)' }           " Easily
 Plug 'tpope/vim-commentary'                                             " Comment stuff out
 Plug 'tpope/vim-surround'                                               " Quoting/Parenthesizing made simple
 Plug 'tweekmonster/startuptime.vim'                                     " Get startuptime for plugins
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }                  " File explorer
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeTabsToggle' }              " File explorer
+Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }          " Open via multiple tabs
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }                      " Display tags in a sidebar
 Plug 'terryma/vim-multiple-cursors'                                     " Multiple cursor support
 Plug 'tpope/vim-vinegar'                                                " Easy, fast directory browsing
@@ -25,6 +26,7 @@ Plug 'vim-syntastic/syntastic', { 'on': 'SyntasticCheck' }    " Syntax checking
 Plug 'mhinz/vim-grepper'                                      " Silver searcher wrapper
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }       " JavaScript syntax highlighting
 Plug 'ervandew/supertab'                                      " Insert mode completion with tab
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 call plug#end()
 
 " Leader
@@ -73,13 +75,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Clear search results on <leader>/
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 " Open NERDTree on F5
-nnoremap          <F5>      :NERDTreeToggle<CR>
+nnoremap          <F5>      :NERDTreeTabsToggle<CR>
 " Open Tagbar on F6
 nnoremap          <F6>      :TagbarToggle<CR>
 " Rebind c-p to allow lazy loading
 nnoremap          <c-p>     :CtrlP<CR>
 " Rebind easy-motion shortcut to allow lazy loading
 map <Leader><Leader> <Plug>(easymotion-prefix)
+nnoremap gca :!git add --all . && git commit -v<CR>
 
 " Airline
 let g:airline_theme='simple'               " Set Airline theme
@@ -105,6 +108,10 @@ let g:go_highlight_operators=1
 let g:go_highlight_build_constraints=1
 let g:go_fmt_command='goimports'
 let g:go_list_type="quickfix"
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
 
 " Syntastic
 let g:syntastic_loc_list_height=3
