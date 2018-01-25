@@ -60,7 +60,7 @@ bindkey "^[[1;3C" forward-word          # Alt+Right
 bindkey "^[[1;3D" backward-word         # Alt-Left
 
 # Load external scripts
-. `brew --prefix`/etc/profile.d/z.sh
+. `/usr/local/bin/brew --prefix`/etc/profile.d/z.sh
 
 # Load local configuration
 [[ -f ~/.localrc ]] && source ~/.localrc
