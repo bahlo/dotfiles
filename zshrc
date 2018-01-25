@@ -64,3 +64,6 @@ bindkey "^[[1;3D" backward-word         # Alt-Left
 
 # Load local configuration
 [[ -f ~/.localrc ]] && source ~/.localrc
+
+# Start tmux if not already in session
+[ -z "$TMUX" ] && tmux new-session -A -s dev && exit
