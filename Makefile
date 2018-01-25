@@ -1,22 +1,22 @@
-help: ## Print this help
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+all: links brew
 
-all: brew link tpm vim-plug ## This calls all commands in a reasonable order
+links:
+	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
+	[ -f ~/.alacritty.yml ] || ln -s $(PWD)/alacritty.yml ~/alacritty.yml
+	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmuxconf ~/.tmux.conf
+	[ -f ~/.gitignore ] || ln -s $(PWD)/gitignore ~/.gitignore
+	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
 
-brew: ## Install Homebrew + packages
-	- which brew || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	- cat Brewfile | sed 's/#.*$$//g' | grep -v '^$$' | xargs -n1 brew install
+	touch ~/.hushlogin
 
-link: ## Link .* to $HOME
-	find $(CURDIR) -name ".*" -type f -exec ln -sF {} ~/ ';'
+brew: 
+	cat Brewfile | xargs -n1 brew install
 
-tpm: ## Install TPM + plugins
-	- git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true
-	- ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+clean:
+	rm -f ~/.vimrc 
+	rm -f ~/.alacritty.yml
+	rm -f ~/.tmux.conf
+	rm -f ~/.gitignore
+	rm -f ~/.zshrc
 
-vim-plug: ## Install vim-plug + plugins
-	- curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	# - vim +PlugInstall! +qall
-
-.PHONY: help brew link tpm vim-plug
+.PHONY: all links brew clean
