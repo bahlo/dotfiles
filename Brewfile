@@ -14,3 +14,4 @@ htop-osx
 youtube-dl
 pwgen
 vim
+ripgrep

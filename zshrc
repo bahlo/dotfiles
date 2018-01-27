@@ -14,7 +14,6 @@ fi
 zplug load
 
 # General aliases
-alias vim="vim"
 alias vi="vim"
 alias jd="cd ~/Developer"
 alias jf="cd ~/Developer/FastBill"
