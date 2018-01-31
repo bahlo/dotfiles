@@ -22,6 +22,7 @@ Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'elzr/vim-json', {'for' : 'json'}
 Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'rust-lang/rust.vim'
 
 " Themes
 Plug 'tomasr/molokai'
@@ -402,7 +403,7 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 
 " NERDTree
-noremap <Leader>n :NERDTreeToggle<cr>
+noremap <F5> :NERDTreeToggle<cr>
 noremap <Leader>f :NERDTreeFind<cr>
 
 let NERDTreeShowHidden=1
