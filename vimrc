@@ -228,7 +228,7 @@ augroup quickfix
 augroup END
 
 " Enter automatically into the files directory
-autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h
 
 " Fast saving
 nnoremap <leader>w :w!<cr>
