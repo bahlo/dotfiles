@@ -11,12 +11,13 @@ autoload -U compinit && compinit
 
 # Plugins
 source $HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+eval "$(jump shell)"
 
 # Exports
 export EDITOR=vim
 
 # General aliases
-alias l="exa -la --git"
+alias l="exa -la --git --time-style=long-iso"
 alias ls="l"
 alias ..='cd ..'
 
@@ -25,6 +26,7 @@ alias gs="git status -s"
 alias gco="git checkout"
 alias gcob="git checkout -b"
 alias gp="git push"
+alias gd="git diff --stat --patch"
 alias gpu="git push --set-upstream"
 alias gca="git add . && git commit -v"
 alias gri="git rebase -i"
