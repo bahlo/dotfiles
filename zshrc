@@ -1,16 +1,23 @@
 # My ZSH configuration
 # Part of this is based on https://github.com/fatih/dotfiles
 
+local HOMEBREW_PREFIX=$(brew --prefix)
+
 # Autocompletion
-autoload -U compinit && compinit
-source /usr/local/share/zsh/site-functions
+source $HOMEBREW_PREFIX/share/zsh/site-functions
+fpath=($HOMEBREW_PREFIX/share/zsh-completions $fpath)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+autoload -U compinit && compinit
+
+# Plugins
+source $HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Exports
 export EDITOR=vim
 
 # General aliases
 alias l="exa -la --git"
+alias ls="l"
 alias ..='cd ..'
 
 # Git
@@ -110,3 +117,10 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+
+# Enable syntax highlighting
+# NOTE: This has to be at the end
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Import .localrc
+[ -r ~/.localrc ] && source ~/.localrc

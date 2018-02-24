@@ -1,13 +1,12 @@
 zsh
-zplug
 zsh-completions
+zsh-history-substring-search
+zsh-syntax-highlighting
 mosh
 thefuck
-cmake
 go
 git
 ctags
-the_silver_searcher
 tmux
 httpie
 htop-osx
