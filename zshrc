@@ -12,6 +12,7 @@ autoload -U compinit && compinit
 # Plugins
 source $HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 eval "$(jump shell)"
+eval $(thefuck --alias ohno)
 
 # Exports
 export EDITOR=vim
