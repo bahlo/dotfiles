@@ -1,48 +1,73 @@
-# Plugins
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
+# My ZSH configuration
+# Part of this is based on https://github.com/fatih/dotfiles
 
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
-zplug 'dracula/zsh', as:theme
+# Autocompletion
+autoload -U compinit && compinit
+source /usr/local/share/zsh/site-functions
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if ! zplug check; then
-  zplug install
-fi
-zplug load
+# Exports
+export EDITOR=vim
 
 # General aliases
-alias vi="vim"
-alias jd="cd ~/Developer"
-alias jf="cd ~/Developer/FastBill"
-alias jg="cd ~/Developer/GitHub"
-alias l="exa -l --git"
-alias la="exa -la --git"
+alias l="exa -la --git"
+alias ..='cd ..'
 
-# Git aliases
-alias g="git status -s"
+# Git
+alias gs="git status -s"
 alias gco="git checkout"
+alias gcob="git checkout -b"
 alias gp="git push"
 alias gpu="git push --set-upstream"
-alias gc="git commit -v"
-alias ga="git commit -v --amend"
 alias gca="git add . && git commit -v"
-alias gd="git diff --stat --patch"
 alias gri="git rebase -i"
-alias gl="git log --pretty=oneline --abbrev-commit"
+alias gl="git log --graph --format='%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(blue)%an %Creset'"
 
-# Docker aliases
+# Docker
 alias dc="docker-compose"
-alias d="docker"
-alias dcp="docker-compose pull"
-alias dcu="docker-compose up"
-alias dcud="docker-compose up -d"
-alias dcd="docker-compose down"
 
-# Functions
+# Functions 
 function mkd() { mkdir -p $1 && cd $1 }
+
+# Prompt
+autoload -U colors && colors
+setopt promptsubst
+
+local ret_status="%(?:%{$fg_bold[green]%}$:%{$fg_bold[red]%}$)"
+PROMPT='${ret_status} %{$fg[blue]%}%c%{$reset_color%} $(git_prompt_info)'
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[magenta]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[yellow]%}✗"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+# Outputs current branch info in prompt format
+function git_prompt_info() {
+  local ref
+  if [[ "$(command git config --get customzsh.hide-status 2>/dev/null)" != "1" ]]; then
+    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  fi
+}
+
+# Checks if working tree is dirty
+function parse_git_dirty() {
+  local STATUS=''
+  local FLAGS
+  FLAGS=('--porcelain')
+
+  if [[ "$(command git config --get customzsh.hide-dirty)" != "1" ]]; then
+    FLAGS+='--ignore-submodules=dirty'
+    STATUS=$(command git status ${FLAGS} 2> /dev/null | tail -n1)
+  fi
+
+  if [[ -n $STATUS ]]; then
+    echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
+  else
+    echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
+  fi
+}
 
 # Keybindings
 bindkey "^[[2~" yank                    # Insert
@@ -58,11 +83,30 @@ bindkey "^[[4~" end-of-line             # End
 bindkey "^[[1;3C" forward-word          # Alt+Right
 bindkey "^[[1;3D" backward-word         # Alt-Left
 
-# Load external scripts
-. `/usr/local/bin/brew --prefix`/etc/profile.d/z.sh
+# History
+if [ -z "$HISTFILE" ]; then
+    HISTFILE=$HOME/.zsh_history
+fi
 
-# Load local configuration
-[[ -f ~/.localrc ]] && source ~/.localrc
+HISTSIZE=1000000
+SAVEHIST=1000000
 
-# Start tmux if not already in session
-[ -z "$TMUX" ] && tmux new-session -A -s dev && exit
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+# ignore duplication command history list
+setopt hist_ignore_dups 
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+# share command history data
+setopt share_history 
+
+# Support colors in less
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'

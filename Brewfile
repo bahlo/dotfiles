@@ -15,3 +15,6 @@ youtube-dl
 pwgen
 vim
 ripgrep
+go-delve/delve/delve
+exa
+hub

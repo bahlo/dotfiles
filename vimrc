@@ -17,15 +17,22 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
+" Delve
+Plug 'Shougo/vimshell.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'sebdah/vim-delve'
+
 " Syntax highlighting
 Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'elzr/vim-json', {'for' : 'json'}
 Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 
 " Themes
 Plug 'tomasr/molokai'
+Plug 'mhartington/oceanic-next'
 call plug#end()
 
 " ==============================================================================
@@ -65,6 +72,7 @@ set pumheight=10             " Completion window max size
 set lazyredraw
 set list
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set colorcolumn=80
 
 " http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
 set clipboard^=unnamed
@@ -81,11 +89,13 @@ endif
 " Theme
 syntax enable
 set t_Co=256
+set termguicolors
 set background=dark
 
 let g:molokai_original = 1
 let g:rehash256 = 1
-colorscheme molokai
+" colorscheme molokai
+colorscheme OceanicNext
 
 " Filetypes
 augroup filetypedetect
@@ -98,7 +108,9 @@ augroup filetypedetect
   
   autocmd BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
   autocmd BufNewFile,BufRead *.md setlocal noet ts=4 sw=4
-  autocmd BufNewFile,BufRead *.html setlocal noet ts=4 sw=4
+  autocmd BufNewFile,BufRead *.html setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd BufNewFile,BufRead *.js setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd BufNewFile,BufRead *.yml setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
   
@@ -364,7 +376,7 @@ augroup go
   autocmd FileType go nmap <silent> <leader>b :<C-u>call <SID>build_go_files()<CR>
   autocmd FileType go nmap <silent> <leader>t  <Plug>(go-test)
   autocmd FileType go nmap <silent> <leader>r  <Plug>(go-run)
-  autocmd FileType go nmap <silent> <Leader>c <Plug>(go-coverage-toggle)
+  autocmd FileType go nmap <silent> <Leader>c <Plug>(go-coverage)
 
   " I like these more!
   autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
@@ -372,6 +384,9 @@ augroup go
   autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
   autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 augroup END
+
+" rust
+let g:rustfmt_autosave = 1 
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
@@ -409,6 +424,8 @@ noremap <Leader>f :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
 
 " UltiSnips
+let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
+
 function! g:UltiSnips_Complete()
   call UltiSnips#ExpandSnippet()
   if g:ulti_expand_res == 0
@@ -433,7 +450,6 @@ function! g:UltiSnips_Reverse()
   return ""
 endfunction
 
-
 if !exists("g:UltiSnipsJumpForwardTrigger")
   let g:UltiSnipsJumpForwardTrigger = "<tab>"
 endif
@@ -446,9 +462,9 @@ au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=
 au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
 
 " Rainbow parantheses
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
 
 " vim: sw=2 sw=2 et
