@@ -4,8 +4,10 @@
 local HOMEBREW_PREFIX=$(brew --prefix)
 
 # Autocompletion
-source $HOMEBREW_PREFIX/share/zsh/site-functions
-fpath=($HOMEBREW_PREFIX/share/zsh-completions $fpath)
+fpath=(\
+	$HOMEBREW_PREFIX/share/zsh-completions \
+	$HOMEBREW_PREFIX/share/zsh/site-functions \
+	$fpath)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 autoload -U compinit && compinit
 
@@ -13,6 +15,9 @@ autoload -U compinit && compinit
 source $HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 eval "$(jump shell)"
 eval $(thefuck --alias ohno)
+
+# Enable vi-mode
+bindkey -v
 
 # Exports
 export EDITOR=vim

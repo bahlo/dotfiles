@@ -16,6 +16,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'editorconfig/editorconfig-vim'
 
 " Delve
 Plug 'Shougo/vimshell.vim'
@@ -31,8 +32,10 @@ Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 
 " Themes
-Plug 'tomasr/molokai'
+" Plug 'tomasr/molokai'
 Plug 'mhartington/oceanic-next'
+" Plug 'nanotech/jellybeans.vim'
+" Plug 'chriskempson/base16-vim'
 call plug#end()
 
 " ==============================================================================
@@ -92,10 +95,13 @@ set t_Co=256
 set termguicolors
 set background=dark
 
-let g:molokai_original = 1
-let g:rehash256 = 1
 " colorscheme molokai
+" let g:rehash256 = 1
+" let g:molokai_original = 1
 colorscheme OceanicNext
+" colorscheme jellybeans
+" let base16colorspace=256
+" colorscheme base16-spacemacs
 
 " Filetypes
 augroup filetypedetect
@@ -104,6 +110,7 @@ augroup filetypedetect
   
   autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setf tmux
   autocmd BufNewFile,BufRead .nginx.conf*,nginx.conf* setf nginx
+  autocmd BufNewFile,BufRead justfile setf make
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
   
   autocmd BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
@@ -113,6 +120,8 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.yml setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd BufNewFile,BufRead *.yml setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd BufNewFile,BufRead *.yaml setlocal expandtab shiftwidth=2 tabstop=2
   
   autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
 augroup END
