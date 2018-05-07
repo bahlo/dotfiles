@@ -95,13 +95,7 @@ set t_Co=256
 set termguicolors
 set background=dark
 
-" colorscheme molokai
-" let g:rehash256 = 1
-" let g:molokai_original = 1
 colorscheme OceanicNext
-" colorscheme jellybeans
-" let base16colorspace=256
-" colorscheme base16-spacemacs
 
 " Filetypes
 augroup filetypedetect
