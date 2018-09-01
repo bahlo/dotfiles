@@ -33,13 +33,37 @@ alias gco="git checkout"
 alias gcob="git checkout -b"
 alias gp="git push"
 alias gd="git diff --stat --patch"
-alias gpu="git push --set-upstream"
 alias gca="git add . && git commit -v"
+alias gcas="git add . && git commit -S -v"
+alias gc="git commit -v"
 alias gri="git rebase -i"
 alias gl="git log --graph --format='%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(blue)%an %Creset'"
+alias gbm="git branch -m"
+function gpsu() {
+  branch=$(git symbolic-ref --short HEAD)
+  echo "git push --set-upstream origin $branch"
+  git push --set-upstream origin $branch
+}
+alias ga="git add"
+alias gst="git add . && git stash"
+alias gstp="git stash pop"
+
+# Yarn
+alias ys="yarn start"
+alias yd="yarn dev"
+alias yu="yarn unit"
+alias yuw="yarn unit-watch"
+alias yi="yarn install"
 
 # Docker
 alias dc="docker-compose"
+
+# PHP
+alias co="composer"
+
+# Terraform
+alias tf="terraform"
+alias tfa="terraform apply"
 
 # Functions 
 function mkd() { mkdir -p $1 && cd $1 }

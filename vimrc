@@ -2,7 +2,7 @@
 
 " ==============================================================================
 
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.vim/plugged')
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'Raimondi/delimitMate'
@@ -17,25 +17,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
-
-" Delve
-Plug 'Shougo/vimshell.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'sebdah/vim-delve'
+Plug 'hashivim/vim-terraform'
 
 " Syntax highlighting
-Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'elzr/vim-json', {'for' : 'json'}
 Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml'
+Plug 'pangloss/vim-javascript', { 'for': 'JavaScript' }
+Plug 'posva/vim-vue', { 'for': 'vue' }
+Plug 'mustache/vim-mustache-handlebars', { 'for': 'hbs' }
 
 " Themes
-" Plug 'tomasr/molokai'
 Plug 'mhartington/oceanic-next'
-" Plug 'nanotech/jellybeans.vim'
-" Plug 'chriskempson/base16-vim'
 call plug#end()
 
 " ==============================================================================
@@ -197,6 +191,9 @@ endfunction
 
 exe 'hi! myInfoColor ctermbg=240 ctermfg=252'
 
+" Override indention syntax
+let g:terraform_align=1
+
 " start building our statusline
 set statusline=
 
@@ -337,7 +334,7 @@ let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_autosave = 1
 
 let g:go_modifytags_transform = 'camelcase'
-let g:go_fold_enable = []
+let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
 let g:go_auto_type_info = 1
 set updatetime=100
 
