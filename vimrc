@@ -17,7 +17,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'hashivim/vim-terraform'
+" Plug 'hashivim/vim-terraform'
 
 " Syntax highlighting
 Plug 'elzr/vim-json', {'for' : 'json'}
