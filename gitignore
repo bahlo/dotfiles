@@ -2,3 +2,7 @@
 .autoenv.zsh
 *.sublime-project
 .idea
+.vscode
+GPATH
+GRTAGS
+GTAGS

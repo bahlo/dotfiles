@@ -1,8 +1,0 @@
-snippet mm "mock method"
-// ${3:name} ${4:...}
-func (${1:receiver} *${2:type}) $3(${5:args}) ${6:error} {
-	args := m.Called(${7:args})
-	return $8${9:args.Error(${10:0})}
-}
-endsnippet
-

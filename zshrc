@@ -33,7 +33,8 @@ alias gco="git checkout"
 alias gcob="git checkout -b"
 alias gp="git push"
 alias gd="git diff --stat --patch"
-alias gca="git add . && git commit -S -v"
+alias gca="git add . && git commit -v"
+alias gcas="git add . && git commit -S -v"
 alias gc="git commit -S -v"
 alias gri="git rebase -i"
 alias gl="git log --graph --format='%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(blue)%an %Creset'"
@@ -46,6 +47,7 @@ function gpsu() {
 alias ga="git add"
 alias gst="git add . && git stash"
 alias gstp="git stash pop"
+alias gra="git remote add origin"
 
 # Yarn
 alias ys="yarn start"
@@ -66,6 +68,9 @@ alias tfa="terraform apply"
 
 # Functions 
 function mkd() { mkdir -p $1 && cd $1 }
+function fb() {
+	cd "/Users/arnebahlo/Developer/Fastbill/$1"
+}
 
 # Prompt
 autoload -U colors && colors
