@@ -67,6 +67,9 @@ endif
 " Golang autocompletion
 " go get -u github.com/mdempsky/gocode
 Plug 'deoplete-plugins/deoplete-go'
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 " Colorscheme configuration
@@ -285,8 +288,13 @@ let g:tagbar_type_go = {
   \ 'ctagsargs' : '-sort -silent'
 \ }
 
-" deoplete
+" deoplete configuration
 let g:deoplete#enable_at_startup = 1
 set completeopt+=noselect
+
+" Ultisnips configuration
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " vim: sw=2 sw=2 et
