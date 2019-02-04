@@ -46,6 +46,14 @@ Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdtree'
 " Outline viewer
 Plug 'majutsushi/tagbar'
+" Autocompletion (deoplete)
+" NOTE: This needs the following packages
+" go get -u github.com/mdempsky/gocode
+" pip3 install pynvim
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 call plug#end()
 
 " Colorscheme configuration
@@ -263,5 +271,8 @@ let g:tagbar_type_go = {
   \ 'ctagsbin'  : 'gotags',
   \ 'ctagsargs' : '-sort -silent'
 \ }
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
 " vim: sw=2 sw=2 et
