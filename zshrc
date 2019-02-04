@@ -158,5 +158,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # NOTE: This has to be at the end
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+alias vim="nvim"
+
 # Import .localrc
 [ -r ~/.localrc ] && source ~/.localrc

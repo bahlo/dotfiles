@@ -47,13 +47,15 @@ Plug 'scrooloose/nerdtree'
 " Outline viewer
 Plug 'majutsushi/tagbar'
 " Autocompletion (deoplete)
-" NOTE: This needs the following packages
 " go get -u github.com/mdempsky/gocode
-" pip3 install pynvim
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  " pip3 install pynvim
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 call plug#end()
 
 " Colorscheme configuration

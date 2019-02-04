@@ -1,7 +1,7 @@
 all: links brew
 
 links:
-	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
+	[ -f ~/.config/nvim/init.vim ] || mkdir -p ~/.config/nvim && ln -s $(PWD)/init.vim ~/.config/nvim/init.vim
 	[ -f ~/.gitignore ] || ln -s $(PWD)/gitignore ~/.gitignore
 	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
 
