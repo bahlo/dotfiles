@@ -20,7 +20,7 @@ eval $(thefuck --alias ohno)
 bindkey -v
 
 # Exports
-export EDITOR=vim
+export EDITOR=nvim
 
 # General aliases
 alias l="exa -la --git --time-style=long-iso"

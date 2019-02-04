@@ -9,7 +9,7 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 " Automatically add closing quotes, parenthesis, brackets, etc.
 Plug 'Raimondi/delimitMate'
 " Provides a lot of IDE-like features for working with Go
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 " :Rg <string|pattern> to search with ripgrep
 Plug 'jremmen/vim-ripgrep'
 " Run gcc/gc to comment out or in
@@ -47,7 +47,6 @@ Plug 'scrooloose/nerdtree'
 " Outline viewer
 Plug 'majutsushi/tagbar'
 " Autocompletion (deoplete)
-" go get -u github.com/mdempsky/gocode
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -56,6 +55,18 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+" Debugging go
+if has('nvim')
+  Plug 'jodosha/vim-godebug', { 'for': 'go' }
+endif
+" Typescript autocompletion
+" npm -g install typescript
+if has('nvim')
+  Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'javascript' }
+endif
+" Golang autocompletion
+" go get -u github.com/mdempsky/gocode
+Plug 'deoplete-plugins/deoplete-go'
 call plug#end()
 
 " Colorscheme configuration
@@ -276,5 +287,6 @@ let g:tagbar_type_go = {
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+set completeopt+=noselect
 
 " vim: sw=2 sw=2 et
