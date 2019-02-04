@@ -17,3 +17,4 @@ ripgrep
 go-delve/delve/delve
 exa
 hub
+gotags

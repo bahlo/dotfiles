@@ -42,6 +42,10 @@ Plug 'maximbaz/lightline-ale'
 Plug 'joshdick/onedark.vim'
 " Align text
 Plug 'godlygeek/tabular'
+" File browser
+Plug 'scrooloose/nerdtree'
+" Outline viewer
+Plug 'majutsushi/tagbar'
 call plug#end()
 
 " Colorscheme configuration
@@ -223,6 +227,41 @@ let g:lightline = {
   \   'linter_errors': 'error',
   \   'linter_ok': 'left',
   \ }
+\ }
+
+" NERDTree configuration
+noremap <F5> :NERDTreeToggle<cr>
+let NERDTreeShowHidden=1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Tagbar
+nmap <F6> :TagbarToggle<CR>
+let g:tagbar_type_go = {
+  \ 'ctagstype' : 'go',
+  \ 'kinds'     : [
+    \ 'p:package',
+    \ 'i:imports:1',
+    \ 'c:constants',
+    \ 'v:variables',
+    \ 't:types',
+    \ 'n:interfaces',
+    \ 'w:fields',
+    \ 'e:embedded',
+    \ 'm:methods',
+    \ 'r:constructor',
+    \ 'f:functions'
+  \ ],
+  \ 'sro' : '.',
+  \ 'kind2scope' : {
+    \ 't' : 'ctype',
+    \ 'n' : 'ntype'
+  \ },
+  \ 'scope2kind' : {
+    \ 'ctype' : 't',
+    \ 'ntype' : 'n'
+  \ },
+  \ 'ctagsbin'  : 'gotags',
+  \ 'ctagsargs' : '-sort -silent'
 \ }
 
 " vim: sw=2 sw=2 et
