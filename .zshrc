@@ -1,76 +1,33 @@
-# My ZSH configuration
-# Part of this is based on https://github.com/fatih/dotfiles
-
-local HOMEBREW_PREFIX=$(brew --prefix)
-
-# Autocompletion
-fpath=(\
-	$HOMEBREW_PREFIX/share/zsh-completions \
-	$HOMEBREW_PREFIX/share/zsh/site-functions \
-	$fpath)
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-autoload -U compinit && compinit
-
-# Plugins
-source $HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-eval "$(jump shell)"
-eval $(thefuck --alias ohno)
-
 # Enable vi-mode
 bindkey -v
 
 # Exports
-export EDITOR=nvim
+export EDITOR=vim
+
+# Path
+export PATH=$HOME/go/bin:$PATH
 
 # General aliases
-alias l="exa -la --git --time-style=long-iso"
-alias ls="l"
+alias ls='exa'
+alias l='exa -la --git --time-style=long-iso'
 alias ..='cd ..'
+alias ...='cd .. && cd ..'
+alias ....='cd .. && cd .. && cd ..'
+function mkd() { mkdir -p $1 && cd $1 }
 
 # Git
-alias gs="git status -s"
-alias gco="git checkout"
-alias gcob="git checkout -b"
-alias gp="git push"
-alias gd="git diff --stat --patch"
-alias gca="git add . && git commit -v"
-alias gcas="git add . && git commit -S -v"
-alias gc="git commit -S -v"
-alias gri="git rebase -i"
-alias gl="git log --graph --format='%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(blue)%an %Creset'"
-alias gbm="git branch -m"
-function gpsu() {
-  branch=$(git symbolic-ref --short HEAD)
-  echo "git push --set-upstream origin $branch"
-  git push --set-upstream origin $branch
-}
-alias ga="git add"
-alias gst="git add . && git stash"
-alias gstp="git stash pop"
-alias gra="git remote add origin"
-
-# Yarn
-alias ys="yarn start"
-alias yd="yarn dev"
-alias yu="yarn unit"
-alias yuw="yarn unit-watch"
-alias yi="yarn install"
+alias git='hub'
+alias gco='git checkout'
+alias gcob='gco -b'
+alias gd='git diff --stat --patch'
+alias gca='git add . && git commit -v'
+alias gc='git commit -v'
+alias gl='git log --graph --format="%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(blue)%an %Creset"'
+alias gs='git status'
+alias gu='pull --rebase --autostash'
 
 # Docker
 alias dc="docker-compose"
-
-# PHP
-alias co="composer"
-
-# Terraform
-alias tf="terraform"
-alias tfa="terraform apply"
-
-# Functions 
-function mkd() { mkdir -p $1 && cd $1 }
-function fb() {
-	cd "/Users/arnebahlo/Developer/Fastbill/$1"
-}
 
 # Prompt
 autoload -U colors && colors
@@ -115,16 +72,9 @@ function parse_git_dirty() {
 # Keybindings
 bindkey "^[[2~" yank                    # Insert
 bindkey "^[[3~" delete-char             # Del
-bindkey "^[[5~" up-line-or-history      # PageUp
-bindkey "^[[6~" down-line-or-history    # PageDown
-bindkey "^[e"   expand-cmd-path         # C-e for expanding path of typed command.
 bindkey "^[[A"  up-line-or-search       # Up arrow for back-history-search.
 bindkey "^[[B"  down-line-or-search     # Down arrow for fwd-history-search.
 bindkey " "     magic-space             # Do history expansion on space.
-bindkey "^[[1~" beginning-of-line       # Pos1
-bindkey "^[[4~" end-of-line             # End
-bindkey "^[[1;3C" forward-word          # Alt+Right
-bindkey "^[[1;3D" backward-word         # Alt-Left
 
 # History
 if [ -z "$HISTFILE" ]; then
@@ -138,12 +88,12 @@ setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
 # ignore duplication command history list
-setopt hist_ignore_dups 
+setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 # share command history data
-setopt share_history 
+setopt share_history
 
 # Support colors in less
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -154,11 +104,20 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-# Enable syntax highlighting
-# NOTE: This has to be at the end
-source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Automatically source .env files
+autoload -U add-zsh-hook
+load-local-conf() {
+    if [[ -f .env && -r .env ]]; then
+        source .env
+    fi
+}
+add-zsh-hook chpwd load-local-conf
 
-alias vim="nvim"
+# Use thefuck
+eval $(thefuck --alias)
 
-# Import .localrc
-[ -r ~/.localrc ] && source ~/.localrc
+# Load plugins
+source <(antibody init)
+antibody bundle zsh-users/zsh-syntax-highlighting
+antibody bundle zsh-users/zsh-history-substring-search
+antibody bundle junegunn/fzf path:shell

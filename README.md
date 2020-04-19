@@ -8,6 +8,6 @@ My personal dotfiles
 # Clone this repository
 git clone git@github.com:bahlo/dotfiles.git ~/.dotfiles
 
-# Set everything up (overwrites existing)
+# Link dotfiles, brew install packages (macOS)
 cd ~/.dotfiles && make all
 ```
