@@ -24,7 +24,8 @@ alias gca='git add . && git commit -v'
 alias gc='git commit -v'
 alias gl='git log --graph --format="%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(blue)%an %Creset"'
 alias gs='git status'
-alias gu='pull --rebase --autostash'
+alias gu='git pull --rebase --autostash'
+alias gpum='git pull upstream master'
 
 # Docker
 alias dc="docker-compose"
@@ -76,6 +77,10 @@ bindkey "^[[A"  up-line-or-search       # Up arrow for back-history-search.
 bindkey "^[[B"  down-line-or-search     # Down arrow for fwd-history-search.
 bindkey " "     magic-space             # Do history expansion on space.
 
+# Load compdef
+autoload -Uz compinit
+compinit
+
 # History
 if [ -z "$HISTFILE" ]; then
     HISTFILE=$HOME/.zsh_history
@@ -121,3 +126,13 @@ source <(antibody init)
 antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-history-substring-search
 antibody bundle junegunn/fzf path:shell
+
+# Load autocompletion
+if command -v kubectl &> /dev/null; then
+	source <(kubectl completion zsh)
+fi
+
+# Load local settings
+if [[ -f .localrc ]]; then
+	source .localrc
+fi

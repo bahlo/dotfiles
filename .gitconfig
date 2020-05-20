@@ -9,9 +9,10 @@
   whitespace = trailing-space, space-before-tab
   quotepath  = false
   editor     = vim
+	excludesfile = ~/.gitignore
 
 [color]
   ui = auto
 
-[includeIf "gitdir:~/code/axiom"]
+[includeIf "gitdir:~/Developer/Axiom/"]
   path = .gitconfig-axiom
