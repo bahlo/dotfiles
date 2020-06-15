@@ -9,7 +9,7 @@
   whitespace = trailing-space, space-before-tab
   quotepath  = false
   editor     = vim
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 
 [color]
   ui = auto
