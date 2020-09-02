@@ -26,6 +26,7 @@ alias gl='git log --graph --format="%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(blu
 alias gs='git status'
 alias gu='git pull --rebase --autostash'
 alias gpum='git pull upstream master'
+alias gri="git rebase -i"
 
 # Docker
 alias dc="docker-compose"
@@ -35,7 +36,7 @@ autoload -U colors && colors
 setopt promptsubst
 
 local ret_status="%(?:%{$fg_bold[green]%}$:%{$fg_bold[red]%}$)"
-PROMPT='${ret_status} %{$fg[blue]%}%c%{$reset_color%} %{$fg[yellow]%}(${ZSH_KUBECTL_CONTEXT})%{$reset_color%} $(git_prompt_info)'
+PROMPT='${ret_status} %{$fg[blue]%}%c%{$reset_color%} %{$fg[yellow]%}($(kubectl config current-context))%{$reset_color%} $(git_prompt_info)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
@@ -126,7 +127,6 @@ source <(antibody init)
 antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-history-substring-search
 antibody bundle junegunn/fzf path:shell
-antibody bundle superbrothers/zsh-kubectl-prompt
 
 # Load autocompletion
 if command -v kubectl &> /dev/null; then

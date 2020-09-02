@@ -1,3 +1,4 @@
 .DS_STORE
 *.values.yml
 .idea
+local.conf
