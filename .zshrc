@@ -31,6 +31,9 @@ alias gri="git rebase -i"
 # Docker
 alias dc="docker-compose"
 
+# K8s
+alias ctx="kubectl config use-context"
+
 # Prompt
 autoload -U colors && colors
 setopt promptsubst

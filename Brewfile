@@ -1,10 +1,10 @@
-hub
-go
 fzf
-ripgrep
 thefuck
 jq
 httpie
 tmux
 exa
 getantibody/tap/antibody
+vim
+bat
+delta

@@ -1,21 +1,28 @@
-call plug#begin()
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'vim-airline/vim-airline'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
+call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'ervandew/supertab'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'Raimondi/delimitMate'
+Plug 'luochen1990/rainbow'
+Plug 'vim-syntastic/syntastic'
+Plug 'preservim/tagbar'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'ap/vim-buftabline'
+
+" Themes
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+
+" Langauges
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
-" Colorscheme configuration.
+" Color scheme
 set t_Co=256
 set termguicolors
 set background=dark
@@ -24,7 +31,7 @@ try
 catch
 endtry
 
-" Set relative numbers
+" Relative line numbers
 set number relativenumber
 
 " Remove search highlight
@@ -51,7 +58,7 @@ nnoremap N Nzzzv
 noremap <C-d> <C-d>zz
 noremap <C-u> <C-u>zz
 
-" Act like D and C
+" Make Y act like D and C
 nnoremap Y y$
 
 " Remap H and L (top, bottom of screen to left and right end of line)
@@ -61,31 +68,33 @@ nnoremap L $
 " Do not show stupid q: window
 map q: :q
 
-" Map <C-r> to fzf (like zsh)
-map <C-r> :Files<CR>
+" Enable tab navigation with C-H, C-L
+set hidden
+nnoremap <C-L> :bnext<CR>
+nnoremap <C-H> :bprev<CR>
 
-let g:fzf_preview_window = '' " Disable
+" Map <C-p> to fzf git-files
+map <C-p> :GFiles<CR>
 
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_array_whitespace_error = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_format_strings = 1
+" Enable rainbow brackets
+let g:rainbow_active = 1
 
-let g:delimitMate_expand_cr = 1
-let g:delimitMate_expand_space = 1
-let g:delimitMate_smart_quotes = 1
-let g:delimitMate_expand_inside_quotes = 0
-let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
+" Configure syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
-let g:SuperTabCrMapping = 0
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+" Configure NERDTree
+map <F5> :NERDTreeToggle<CR>
+" Close NERDTree if it's the last buffer open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-let g:lightline = { 'colorscheme': 'challenger_deep'}
+" Configure tagbar
+nmap <F6> :TagbarToggle<CR>
+
+" Rust configuration
+let g:rustfmt_autosave = 1 
