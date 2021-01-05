@@ -2,3 +2,5 @@
 *.values.yml
 .idea
 local.conf
+*.swp
+.env.private

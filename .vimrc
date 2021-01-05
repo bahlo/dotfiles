@@ -20,6 +20,7 @@ Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 " Langauges
 Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " Color scheme
@@ -98,3 +99,25 @@ nmap <F6> :TagbarToggle<CR>
 
 " Rust configuration
 let g:rustfmt_autosave = 1 
+
+" Go configuration
+let g:go_fmt_autosave = 1
+let g:go_fmt_options = {
+  \ 'gofmt': '-s',
+  \ 'goimports': '-local axicode.axiom.co',
+  \ }
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_chan_whitespace_error = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_space_tab_error = 1
+let g:go_highlight_trailing_whitespace_error = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
