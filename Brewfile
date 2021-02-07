@@ -8,3 +8,4 @@ getantibody/tap/antibody
 vim
 bat
 delta
+starship

@@ -25,3 +25,5 @@
 
 [includeIf "gitdir:~/Developer/Axiom/"]
   path = .gitconfig-axiom
+[pull]
+	rebase = true
