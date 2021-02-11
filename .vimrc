@@ -14,6 +14,14 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'ap/vim-buftabline'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'ervandew/supertab'
 
 " Themes
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
@@ -21,6 +29,7 @@ Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 " Langauges
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'lepture/vim-jinja'
 call plug#end()
 
 " Color scheme
@@ -69,6 +78,9 @@ nnoremap L $
 " Do not show stupid q: window
 map q: :q
 
+" Add column
+set colorcolumn=80
+
 " Enable tab navigation with C-H, C-L
 set hidden
 nnoremap <C-L> :bnext<CR>
@@ -100,7 +112,16 @@ nmap <F6> :TagbarToggle<CR>
 " Rust configuration
 let g:rustfmt_autosave = 1 
 
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+
+" Supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
 " Go configuration
+let g:syntastic_go_checkers = ['golint', 'govet', 'golangci-lint']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_fmt_autosave = 1
 let g:go_fmt_options = {
   \ 'gofmt': '-s',
@@ -121,3 +142,9 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
+
+" HTML
+autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
+
+" JSON
+autocmd FileType json setlocal shiftwidth=2 softtabstop=2 expandtab
