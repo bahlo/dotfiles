@@ -76,6 +76,10 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # Use thefuck
 eval $(thefuck --alias)
 
+# Use fd for fzf, ignore .gitignore
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # Load plugins
 source <(antibody init)
 antibody bundle zsh-users/zsh-syntax-highlighting

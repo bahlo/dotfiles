@@ -12,7 +12,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'preservim/tagbar'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ap/vim-buftabline'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -27,8 +27,8 @@ Plug 'ervandew/supertab'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 " Langauges
-Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 Plug 'lepture/vim-jinja'
 call plug#end()
 
@@ -87,7 +87,7 @@ nnoremap <C-L> :bnext<CR>
 nnoremap <C-H> :bprev<CR>
 
 " Map <C-p> to fzf git-files
-map <C-p> :GFiles<CR>
+map <C-p> :Files<CR>
 
 " Enable rainbow brackets
 let g:rainbow_active = 1
