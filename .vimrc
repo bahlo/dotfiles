@@ -1,4 +1,5 @@
 call plug#begin('~/.vim/plugged')
+" Passive plugins (i.e. always enabled)
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -10,10 +11,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'luochen1990/rainbow'
 Plug 'vim-syntastic/syntastic'
 Plug 'preservim/tagbar'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ap/vim-buftabline'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -22,11 +19,17 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'ervandew/supertab'
+Plug 'ap/vim-buftabline'
+
+" Plugins that are loaded on command
+Plug 'junegunn/fzf', { 'on': 'Files' }
+Plug 'junegunn/fzf.vim', { 'on': 'Files' }
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Themes
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
-" Langauges
+" Plugins that are loaded for languages
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 Plug 'lepture/vim-jinja'
