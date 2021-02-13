@@ -9,3 +9,4 @@ vim
 bat
 delta
 starship
+fd

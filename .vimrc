@@ -1,5 +1,8 @@
+" These need to be configured before the plugin is loaded. They are disabled
+" because we have special plugins for them.
+let g:polyglot_disabled = ['golang', 'rust']
+
 call plug#begin('~/.vim/plugged')
-" Passive plugins (i.e. always enabled)
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -20,27 +23,30 @@ else
 endif
 Plug 'ervandew/supertab'
 Plug 'ap/vim-buftabline'
-
-" Plugins that are loaded on command
 Plug 'junegunn/fzf', { 'on': 'Files' }
 Plug 'junegunn/fzf.vim', { 'on': 'Files' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Themes
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+" Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'chriskempson/base16-vim'
+let base16colorspace=256 " Access colors present in 256 colorspace
 
-" Plugins that are loaded for languages
+" Polygot as fallback
+Plug 'sheerun/vim-polyglot'
+
+" Languages
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-Plug 'lepture/vim-jinja'
 call plug#end()
 
 " Color scheme
-set t_Co=256
 set termguicolors
-set background=dark
+" set background=dark
+set background=light
 try
-	colorscheme challenger_deep
+	"colorscheme challenger_deep
+	colorscheme base16-unikitty-light
 catch
 endtry
 
@@ -126,10 +132,11 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:syntastic_go_checkers = ['golint', 'govet', 'golangci-lint']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_fmt_autosave = 1
-let g:go_fmt_options = {
-  \ 'gofmt': '-s',
-  \ 'goimports': '-local axicode.axiom.co',
-  \ }
+let g:go_fmt_command = "goimports"
+autocmd FileType go let b:go_fmt_options = {
+    \ 'goimports': '-local ' .
+      \ trim(system('{cd '. shellescape(expand('%:h')) .' && go list -m;}')),
+      \ }
 let g:go_highlight_array_whitespace_error = 1
 let g:go_highlight_chan_whitespace_error = 1
 let g:go_highlight_extra_types = 1
