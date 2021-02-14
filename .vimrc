@@ -23,6 +23,9 @@ else
 endif
 Plug 'ervandew/supertab'
 Plug 'ap/vim-buftabline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'on': 'Files' }
 Plug 'junegunn/fzf.vim', { 'on': 'Files' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -45,8 +48,8 @@ set termguicolors
 " set background=dark
 set background=light
 try
-	"colorscheme challenger_deep
-	colorscheme base16-unikitty-light
+  "colorscheme challenger_deep
+  colorscheme base16-unikitty-light
 catch
 endtry
 
@@ -119,7 +122,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nmap <F6> :TagbarToggle<CR>
 
 " Rust configuration
-let g:rustfmt_autosave = 1 
+let g:rustfmt_autosave = 1
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -134,9 +137,9 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
 autocmd FileType go let b:go_fmt_options = {
-    \ 'goimports': '-local ' .
-      \ trim(system('{cd '. shellescape(expand('%:h')) .' && go list -m;}')),
-      \ }
+  \ 'goimports': '-local ' .
+  \ trim(system('{cd '. shellescape(expand('%:h')) .' && go list -m;}')),
+  \ }
 let g:go_auto_type_info = 1
 
 " Highlight _everything_
