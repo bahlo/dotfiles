@@ -22,7 +22,6 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'ervandew/supertab'
-Plug 'ap/vim-buftabline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -120,6 +119,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Configure tagbar
 nmap <F6> :TagbarToggle<CR>
+
+" Enable super tab line
+let g:airline#extensions#tabline#enabled = 1
 
 " Rust configuration
 let g:rustfmt_autosave = 1
