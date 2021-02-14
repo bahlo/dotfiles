@@ -137,6 +137,9 @@ autocmd FileType go let b:go_fmt_options = {
     \ 'goimports': '-local ' .
       \ trim(system('{cd '. shellescape(expand('%:h')) .' && go list -m;}')),
       \ }
+let g:go_auto_type_info = 1
+
+" Highlight _everything_
 let g:go_highlight_array_whitespace_error = 1
 let g:go_highlight_chan_whitespace_error = 1
 let g:go_highlight_extra_types = 1
