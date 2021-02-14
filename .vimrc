@@ -120,8 +120,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Configure tagbar
 nmap <F6> :TagbarToggle<CR>
 
-" Enable super tab line
+" Configure airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ''
 
 " Rust configuration
 let g:rustfmt_autosave = 1
