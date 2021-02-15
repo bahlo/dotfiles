@@ -112,20 +112,23 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Configure NERDTree
+" NERDTree
 map <F5> :NERDTreeToggle<CR>
 " Close NERDTree if it's the last buffer open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Configure tagbar
+" Fugitive
+command! -bang -bar -nargs=* Gca execute 'Git<bang> add . | Git<bang> commit -v'
+
+" Tagbar
 nmap <F6> :TagbarToggle<CR>
 
-" Configure airline
+" Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ''
 
-" Rust configuration
+" Rust
 let g:rustfmt_autosave = 1
 
 " Deoplete
