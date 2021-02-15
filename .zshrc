@@ -34,6 +34,9 @@ alias dc="docker-compose"
 # K8s
 alias ctx="kubectl config use-context"
 
+# Tmuxinator
+alias mux=tmuxinator
+
 # Keybindings
 bindkey "^[[2~" yank                    # Insert
 bindkey "^[[3~" delete-char             # Del

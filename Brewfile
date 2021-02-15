@@ -10,3 +10,4 @@ bat
 delta
 starship
 fd
+tmuxinator
