@@ -24,10 +24,14 @@ endif
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'on': 'Files' }
 Plug 'junegunn/fzf.vim', { 'on': 'Files' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+
+" Fugitive + addons
+Plug 'tpope/vim-fugitive'
+Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'tpope/vim-rhubarb'
 
 " Themes
 " Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
@@ -130,6 +134,9 @@ nmap <F6> :TagbarToggle<CR>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ''
+
+" fugitive-gitlab
+let g:fugitive_gitlab_domains = ['https://axicode.axiom.co']
 
 " Rust
 let g:rustfmt_autosave = 1
