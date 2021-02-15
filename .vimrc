@@ -22,14 +22,19 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'ervandew/supertab'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/fzf', { 'on': 'Files' }
-Plug 'junegunn/fzf.vim', { 'on': 'Files' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
+
+" Fzf
+Plug 'junegunn/fzf', { 'on': 'Files' }
+Plug 'junegunn/fzf.vim', { 'on': 'Files' }
+
+" Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
 
 " Fugitive + addons
 Plug 'tpope/vim-fugitive'
@@ -141,17 +146,16 @@ command! -bang -bar -nargs=* Gca execute 'Git<bang> add . | Git<bang> commit -v'
 command! -bang -bar -nargs=* Gco execute 'Git<bang> checkout' <q-args>
 command! -bang -bar -nargs=* Gcob execute 'Git<bang> checkout -b' <q-args>
 command! -bang -bar -nargs=* Gpsu execute 'Git<bang> push --set-upstream' <q-args>
+let g:fugitive_gitlab_domains = ['https://axicode.axiom.co']
 
 " Tagbar
 nmap <F6> :TagbarToggle<CR>
 
-" Airline
+" Airline + tmuxline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ''
-
-" fugitive-gitlab
-let g:fugitive_gitlab_domains = ['https://axicode.axiom.co']
+let g:tmuxline_powerline_separators = 0
 
 " Rust
 let g:rustfmt_autosave = 1
