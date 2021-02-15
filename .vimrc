@@ -127,6 +127,7 @@ let g:syntastic_check_on_wq = 0
 
 " NERDTree
 let g:NERDTreeMinimalUI=1
+let g:NERDTreeShowHidden=1
 map <F5> :NERDTreeToggle<CR>
 " Close NERDTree if it's the last buffer open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
