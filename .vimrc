@@ -27,6 +27,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'on': 'Files' }
 Plug 'junegunn/fzf.vim', { 'on': 'Files' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/vim-easy-align'
 
 " Fugitive + addons
 Plug 'tpope/vim-fugitive'
@@ -58,6 +60,13 @@ endtry
 
 " Relative line numbers
 set number relativenumber
+
+" Set map leader
+let mapleader = ','
+
+" EasyAlign (vip<Enter>= or gaip=)
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " Remove search highlight
 nnoremap <leader><space> :nohlsearch<CR>
@@ -117,6 +126,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " NERDTree
+let g:NERDTreeMinimalUI=1
 map <F5> :NERDTreeToggle<CR>
 " Close NERDTree if it's the last buffer open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
