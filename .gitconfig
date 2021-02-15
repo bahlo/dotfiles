@@ -16,6 +16,7 @@
 
 [alias]
   wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+  l = log --graph --format='%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(blue)%an %Creset'
 
 [filter "lfs"]
   clean = git-lfs clean -- %f

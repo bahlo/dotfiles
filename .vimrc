@@ -118,7 +118,9 @@ map <F5> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Fugitive
-command! -bang -bar -nargs=* Gca execute 'Git<bang> add . | Git<bang> commit -v'
+command! -bang -bar -nargs=* Gca execute 'Git<bang> add . | Git<bang> commit -v' <q-args>
+command! -bang -bar -nargs=* Gco execute 'Git<bang> checkout' <q-args>
+command! -bang -bar -nargs=* Gcob execute 'Git<bang> checkout -b' <q-args>
 
 " Tagbar
 nmap <F6> :TagbarToggle<CR>
