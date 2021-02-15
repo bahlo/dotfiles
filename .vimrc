@@ -67,6 +67,9 @@ endtry
 " Relative line numbers
 set number relativenumber
 
+" Use system clipboard
+set clipboard=unnamed
+
 " Set map leader
 let mapleader = ','
 
@@ -146,6 +149,7 @@ command! -bang -bar -nargs=* Gca execute 'Git<bang> add . | Git<bang> commit -v'
 command! -bang -bar -nargs=* Gco execute 'Git<bang> checkout' <q-args>
 command! -bang -bar -nargs=* Gcob execute 'Git<bang> checkout -b' <q-args>
 command! -bang -bar -nargs=* Gpsu execute 'Git<bang> push --set-upstream' <q-args>
+command! -bang -bar -nargs=* Gri execute 'Git<bang> rebase -i' <q-args>
 let g:fugitive_gitlab_domains = ['https://axicode.axiom.co']
 
 " Tagbar
