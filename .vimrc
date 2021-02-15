@@ -121,6 +121,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 command! -bang -bar -nargs=* Gca execute 'Git<bang> add . | Git<bang> commit -v' <q-args>
 command! -bang -bar -nargs=* Gco execute 'Git<bang> checkout' <q-args>
 command! -bang -bar -nargs=* Gcob execute 'Git<bang> checkout -b' <q-args>
+command! -bang -bar -nargs=* Gpsu execute 'Git<bang> push --set-upstream' <q-args>
 
 " Tagbar
 nmap <F6> :TagbarToggle<CR>
