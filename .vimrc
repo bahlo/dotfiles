@@ -177,6 +177,7 @@ autocmd FileType go let b:go_fmt_options = {
   \ trim(system('{cd '. shellescape(expand('%:h')) .' && go list -m;}')),
   \ }
 let g:go_auto_type_info = 1
+let g:go_build_tags = 'integration,debug'
 
 " Highlight _everything_
 let g:go_highlight_array_whitespace_error = 1
