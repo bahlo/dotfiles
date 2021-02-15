@@ -27,6 +27,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'on': 'Files' }
 Plug 'junegunn/fzf.vim', { 'on': 'Files' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
 
@@ -70,6 +71,9 @@ nmap ga <Plug>(EasyAlign)
 
 " Remove search highlight
 nnoremap <leader><space> :nohlsearch<CR>
+
+" Undotree
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " Better split switching
 map <C-j> <C-W>j
