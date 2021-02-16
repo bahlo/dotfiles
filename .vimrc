@@ -119,6 +119,9 @@ set hidden
 nnoremap <C-L> :bnext<CR>
 nnoremap <C-H> :bprev<CR>
 
+" Close all other buffers
+command! BufOnly silent! execute "%bd|e#|bd#"
+
 " Map <C-p> to fzf git-files
 map <C-p> :Files<CR>
 
@@ -138,8 +141,6 @@ let g:syntastic_check_on_wq = 0
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeShowHidden=1
 map <F5> :NERDTreeToggle<CR>
-" Close NERDTree if it's the last buffer open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Fugitive
 command! -bang -bar -nargs=* Gca execute 'Git<bang> add . | Git<bang> commit -v' <q-args>
