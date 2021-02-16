@@ -23,10 +23,11 @@ behaviour for iTerm, do the following:
 1. Install [Base16 Unikitty Light] and [Base16 Unikitty Dark]
 2. Name your default profile `Light` and set the Unikitty Light color preset
 3. Duplicate the profile, name it `Dark` and set the Unikitty Dark color preset
-4. In iTerm2 go to Menubar → Scripts → Manage → New Python Script
-5. Choose `Basic` environment and `Long-Runing Deamon`
-6. Copy the contents of [iterm_profile_switch.py](/iterm_profile_switch.py) into
-   the iTerm script and run it
+3. Copy the [iterm_profile_switch.py](/iterm_profile_switch.py) to the 
+   `AutoLaunch` folder and restart iTerm:
+```sh
+cp iterm_profile_switch.py $HOME/Library/ApplicationSupport/iTerm2/Scripts/AutoLaunch/
+```
 
 iTerm will now set the color preset based on the macOS system appearance.
 
