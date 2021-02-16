@@ -27,6 +27,7 @@ alias gs='git status'
 alias gu='git pull --rebase --autostash'
 alias gpum='git pull upstream master'
 alias gri="git rebase -i"
+alias gpsu='git push --set-upstream:'
 
 # Docker
 alias dc="docker-compose"
