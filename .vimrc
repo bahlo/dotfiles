@@ -42,7 +42,6 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tpope/vim-rhubarb'
 
 " Themes
-" Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'chriskempson/base16-vim'
 let base16colorspace=256 " Access colors present in 256 colorspace
 
@@ -56,13 +55,11 @@ call plug#end()
 
 " Color scheme
 set termguicolors
-" set background=dark
+
+" Color scheme defaults to light version but is overwritten in SetAppearance
+" at the end
 set background=light
-try
-  "colorscheme challenger_deep
-  colorscheme base16-unikitty-light
-catch
-endtry
+colorscheme base16-unikitty-light
 
 " Relative line numbers
 set number relativenumber
@@ -205,3 +202,27 @@ autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
 
 " JSON
 autocmd FileType json setlocal shiftwidth=2 softtabstop=2 expandtab
+
+" Automatically switch light/dark background + theme
+function! SetAppearance(...)
+  try
+    let s:mode = systemlist("defaults read -g AppleInterfaceStyle")[0]
+    let s:new_bg = ""
+    let s:new_theme = ""
+    if s:mode ==? "Dark"
+      let s:new_bg = "dark"
+      let s:new_theme = "base16-unikitty-dark"
+    else
+      let s:new_bg = "light"
+      let s:new_theme = "base16-unikitty-light"
+    endif
+    if &background !=? s:new_bg
+      let &background = s:new_bg
+      execute 'colorscheme '.s:new_theme
+    endif
+  catch
+    " Ignore errors
+  endtry
+endfunction
+call SetAppearance()
+call timer_start(1000, "SetAppearance", {"repeat": -1})
