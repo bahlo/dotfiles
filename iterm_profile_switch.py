@@ -32,7 +32,7 @@ async def set_profile(connection):
 async def main(connection):
     await set_profile(connection)
     while True:
-        time.sleep(1)
+        time.sleep(2)
         await set_profile(connection)
 
 iterm2.run_forever(main)

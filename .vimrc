@@ -225,4 +225,4 @@ function! SetAppearance(...)
   endtry
 endfunction
 call SetAppearance()
-call timer_start(1000, "SetAppearance", {"repeat": -1})
+call timer_start(2000, "SetAppearance", {"repeat": -1})
