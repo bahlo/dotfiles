@@ -13,19 +13,19 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Raimondi/delimitMate'
 Plug 'luochen1990/rainbow'
 Plug 'vim-syntastic/syntastic'
-Plug 'preservim/tagbar'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'preservim/tagbar', { 'on': 'TagbarToggle' }
 Plug 'ervandew/supertab'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
+Plug 'chrisbra/matchit'
+Plug 'mg979/vim-visual-multi'
+
+" Deoplete
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
 " Fzf
 Plug 'junegunn/fzf', { 'on': 'Files' }
@@ -43,7 +43,6 @@ Plug 'tpope/vim-rhubarb'
 
 " Themes
 Plug 'chriskempson/base16-vim'
-let base16colorspace=256 " Access colors present in 256 colorspace
 
 " Polygot as fallback
 Plug 'sheerun/vim-polyglot'
@@ -55,6 +54,7 @@ call plug#end()
 
 " Color scheme
 set termguicolors
+let base16colorspace=256 " Access colors present in 256 colorspace
 
 " Color scheme defaults to light version but is overwritten in SetAppearance
 " at the end
@@ -122,8 +122,9 @@ nnoremap <C-H> :bprev<CR>
 " Close all other buffers
 command! BufOnly silent! execute "%bd|e#|bd#"
 
-" Map <C-p> to fzf git-files
+" fzf
 map <C-p> :Files<CR>
+let g:fzf_preview_window = []
 
 " Enable rainbow brackets
 let g:rainbow_active = 1
