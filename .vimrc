@@ -12,7 +12,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Raimondi/delimitMate'
 Plug 'luochen1990/rainbow'
-Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'preservim/tagbar', { 'on': 'TagbarToggle' }
 Plug 'ervandew/supertab'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -129,14 +129,12 @@ let g:fzf_preview_window = []
 " Enable rainbow brackets
 let g:rainbow_active = 1
 
-" Configure syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" Configure ALE
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:ale_linters = {
+\  'go': ['gofmt', 'golint', 'govet', 'gopls'],
+\}
 
 " NERDTree
 let g:NERDTreeMinimalUI=1
