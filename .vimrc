@@ -132,8 +132,9 @@ let g:rainbow_active = 1
 " Configure ALE
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" \  'go': ['gofmt', 'golint', 'govet', 'gopls', 'golangci-lint'],
 let g:ale_linters = {
-\  'go': ['gofmt', 'golint', 'govet', 'gopls'],
+\  'go': ['golangci-lint'],
 \}
 
 " NERDTree

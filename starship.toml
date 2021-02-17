@@ -1,0 +1,21 @@
+add_newline = false
+
+[aws]
+disabled=true
+
+[php]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[kubernetes]
+symbol = "⛵ "
+disabled = false
+
+[line_break]
+disabled = true
+
+[character]
+symbol = "➜"
+
