@@ -11,3 +11,4 @@ delta
 starship
 fd
 tmuxinator
+starship

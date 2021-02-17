@@ -1,4 +1,4 @@
-all: link-vimrc link-zshrc link-tmuxconf link-gitconfig brew
+all: link-vimrc link-zshrc link-tmuxconf link-gitconfig brew link-starship
 
 link-zshrc:
 	[ -f ~/.zshrc ] || ln -s $(PWD)/.zshrc ~/.zshrc
