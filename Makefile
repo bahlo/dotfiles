@@ -6,6 +6,9 @@ link-zshrc:
 link-vimrc:
 	[ -f ~/.vimrc ] || ln -s $(PWD)/.vimrc ~/.vimrc
 
+link-doom:
+	[ -d ~/.doom.d ] || ln -s $(PWD)/.doom.d ~/.doom.d
+
 link-tmuxconf:
 	[ -f ~/.tmux.conf ] || ln -s $(PWD)/.tmux.conf ~/.tmux.conf
 
@@ -20,4 +23,4 @@ brew:
 	cat Brewfile | xargs -n1 brew install
 	brew install --HEAD universal-ctags/universal-ctags/universal-ctags # No formula
 
-.PHONY: all link-zshrc link-vimrc link-tmuxconf link-gitconfig brew link-starship
+.PHONY: all link-zshrc link-vimrc link-emacs link-tmuxconf link-gitconfig brew link-starship
