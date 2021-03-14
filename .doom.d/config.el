@@ -1,7 +1,7 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 (setq doom-theme 'doom-one-light)
-(setq doom-font (font-spec :family "Iosevka" :size 15 :weight 'regular))
+(setq doom-font (font-spec :family "Fira Code" :size 15 :weight 'regular))
 
 (setq org-directory "~/org/")
 (setq org-agenda-files '("~/org"))
