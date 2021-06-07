@@ -30,7 +30,7 @@ alias gri="git rebase -i"
 alias gpsu='git push --set-upstream:'
 
 # Docker
-alias dc="docker-compose"
+alias dc="docker compose"
 
 # K8s
 alias ctx="kubectl config use-context"

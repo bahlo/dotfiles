@@ -135,6 +135,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " \  'go': ['gofmt', 'golint', 'govet', 'gopls', 'golangci-lint'],
 let g:ale_linters = {
 \  'go': ['golangci-lint'],
+\  'rust': ['analyzer'],
 \}
 
 " NERDTree

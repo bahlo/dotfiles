@@ -1,6 +1,6 @@
 [user]
   name = Arne Bahlo
-  email = hallo@arne.me
+  email = hey@arne.me
 
 [apply]
   whitespace = fix
@@ -28,3 +28,5 @@
   path = .gitconfig-axiom
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
