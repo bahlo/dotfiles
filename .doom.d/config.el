@@ -38,3 +38,26 @@
 (map! :leader
       :desc "org-insert-link-dwim"
       "m l l" #'ab/org-insert-link-dwim)
+
+; Based on http://sodaware.sdf.org/notes/emacs-darkmode-theme-switch/
+(setq last-dark-mode-state 'unknown)
+
+(defun check-and-set-dark-mode ()
+  "Automatically set the theme to match if macOS is in dark mode."
+  (let ((dark-mode-enabled (system-dark-mode-enabled-p)))
+    (if (not (eq dark-mode-enabled last-dark-mode-state))
+        (progn
+          (setq last-dark-mode-state dark-mode-enabled)
+          (if dark-mode-enabled
+            (load-theme 'doom-one       t)
+            (load-theme 'doom-one-light t))))))
+
+(defun system-dark-mode-enabled-p ()
+  "Check if dark mode is currently enabled on macOS."
+  (if (string= system-type "darwin")
+      (string=
+       (shell-command-to-string "printf %s \"$( osascript -e \'tell application \"System Events\" to tell appearance preferences to return dark mode\' )\"")
+       "true")
+      nil))
+
+(run-with-timer 0 2 'check-and-set-dark-mode)
