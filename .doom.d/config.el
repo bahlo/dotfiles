@@ -5,7 +5,11 @@
 
 (setq org-roam-directory "~/Developer/GitHub/knowledge")
 
-(setq mac-right-option-modifier nil) ;; Enable right alt-key for special chars
+;; Map meta to command
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
 
 (setq display-line-numbers-type 'relative)
 
