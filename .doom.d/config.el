@@ -11,6 +11,11 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 
+;; Make s behhave like Vim
+;; https://github.com/hlissner/doom-emacs/issues/1642#issuecomment-518711170
+(after! evil-snipe
+  (evil-snipe-mode -1))
+
 (setq display-line-numbers-type 'relative)
 
 (defun ab/org-insert-link-dwim ()
