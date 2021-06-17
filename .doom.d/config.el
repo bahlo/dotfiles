@@ -5,10 +5,10 @@
 
 (setq org-roam-directory "~/Developer/GitHub/knowledge")
 
-;; Map meta to command
+;; Remove meta mapping
 (setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
+; (setq mac-command-key-is-meta t)
+; (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 
 ;; Make s behhave like Vim
