@@ -4,18 +4,14 @@ bindkey -v
 # Exports
 export EDITOR=vim
 
-# Path
-export PATH=$HOME/go/bin:$PATH
-
-# General aliases
+# Navigational aliases
 alias ls='exa'
 alias l='exa -la --git --time-style=long-iso'
 alias ..='cd ..'
 alias ...='cd .. && cd ..'
 alias ....='cd .. && cd .. && cd ..'
-function mkd() { mkdir -p $1 && cd $1 }
 
-# Git
+# Git aliases
 alias git='hub'
 alias gco='git checkout'
 alias gcob='gco -b'
@@ -35,9 +31,6 @@ alias dc="docker compose"
 # K8s
 alias ctx="kubectl config use-context"
 
-# Tmuxinator
-alias mux=tmuxinator
-
 # Keybindings
 bindkey "^[[2~" yank                    # Insert
 bindkey "^[[3~" delete-char             # Del
@@ -49,53 +42,26 @@ bindkey " "     magic-space             # Do history expansion on space.
 autoload -Uz compinit
 compinit
 
-# History
-if [ -z "$HISTFILE" ]; then
-    HISTFILE=$HOME/.zsh_history
-fi
-
-HISTSIZE=1000000
-SAVEHIST=1000000
-
-setopt append_history
-setopt extended_history
-setopt hist_expire_dups_first
-# ignore duplication command history list
-setopt hist_ignore_dups
-setopt hist_ignore_space
-setopt hist_verify
-setopt inc_append_history
-# share command history data
-setopt share_history
-
-# Support colors in less
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
-
 # Use thefuck
 eval $(thefuck --alias)
 
-# Use fd for fzf, ignore .gitignore
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Load starship
+eval "$(starship init zsh)"
 
-# Load plugins
-source <(antibody init)
-antibody bundle zsh-users/zsh-syntax-highlighting
-antibody bundle zsh-users/zsh-history-substring-search
-antibody bundle junegunn/fzf path:shell
+# Load and configure mcfly
+eval "$(mcfly init zsh)"
+export MCFLY_KEY_SCHEME=vim
 
 # Load kubectl autocompletion
 if command -v kubectl &> /dev/null; then
 	source <(kubectl completion zsh)
 fi
 
-eval "$(starship init zsh)"
+# Load plugins
+source <(antibody init)
+antibody bundle zsh-users/zsh-syntax-highlighting
+antibody bundle zsh-users/zsh-history-substring-search
+antibody bundle zsh-users/zsh-autosuggestions
 
 # Load local settings
 if [[ -f .localrc ]]; then
