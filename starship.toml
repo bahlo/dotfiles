@@ -17,5 +17,5 @@ disabled = false
 disabled = true
 
 [character]
-symbol = "➜"
+success_symbol = "[➜](bold green)"
 
