@@ -10,5 +10,9 @@ for AUTHOR in $AUTHORS[@]; do
   MESSAGE="${MESSAGE}Co-authored-by: ${AUTHOR}\n"
 done
 
-git $1 -t <(echo -e ${MESSAGE})
+if [[ "$1" == "-m" ]]; then
+  git commit -m "$2$(echo -e ${MESSAGE})"
+else 
+  git commit $@ -t <(echo -e ${MESSAGE})
+fi
 

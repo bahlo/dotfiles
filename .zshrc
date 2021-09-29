@@ -77,7 +77,7 @@ antibody bundle zsh-users/zsh-autosuggestions
 
 # Load functions
 fpath+=~/.dotfiles/zshfunctions
-autoload git-co-author
+autoload git-commit-co-author
 
 # Load local settings
 if [[ -f .localrc ]]; then

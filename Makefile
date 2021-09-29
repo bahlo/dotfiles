@@ -6,6 +6,10 @@ link-zshrc:
 link-vimrc:
 	[ -f ~/.vimrc ] || ln -s $(PWD)/.vimrc ~/.vimrc
 
+link-init.vim:
+	mkdir -p ~/.config/nvim
+	[ -f ~/.config/nvim/init.vim ] || ln -s $(PWD)/init.vim ~/.config/nvim/init.vim
+
 link-doom:
 	[ -d ~/.doom.d ] || ln -s $(PWD)/.doom.d ~/.doom.d
 
