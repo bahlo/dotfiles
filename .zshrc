@@ -20,7 +20,9 @@ alias gco='git checkout'
 alias gcob='gco -b'
 alias gd='git diff --stat --patch'
 alias gca='git add . && git commit -v'
+alias gcap='git add . && git-co-author commit -v'
 alias gc='git commit -v'
+alias gcp='git-co-author commit -v'
 alias gl='git l'
 alias gs='git status'
 alias gu='git pull --rebase --autostash'
@@ -72,6 +74,10 @@ source <(antibody init)
 antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-history-substring-search
 antibody bundle zsh-users/zsh-autosuggestions
+
+# Load functions
+fpath+=~/.dotfiles/zshfunctions
+autoload git-co-author
 
 # Load local settings
 if [[ -f .localrc ]]; then
