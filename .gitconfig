@@ -1,6 +1,7 @@
 [user]
   name = Arne Bahlo
   email = hey@arne.me
+	signingKey = C6C4BA42
 
 [apply]
   whitespace = fix
@@ -23,10 +24,17 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
-
-[includeIf "gitdir:~/Developer/Axiom/"]
-  path = .gitconfig-axiom
 [pull]
 	rebase = true
 [init]
 	defaultBranch = main
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg2
+
+[includeIf "gitdir:~/Developer/Axiom/"]
+  path = .gitconfig-axiom
+
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/

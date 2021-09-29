@@ -71,7 +71,8 @@
    "SPC" 'find-file
    "b" '(:ignore t :which-key "buffer")
    "g" '(:ignore t :which-key "git") ; Keybindings defined in magit
-   "o" '(:ignore t :which-key "org")
+   "n" '(:ignore t :which-key "notes")
+   "p" '(:ignore t :which-key "project")
   ))
 
 (use-package evil
@@ -118,9 +119,24 @@
 (use-package magit
   :general
   (ab/leader-keys
-    "g g" 'magit-status))
+    "g g" 'magit-status)
+  :custom
+    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-(use-package org)
+(use-package org
+  :init
+  (setq org-directory "~/NextCloud/Org"
+        org-default-notes-file "~/NextCloud/Org/todo.org"
+        org-agenda-files (list "~/NextCloud/Org"))
+  (setq org-src-preserve-indentation t) ;; do not put two spaces on the left
+  :config
+  (setq org-ellipsis " ▾"))
+
+(use-package org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
 ;; TODO:
 ;; * org + org-roam
@@ -160,7 +176,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-collection which-key projectile rainbow-delimiters magit doom-modeline doom-themes evil use-package)))
+   '(evil-org-mode evil-magit evil-collection which-key projectile rainbow-delimiters magit doom-modeline doom-themes evil use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

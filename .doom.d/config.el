@@ -1,9 +1,13 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 (setq doom-theme 'doom-one-light)
-(setq doom-font (font-spec :family "Iosevka" :size 15 :weight 'regular))
+(setq doom-font (font-spec :family "PragmataPro Mono Liga" :size 15 :weight 'regular))
 
+(setq org-directory "~/NextCloud/Org")
+(setq org-agenda-files (list org-directory))
 (setq org-roam-directory "~/Developer/GitHub/knowledge")
+(setq org-src-preserve-indentation t) ;; do not put two spaces on the left
+(setq org-ellipsis " ▾")
 
 ;; Remove meta mapping
 (setq mac-option-key-is-meta nil)
@@ -11,12 +15,25 @@
 ; (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 
-;; Make s behhave like Vim
+;; Make s behave like Vim
 ;; https://github.com/hlissner/doom-emacs/issues/1642#issuecomment-518711170
 (after! evil-snipe
   (evil-snipe-mode -1))
 
 (setq display-line-numbers-type 'relative)
+
+; Add ruler
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+(setq display-fill-column-indicator-column 80)
+
+; Neotree icons
+(after! doom-themes
+  (remove-hook 'doom-load-theme-hook #'doom-themes-neotree-config))
+(setq neo-theme 'icons)
+
+; Italic comments
+(custom-set-faces!
+  '(font-lock-comment-face :slant italic))
 
 (defun ab/org-insert-link-dwim ()
   "Like `org-insert-link' but with personal dwim preferences."

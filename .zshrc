@@ -1,3 +1,6 @@
+# Enable 256 colors
+[[ "$TERM" == "xterm" ]] && export TERM=xterm-256color
+
 # Enable vi-mode
 bindkey -v
 
@@ -23,13 +26,20 @@ alias gs='git status'
 alias gu='git pull --rebase --autostash'
 alias gpum='git pull upstream master'
 alias gri="git rebase -i"
-alias gpsu='git push --set-upstream:'
+
+alias kco='kubectl config use-context'
 
 # Docker
 alias dc="docker compose"
 
 # K8s
 alias ctx="kubectl config use-context"
+
+# Functions
+function gpsu() {
+	local branch=$(git rev-parse --abbrev-ref HEAD)
+	git push --set-upstream origin "$branch"
+}
 
 # Keybindings
 bindkey "^[[2~" yank                    # Insert

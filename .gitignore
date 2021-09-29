@@ -4,3 +4,5 @@
 local.conf
 *.swp
 .env.private
+.vscode
+__debug_bin
