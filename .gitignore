@@ -6,3 +6,5 @@ local.conf
 .env.private
 .vscode
 __debug_bin
+.direnv
+.envrc
