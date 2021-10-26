@@ -1,18 +1,21 @@
-#+TITLE: Arnes literate emacs config
+#+TITLE: Arnes literate Emacs config
 #+STARTUP: content
 
 * Introduction
 ** This file
-This file (~emacs.org~) is my literate emacs configuration. It's based on 
-[[https://www.lucacambiaghi.com/vanilla-emacs/readme.html][Lucases]].
+This is my literate emacs configuration. It's largley based on [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html][Lucas's]].
+
+** How to tangle
+Run the following command to generate the emacs-lisp code:
+#+begin_src shell
+emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "emacs.org")'
+#+end_src
 
 * early-init.el and init.el
 ** early-init.el
-Taken from DOOM's early init.
-
-#+BEGIN_SRC emacs-lisp :tangle early-init.el
+Taken from DOOM's early init
+#+begin_src emacs-lisp :tangle early-init.el
 ;;; early-init.el --- Early Init File -*- lexical-binding: t; no-byte-compile: t -*-
-;; NOTE: early-init.el is now generated from emacs.org.  Please edit that file instead.
 
 ;; Defer garbage collection further back in the startup process
 (setq gc-cons-threshold most-positive-fixnum
@@ -48,13 +51,12 @@ Taken from DOOM's early init.
 (setq comp-deferred-compilation nil)
 
 ;;; early-init.el ends here
-#+END_SRC
+#+end_src
 
 ** init.el: startup optimization
 Taken from DOOM's init
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+begin_src emacs-lisp :tangle init.el
 ;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
-;; NOTE: init.el is now generated from emacs.org.  Please edit that file instead.
 
 ;; `file-name-handler-alist' is consulted on every `require', `load' and various
 ;; path/io functions. You get a minor speed up by nooping this. However, this
@@ -79,60 +81,56 @@ Taken from DOOM's init
   )
 ;; Ensure Doom is running out of this file's directory
 (setq user-emacs-directory (file-truename (file-name-directory load-file-name)))
-#+END_SRC
-
-** init.el: load modules
-#+begin_src emacs-lisp :tangle init.el
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-
-(let ((file-name-handler-alist nil)
-      (gc-cons-threshold 100000000))
-  (require 'init-core)
-  (require 'init-extra)
-  )
-
-;;; init.el ends here
 #+end_src
 
 * Package manager
-:PROPERTIES:
-:header-args: :emacs-lisp :tangle ./lisp/init-core.el
-:END:
-** bootstrap straight and straight-use-package
-Some rules/conventions:
-- Prefer ~:init~ to ~:custom~. Prefer multiple ~setq~ expressions to one.
-- Default to ~:defer t~, use ~:demand~ to force loading
-- When packages do not require installation e.g. ~dired~, we need ~:straight (:type built-in)~ 
-- If you specify ~:commands~, they will be autoloaded and the package will be loaded when the commands are first executed
-    + If you use ~:general~ and bind commands to keys it will automatically load the package on first invokation
-
-NOTE: if you change a package recipe from ~melpa~ to ~github~ in a ~use-package~ block but
-that package is used as a dependency is used in a previous ~use-package~ block with a ~melpa~
-recipe, you will get a warning. Just make sure to declare the "base" package with the ~github~ recipe first.
-
-#+BEGIN_SRC emacs-lisp
-;; NOTE: init-core.el is now generated from emacs.org.  Please edit that file instead.
+#+begin_src emacs-lisp :tangle init.el
+;; Make =use-package= use straight by default
 (setq straight-use-package-by-default t)
+;; Minimal clones
 (setq straight-vc-git-default-clone-depth 1)
 (setq straight-recipes-gnu-elpa-use-mirror t)
+;; Optimize startup time by skipping the modifications check
 (setq straight-check-for-modifications nil)
+;; Always defer t
 (setq use-package-always-defer t)
+
+;; Taken from straight.el documentation
 (defvar bootstrap-version)
-(let* ((straight-repo-dir
-        (expand-file-name "straight/repos" user-emacs-directory))
-       (bootstrap-file
-        (concat straight-repo-dir "/straight.el/bootstrap.el"))
-       (bootstrap-version 5))
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
   (unless (file-exists-p bootstrap-file)
-    (shell-command
-     (concat
-      "mkdir -p " straight-repo-dir " && "
-      "git -C " straight-repo-dir " clone "
-      "https://github.com/raxod502/straight.el.git && "
-      "git -C " straight-repo-dir " checkout 2d407bc")))
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+
+;; Install use-package
 (straight-use-package 'use-package)
+
 ;; This is a variable that has been renamed but straight still refers when
-;; doing :sraight (:no-native-compile t)
+;; doing :straight (:no-native-compile t)
 (setq comp-deferred-compilation-black-list nil)
-#+END_SRC
+#+end_src
+
+* Future work
+
+** Roadmap
+*** TODO Install evil
+*** TODO Configure font
+*** TODO Install magit
+*** TODO Install bespoke-theme
+[[https://github.com/mclear-tools/bespoke-themes]]
+*** TODO Install bespoke-modeline
+[[https://github.com/mclear-tools/bespoke-modeline]]
+
+** Cool emacs configs
+- [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html]]
+- [[https://github.com/mclear-tools/dotemacs]]
+- [[https://github.com/Artawower/.doom]]
+- [[https://github.com/rougier/nano-emacs]]
+- [[https://github.com/natecox/dotfiles/blob/master/workspaces/shared/symlinks/emacs/.emacs.d/nathancox.org]]
