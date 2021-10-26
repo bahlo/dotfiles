@@ -4,13 +4,16 @@
 * Introduction
 ** This file
 This is my literate emacs configuration. It's largley based on [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html][Lucas's]].
-
 ** How to tangle
 Run the following command to generate the emacs-lisp code:
 #+begin_src shell
-emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "emacs.org")'
+emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "init.org")'
 #+end_src
 
+If you want to exclusively use this configuration, run emacs like this:
+#+begin_src shell
+emacs -Q --load init.el init.org
+#+end_src
 * early-init.el and init.el
 ** early-init.el
 Taken from DOOM's early init
@@ -52,7 +55,6 @@ Taken from DOOM's early init
 
 ;;; early-init.el ends here
 #+end_src
-
 ** init.el: startup optimization
 Taken from DOOM's init
 #+begin_src emacs-lisp :tangle init.el
@@ -75,14 +77,13 @@ Taken from DOOM's init
     (setq file-name-handler-alist doom--initial-file-name-handler-alist))
   (add-hook 'emacs-startup-hook #'doom-reset-file-handler-alist-h)
   (add-hook 'after-init-hook '(lambda ()
-                                 ;; restore after startup
-                                 (setq gc-cons-threshold 16777216
-                                       gc-cons-percentage 0.1)))
+                                ;; restore after startup
+                                (setq gc-cons-threshold 16777216
+                                      gc-cons-percentage 0.1)))
   )
 ;; Ensure Doom is running out of this file's directory
 (setq user-emacs-directory (file-truename (file-name-directory load-file-name)))
 #+end_src
-
 * Package manager
 #+begin_src emacs-lisp :tangle init.el
 ;; Make =use-package= use straight by default
@@ -116,15 +117,106 @@ Taken from DOOM's init
 ;; doing :straight (:no-native-compile t)
 (setq comp-deferred-compilation-black-list nil)
 #+end_src
+* Visuals
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle init.el
+:END:
+** Fonts
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
+
+  (defcustom ab/default-font-family "PragmataPro Mono Liga"
+    "Default font family"
+    :type 'string
+    :group 'ab)
+
+  (defcustom ab/variable-pitch-font-family "Inter"
+    "Variable pitch font family"
+    :type 'string
+    :group 'ab)
+
+  (defcustom ab/font-size 150
+    "Font size"
+    :type 'int
+    :group 'ab)
+
+  (set-face-attribute 'default nil :font ab/default-font-family :height ab/font-size)
+  (set-face-attribute 'fixed-pitch nil :font ab/default-font-family :height ab/font-size)
+  (set-face-attribute 'variable-pitch nil :font ab/variable-pitch-font-family :height ab/font-size :weight 'regular)
+  )
+#+end_src
+* Keybindings
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle init.el
+:END:
+** General
+#+begin_src emacs-lisp
+(use-package general
+  :demand t
+  :config
+  (general-evil-setup)
+
+  (general-create-definer ab/leader-keys
+    :states '(normal insert visual emacs)
+    :keymaps 'override
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+
+  (general-create-definer ab/local-leader-keys
+    :states '(normal visual)
+    :keymaps 'override
+    :prefix ","
+    :global-prefix "SPC m")
+
+  (ab/leader-keys
+   "SPC" '(execute-extended-command :which-key "execute command")
+
+   ";" '(eval-expression :which-key "eval sexp")
+
+   "b" '(:ignore t :which-key "buffer")
+   "bd"  'kill-current-buffer
+
+   "g" '(:ignore t :which-key "git") ;; magit
+
+   "o" '(:ignore t :which-key "org") ;; org-mode
+   )
+
+  (ab/local-leader-keys
+   :states 'normal
+   "d" '(:ignore t :which-key "debug")
+   "e" '(:ignore t :which-key "eval")
+   "t" '(:ignore t :which-key "test")))
+#+end_src
+** Evil
+#+begin_src emacs-lisp
+(use-package evil
+  :demand
+  :general
+  ;; Split windows like vim
+  (ab/leader-keys
+   "wv" 'evil-window-vsplit
+   "ws" 'evil-window-split)
+  :init
+
+  :config
+  (evil-mode 1)
+
+  ;; don't move cursor after ==
+  (defun ab/evil-dont-move-cursor (orig-fn &rest args)
+    (save-excursion (apply orig-fn args)))
+  (advice-add 'evil-indent :around #'ab/evil-dont-move-cursor)
+  )
+#+end_src
 
 * Future work
-
 ** Roadmap
-*** TODO Install evil
-*** TODO Configure font
-*** TODO Install magit
+*** DONE Install evil
+*** DONE Configure font
+*** TODO Configure basic settings
 *** TODO Install bespoke-theme
 [[https://github.com/mclear-tools/bespoke-themes]]
+*** TODO Install magit
 *** TODO Install bespoke-modeline
 [[https://github.com/mclear-tools/bespoke-modeline]]
 
