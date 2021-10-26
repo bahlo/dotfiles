@@ -16,8 +16,4 @@ link-tmuxconf:
 link-gitconfig:
 	[ -f ~/.gitconfig ] || ln -s $(PWD)/.gitconfig ~/.gitconfig
 
-brew: 
-	cat Brewfile | xargs -n1 brew install
-	brew install --HEAD universal-ctags/universal-ctags/universal-ctags # No formula
-
-.PHONY: all link-vimrc link-emacs link-tmuxconf link-gitconfig brew
+.PHONY: all link-vimrc link-emacs link-tmuxconf link-gitconfig

@@ -8,3 +8,4 @@ local.conf
 __debug_bin
 .direnv
 .envrc
+dedup

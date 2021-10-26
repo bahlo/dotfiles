@@ -3,7 +3,7 @@
 (setq doom-theme 'doom-one-light)
 (setq doom-font (font-spec :family "PragmataPro Mono Liga" :size 15 :weight 'regular))
 
-(setq org-directory "~/NextCloud/Org")
+(setq org-directory "~/Org")
 (setq org-agenda-files (list org-directory))
 (setq org-roam-directory "~/Developer/GitHub/knowledge")
 (setq org-src-preserve-indentation t) ;; do not put two spaces on the left

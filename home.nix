@@ -1,14 +1,5 @@
 { config, pkgs, libs, ... }:
 
-let
-  powerlevel10k = pkgs.fetchFromGitHub {
-    owner = "romkatv";
-    repo = "powerlevel10k";
-    rev = "v1.15.0";
-    sha256 = "1b3j2riainx3zz4irww72z0pb8l8ymnh1903zpsy5wmjgb0wkcwq";
-  };
-in
-
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -33,7 +24,17 @@ in
     pkgs.neovim
     pkgs.bat
     pkgs.hexyl
-    pkgs.gpg
+    pkgs.fzf
+    pkgs.tmux
+    pkgs.exa
+    pkgs.delta
+    pkgs.fd
+    pkgs.vim
+    pkgs.jq
+    pkgs.httpie
+    pkgs.upx
+    pkgs.binaryen
+    pkgs.wrangler
   ];
 
   # direnv
@@ -100,9 +101,26 @@ in
       nsh = "nix-shell";
     };
 
-    plugins = [{
-      name = "powerlevel10k";
-      src = powerlevel10k;
-    }];
+    plugins = [
+      {
+        name = "powerlevel10k";
+        src = pkgs.fetchFromGitHub {
+          owner = "romkatv";
+          repo = "powerlevel10k";
+          rev = "v1.15.0";
+          sha256 = "1b3j2riainx3zz4irww72z0pb8l8ymnh1903zpsy5wmjgb0wkcwq";
+        };
+      }
+      {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "chisui";
+          repo = "zsh-nix-shell";
+          rev = "v0.4.0";
+          sha256 = "037wz9fqmx0ngcwl9az55fgkipb745rymznxnssr3rx9irb6apzg";
+        };
+      }
+    ];
   };
 }

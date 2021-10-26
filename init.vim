@@ -30,10 +30,15 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-" Color scheme used in the GIFs!
-" Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-two-firewatch'
 
 call plug#end()
+
+" Configure theme
+set background=light
+let g:two_firewatch_italics=1
+colo two-firewatch
+" let g:airline_theme='twofirewatch' " if you have Airline installed and want the associated theme
 
 " Set completeopt to have a better completion experience
 " :help completeopt
