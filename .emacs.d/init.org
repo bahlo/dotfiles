@@ -12,7 +12,7 @@ brew install emacs-plus@28 --with-xwidgets --with-nobu417-big-sur-icon
 ** How to tangle
 Run the following command to generate the emacs-lisp code:
 #+begin_src shell
-emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "init.org")'
+	emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "init.org")'
 #+end_src
 
 If you want to exclusively use this configuration, run emacs like this:
@@ -482,6 +482,21 @@ Add evil-collection for evil magit and more.
   (evil-collection-init))
 #+end_src
 
+** which-key
+#+begin_src emacs-lisp
+	(use-package which-key
+		:demand t
+		:init
+		(setq which-key-separator " ")
+		(setq which-key-prefix-prefix "+")
+		;; (setq which-key-idle-delay 0.5)
+		:config
+		(which-key-mode))
+#+end_src
+* Packages
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle init.el
+:END:
 ** magit
 #+begin_src emacs-lisp
 (use-package magit
@@ -516,6 +531,32 @@ Add evil-collection for evil magit and more.
   )
 #+end_src
 
+** org-mode
+#+begin_src emacs-lisp
+	(use-package org
+		:hook ((org-mode . prettify-symbols-mode)
+					 (org-mode . visual-line-mode)
+					 (org-mode . variable-pitch-mode))
+		:init
+		;; general settings
+		(when (file-directory-p "~/org")
+			(setq org-directory "~/org"
+						org-default-notes-file "~/org/todo.org"
+						))  
+		;; disable modules for faster startup
+		(setq org-modules
+					'(ol-docview
+						org-habit))
+		)
+#+end_src
+** evil-nerd-commenter
+#+begin_src emacs-lisp
+	(use-package evil-nerd-commenter
+		:general
+		(general-nvmap
+			"gc" 'evilnc-comment-operator)
+		)
+#+end_src
 * Future work
 ** Roadmap
 *** DONE Install evil
@@ -524,10 +565,15 @@ Add evil-collection for evil magit and more.
 *** DONE Install bespoke-theme
 [[https://github.com/mclear-tools/bespoke-themes]]
 *** DONE Install magit
-*** TODO Add help on SPC
 *** DONE Install bespoke-modeline
 [[https://github.com/mclear-tools/bespoke-modeline]]
 
+*** DONE Add help on SPC
+*** TODO org-roam (cutom config for arnes notes)
+*** TODO Add ligature support
+*** TODO Rust mode
+*** TODO Fix agenda
+*** TODO Org mode heading glyphs
 ** Cool emacs configs
 - [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html]]
 - [[https://github.com/mclear-tools/dotemacs]]
