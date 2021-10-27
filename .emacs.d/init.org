@@ -117,6 +117,142 @@ Taken from DOOM's init
 ;; doing :straight (:no-native-compile t)
 (setq comp-deferred-compilation-black-list nil)
 #+end_src
+* Emacs
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle init.el
+:END:
+** Sane defaults
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
+
+  (setq inhibit-startup-screen t      ; Hide welcome screen
+        initial-scratch-message nil   ; Clear scratch message
+        sentence-end-double-space nil ; No . after double-space
+        ring-bell-function 'ignore    ; No bell
+        frame-resize-pixelwise t)     ; Resize frame pixelwise
+
+  (setq user-full-name "Arne Bahlo"
+        user-mail-address "hey@arne.me")
+
+  ;; Always allow 'y' instead of 'yes'.
+  (defalias 'yes-or-no-p 'y-or-n-p)
+
+  ;; Default to utf-8 for all the things
+  (set-charset-priority 'unicode)
+  (setq locale-coding-system 'utf-8
+        coding-system-for-read 'utf-8
+        coding-system-for-write 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (set-selection-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
+  (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+
+  ;; Write over selected text on input... like all modern editors do
+  (delete-selection-mode t)
+
+  ;; Enable recent files mode.
+  (recentf-mode t)
+  (setq recentf-exclude `(,(expand-file-name "straight/build/" user-emacs-directory)
+                          ,(expand-file-name "eln-cache/" user-emacs-directory)
+                          ,(expand-file-name "etc/" user-emacs-directory)
+                          ,(expand-file-name "var/" user-emacs-directory)))
+
+  ;; Don't want ESC as a modifier
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+  ;; Don't persist a custom file, this bites me more than it helps
+  (setq custom-file (make-temp-file "")) ; use a temp file as a placeholder
+  (setq custom-safe-themes t)            ; mark all themes as safe, since we can't persist now
+  (setq enable-local-variables :all)     ; fix =defvar= warnings
+
+  ;; Stop emacs from littering the file system with backup files
+  (setq make-backup-files nil
+        auto-save-default nil
+        create-lockfiles nil)
+
+  ;; Follow symlinks
+  (setq vc-follow-symlinks t)
+
+  ;; Don't show any extra window chrome
+  (when (window-system)
+    (tool-bar-mode -1)
+    (toggle-scroll-bar -1))
+
+  ;; Enable winner mode globally for undo/redo window layout changes
+  (winner-mode t)
+
+    (show-paren-mode t)
+
+  ;; Less noise when compiling elisp
+  (setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
+  (setq native-comp-async-report-warnings-errors nil)
+  (setq load-prefer-newer t)
+
+  ;; Clean up the mode line
+  (display-time-mode -1)
+  (setq column-number-mode t)
+
+  ;; Use common convention for indentation by default
+  (setq-default indent-tabs-mode t)
+  (setq-default tab-width 2)
+)
+#+end_src
+** macOS
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
+
+  (defun ab/is-macos? ()
+    (eq system-type 'darwin))
+
+  (when (ab/is-macos?)
+    (setq mac-command-modifier 'super)   ; command as super
+    (setq mac-option-modifier 'meta)     ; alt as meta
+    (setq mac-control-modifier 'control) ; control as control
+  )
+
+  ;; emacs-mac
+  (when (fboundp 'mac-auto-operator-composition-mode)
+      (mac-auto-operator-composition-mode) ; enables font ligatures
+      (global-set-key [(s c)] 'kill-ring-save)
+      (global-set-key [(s v)] 'yank)
+      (global-set-key [(s x)] 'kill-region)
+      (global-set-key [(s q)] 'kill-emacs)
+      )
+  )
+#+end_src
+** Garbage collector magic hack
+Stolen from DOOM
+#+begin_src emacs-lisp
+(use-package gcmh
+  :demand
+  :config
+  (gcmh-mode 1))
+#+end_src
+** Helpful
+#+begin_src emacs-lisp
+  (use-package helpful
+    :after evil
+    :init
+    (setq evil-lookup-func #'helpful-at-point)
+    :bind
+    ([remap describe-function] . helpful-callable)
+    ([remap describe-command] . helpful-command)
+    ([remap describe-variable] . helpful-variable)
+    ([remap describe-key] . helpful-key))
+#+end_src
+** No littering
+#+begin_src emacs-lisp
+(use-package no-littering
+  :demand
+  :config
+  (with-eval-after-load 'recentf
+    (add-to-list 'recentf-exclude no-littering-var-directory)
+    (add-to-list 'recentf-exclude no-littering-etc-directory))
+  )
+#+end_src
 * Visuals
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle init.el
