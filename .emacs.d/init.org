@@ -117,6 +117,15 @@ Taken from DOOM's init
 ;; doing :straight (:no-native-compile t)
 (setq comp-deferred-compilation-black-list nil)
 #+end_src
+* Debugging
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle init.el
+:END:
+** bug-hunter
+Find bugs in emacs configuration
+#+begin_src emacs-lisp
+(use-package bug-hunter)
+#+end_src
 * Emacs
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle init.el
@@ -282,6 +291,24 @@ Stolen from DOOM
   (set-face-attribute 'variable-pitch nil :font ab/variable-pitch-font-family :height ab/font-size :weight 'regular)
   )
 #+end_src
+** Theme
+#+begin_src emacs-lisp
+	(use-package bespoke-themes
+		:straight (:host github :repo "mclear-tools/bespoke-themes" :branch "main")
+		:config
+		;; Set evil cursor colors
+		(setq bespoke-set-evil-cursors t)
+		;; Set use of italics
+		(setq bespoke-set-italic-comments t
+					bespoke-set-italic-keywords t)
+		;; Set variable pitch
+		(setq bespoke-set-variable-pitch t)
+		;; Set initial theme variant
+		(setq bespoke-set-theme 'light)
+    :init
+		;; Load theme
+		(load-theme 'bespoke t))
+#+end_src
 * Keybindings
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle init.el
@@ -349,8 +376,8 @@ Stolen from DOOM
 ** Roadmap
 *** DONE Install evil
 *** DONE Configure font
-*** TODO Configure basic settings
-*** TODO Install bespoke-theme
+*** DONE Configure basic settings
+*** DONE Install bespoke-theme
 [[https://github.com/mclear-tools/bespoke-themes]]
 *** TODO Install magit
 *** TODO Install bespoke-modeline
