@@ -146,6 +146,11 @@ Find bugs in emacs configuration
         ring-bell-function 'ignore    ; No bell
         frame-resize-pixelwise t)     ; Resize frame pixelwise
 
+  ;; Hide "For information about GNU Emacs and the GNU system, type C-h C-a.". 
+  (defun display-startup-echo-area-message ()
+    "If it wasn't for this you'd be GNU/Spammed by now"
+    (message ""))
+
   (setq user-full-name "Arne Bahlo"
         user-mail-address "hey@arne.me")
 
@@ -384,7 +389,7 @@ Stolen from DOOM
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle init.el
 :END:
-** General
+** general
 #+begin_src emacs-lisp
 (use-package general
   :demand t
@@ -422,24 +427,92 @@ Stolen from DOOM
    "e" '(:ignore t :which-key "eval")
    "t" '(:ignore t :which-key "test")))
 #+end_src
-** Evil
+** evil
+Set up evil mode.
 #+begin_src emacs-lisp
-(use-package evil
+	(use-package evil
+		:demand
+		:general
+		;; Split windows like vim
+		(ab/leader-keys
+		 "wv" 'evil-window-vsplit
+		 "ws" 'evil-window-split)
+		:init
+		(setq evil-want-integration t)
+		(setq evil-want-keybinding nil) ; Required for evil-collection
+		(setq evil-want-C-u-scroll t)
+	  (setq evil-respect-visual-line-mode t)
+
+		;; move to window when splitting
+	  (setq evil-split-window-below t)
+	  (setq evil-vsplit-window-right t)
+
+		:config
+		(evil-mode 1)
+
+		;; don't move cursor after ==
+		(defun ab/evil-dont-move-cursor (orig-fn &rest args)
+			(save-excursion (apply orig-fn args)))
+		(advice-add 'evil-indent :around #'ab/evil-dont-move-cursor)
+		)
+#+end_src
+
+Make sure it works with org.
+#+begin_src emacs-lisp
+(use-package evil-org-mode
+  :straight (evil-org-mode :type git :host github :repo "hlissner/evil-org-mode")
+  :hook ((org-mode . evil-org-mode)
+         (org-mode . (lambda () 
+                     (require 'evil-org)
+                     (evil-normalize-keymaps)
+                     (evil-org-set-key-theme '(textobjects))
+                     (require 'evil-org-agenda)
+                     (evil-org-agenda-set-keys))))
+                     )
+#+end_src
+
+Add evil-collection for evil magit and more.
+#+begin_src emacs-lisp
+(use-package evil-collection
+  :after evil
   :demand
-  :general
-  ;; Split windows like vim
-  (ab/leader-keys
-   "wv" 'evil-window-vsplit
-   "ws" 'evil-window-split)
   :init
-
+  (setq evil-collection-magit-use-z-for-folds nil)
   :config
-  (evil-mode 1)
+  (evil-collection-init))
+#+end_src
 
-  ;; don't move cursor after ==
-  (defun ab/evil-dont-move-cursor (orig-fn &rest args)
-    (save-excursion (apply orig-fn args)))
-  (advice-add 'evil-indent :around #'ab/evil-dont-move-cursor)
+** magit
+#+begin_src emacs-lisp
+(use-package magit
+  :general
+  (ab/leader-keys
+    "g b" 'magit-blame
+    "g g" 'magit-status
+    "g G" 'magit-status-here
+    "g l" 'magit-log)
+  (general-nmap
+    :keymaps '(magit-status-mode-map
+               magit-stash-mode-map
+               magit-revision-mode-map
+               magit-process-mode-map
+               magit-diff-mode-map)
+    "TAB" #'magit-section-toggle
+    "<escape>" #'transient-quit-one)
+  :init
+  (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  (setq magit-log-arguments '("--graph" "--decorate" "--color"))
+  (setq git-commit-fill-column 72)
+  :config
+  (evil-define-key* '(normal visual) magit-mode-map
+    "zz" #'evil-scroll-line-to-center)
+  )
+#+end_src
+** rainbow parenthesis
+#+begin_src emacs-lisp
+(use-package rainbow-delimiters
+  :hook ((emacs-lisp-mode . rainbow-delimiters-mode)
+         (clojure-mode . rainbow-delimiters-mode))
   )
 #+end_src
 
@@ -450,7 +523,8 @@ Stolen from DOOM
 *** DONE Configure basic settings
 *** DONE Install bespoke-theme
 [[https://github.com/mclear-tools/bespoke-themes]]
-*** TODO Install magit
+*** DONE Install magit
+*** TODO Add help on SPC
 *** DONE Install bespoke-modeline
 [[https://github.com/mclear-tools/bespoke-modeline]]
 
