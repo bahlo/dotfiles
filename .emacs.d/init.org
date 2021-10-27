@@ -4,6 +4,11 @@
 * Introduction
 ** This file
 This is my literate emacs configuration. It's largley based on [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html][Lucas's]].
+** Install emacs
+*** macOS
+#+begin_src shell
+brew install emacs-plus@28 --with-xwidgets --with-nobu417-big-sur-icon
+#+end_src
 ** How to tangle
 Run the following command to generate the emacs-lisp code:
 #+begin_src shell
@@ -293,21 +298,87 @@ Stolen from DOOM
 #+end_src
 ** Theme
 #+begin_src emacs-lisp
-	(use-package bespoke-themes
-		:straight (:host github :repo "mclear-tools/bespoke-themes" :branch "main")
-		:config
-		;; Set evil cursor colors
-		(setq bespoke-set-evil-cursors t)
-		;; Set use of italics
-		(setq bespoke-set-italic-comments t
-					bespoke-set-italic-keywords t)
-		;; Set variable pitch
-		(setq bespoke-set-variable-pitch t)
-		;; Set initial theme variant
-		(setq bespoke-set-theme 'light)
-    :init
-		;; Load theme
-		(load-theme 'bespoke t))
+(use-package bespoke-themes
+  :straight (:host github :repo "mclear-tools/bespoke-themes" :branch "main")
+  :config
+  ;; Set evil cursor colors
+  (setq bespoke-set-evil-cursors t)
+  ;; Set use of italics
+  (setq bespoke-set-italic-comments t
+        bespoke-set-italic-keywords t)
+  ;; Set variable pitch
+  (setq bespoke-set-variable-pitch t)
+  ;; Set initial theme variant
+  (setq bespoke-set-theme 'light)
+  ;; Use mode line visual bell
+  (setq bespoke-set-visual-bell t)
+  ;; Set mode-line cleaner
+  (setq bespoke-set-mode-line-cleaner t)
+  ;; Show diff lines in modeline
+  (setq bespoke-set-git-diff-mode-line t)
+  ;; Load theme
+  (load-theme 'bespoke t))
+
+  ;; See https://github.com/d12frosted/homebrew-emacs-plus#system-appearance-change
+  (defun ab/system-apply-theme (appearance)
+    "Load theme, taking current system APPEARANCE into consideration."
+    (mapc #'disable-theme custom-enabled-themes)
+    (pcase appearance
+      ('light (progn
+              (setq bespoke-set-theme 'light)
+              (load-theme 'bespoke t)
+              (setq active-theme 'light-theme)
+              ))
+      ('dark (progn
+             (setq bespoke-set-theme 'dark)
+             (load-theme 'bespoke t)
+             (setq active-theme 'dark-theme)
+             ))))
+
+  (add-hook 'ns-system-appearance-change-functions #'ab/system-apply-theme)
+#+end_src
+** Better window divider
+#+begin_src emacs-lisp
+  ;; Vertical window divider
+  (use-package frame
+    :straight (:type built-in)
+    :custom
+    (window-divider-default-right-width 12)
+    (window-divider-default-bottom-width 1)
+    (window-divider-default-places 'right-only)
+    (window-divider-mode t))
+
+		(setq-default default-frame-alist
+                  (append (list
+                  '(font . "PragmataPro Mono Liga:style=medium:size=15") ;; NOTE: substitute whatever font you prefer here
+                  '(internal-border-width . 20)
+                  '(left-fringe    . 0)
+                  '(right-fringe   . 0)
+                  '(tool-bar-lines . 0)
+                  '(menu-bar-lines . 0)
+                  '(vertical-scroll-bars . nil))))
+    (setq-default window-resize-pixelwise t)
+    (setq-default frame-resize-pixelwise t)
+
+  ;; Make sure new frames use window-divider
+  (add-hook 'before-make-frame-hook 'window-divider-mode)
+#+end_src
+** Modeline
+#+begin_src emacs-lisp
+(use-package bespoke-modeline
+		:straight (:type git :host github :repo "mclear-tools/bespoke-modeline") 
+		:init
+		;; Set header line
+		(setq bespoke-modeline-position 'top)
+		;; Set mode-line height
+		(setq bespoke-modeline-size 3)
+		;; Show diff lines in mode-line
+		(setq bespoke-modeline-git-diff-mode-line t)
+		;; Set mode-line cleaner
+		(setq bespoke-modeline-cleaner t)
+		;; Use mode-line visual bell
+		(setq bespoke-modeline-visual-bell t)
+		(bespoke-modeline-mode))
 #+end_src
 * Keybindings
 :PROPERTIES:
@@ -380,7 +451,7 @@ Stolen from DOOM
 *** DONE Install bespoke-theme
 [[https://github.com/mclear-tools/bespoke-themes]]
 *** TODO Install magit
-*** TODO Install bespoke-modeline
+*** DONE Install bespoke-modeline
 [[https://github.com/mclear-tools/bespoke-modeline]]
 
 ** Cool emacs configs
