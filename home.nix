@@ -1,15 +1,15 @@
 { config, pkgs, libs, ... }:
 let 
-  bs4Overlay = import ./bs4_overlay.nix;
+  bs4Overlay = import ./nix/overlays/bs4.nix;
 in 
 {
   imports = [
-    ./zsh.nix
-    ./git.nix
-    ./tmux.nix
-    ./bat.nix
-    ./fzf.nix
-    ./direnv.nix
+    ./nix/pkgs/zsh.nix
+    ./nix/pkgs/git.nix
+    ./nix/pkgs/tmux.nix
+    ./nix/pkgs/bat.nix
+    ./nix/pkgs/fzf.nix
+    ./nix/pkgs/direnv.nix
   ];
 
   nixpkgs.overlays = [
