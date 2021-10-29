@@ -80,6 +80,8 @@
       dc = "docker compose";
       ctx = "kubectl config use-context";
       nsh = "nix-shell";
+
+      cat = "bat";
     };
 
     sessionVariables = {

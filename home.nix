@@ -6,6 +6,7 @@
     ./git.nix
     ./tmux.nix
     ./bat.nix
+    ./fzf.nix
   ];
 
 
@@ -31,7 +32,6 @@
     pkgs.htop
     pkgs.neovim
     pkgs.hexyl
-    pkgs.fzf
     pkgs.tmux
     pkgs.exa
     pkgs.delta
