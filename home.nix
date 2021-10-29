@@ -1,4 +1,5 @@
 { config, pkgs, libs, ... }:
+
 {
   imports = (import ./nix/pkgs);
 
@@ -24,34 +25,35 @@
   # changes in each release.
   home.stateVersion = "21.11";
 
-  home.packages = [
-    pkgs.bottom
-    pkgs.hexyl
-    pkgs.tmux
-    pkgs.exa
-    pkgs.delta
-    pkgs.fd
-    pkgs.jq
-    pkgs.upx
-    pkgs.binaryen
-    pkgs.wrangler
-    pkgs.just
-    pkgs.rustup
-    pkgs.gh
-    pkgs.youtube-dl
-    pkgs.watch
-    pkgs.shellcheck
-    pkgs.rust-analyzer
-    pkgs.ripgrep
-    pkgs.pwgen
-    pkgs.pv
-    pkgs.magic-wormhole
-    pkgs.kubetail
-    pkgs.ffmpeg
-    pkgs.imagemagick
-    pkgs.curl
-    # pkgs.hurl
-    pkgs.httpie
-    pkgs.age
+  home.packages = with pkgs; [
+    bottom
+    hexyl
+    tmux
+    exa
+    delta
+    fd
+    jq
+    upx
+    binaryen
+    wrangler
+    just
+    rustup
+    gh
+    youtube-dl
+    watch
+    shellcheck
+    rust-analyzer
+    ripgrep
+    pwgen
+    pv
+    magic-wormhole
+    kubetail
+    ffmpeg
+    imagemagick
+    curl
+    # hurl
+    httpie
+    age
+    tldr
   ];
 }
