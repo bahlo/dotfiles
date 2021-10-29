@@ -9,6 +9,7 @@ in
     ./tmux.nix
     ./bat.nix
     ./fzf.nix
+    ./direnv.nix
   ];
 
   nixpkgs.overlays = [
@@ -59,12 +60,8 @@ in
     pkgs.ffmpeg
     pkgs.imagemagick
     pkgs.curl
-    # pkgs.hurl broken
+    # pkgs.hurl
     pkgs.httpie
     pkgs.age
   ];
-
-  # direnv
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
 }
