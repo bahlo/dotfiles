@@ -21,6 +21,12 @@
       "__debug_bin"
       ".envrc"
     ];
+    lfs = {
+      enable = true;
+    };
+    delta = {
+      enable = true;
+    };
     extraConfig = {
       apply.whitespace = "fix";
       core.sshCommand = "/usr/bin/ssh";  # OpenSSH in nix doesn't support UseKeychain

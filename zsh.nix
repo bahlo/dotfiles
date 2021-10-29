@@ -62,7 +62,6 @@
       "..." = "cd .. && cd ..";
       "...." = "cd .. && cd .. && cd ..";
 
-      git = "hub";
       gco = "git checkout";
       gcob = "gco -b";
       gd = "git diff --stat --patch";

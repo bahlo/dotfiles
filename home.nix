@@ -56,6 +56,10 @@ in
     pkgs.pwgen
     pkgs.pv
     pkgs.magic-wormhole
+    pkgs.kubetail
+    # pkgs.hurl broken
+    pkgs.ffmpeg
+    pkgs.imagemagick
   ];
 
   # direnv
