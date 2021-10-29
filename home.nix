@@ -41,7 +41,6 @@ in
     pkgs.delta
     pkgs.fd
     pkgs.jq
-    pkgs.httpie
     pkgs.upx
     pkgs.binaryen
     pkgs.wrangler
@@ -57,9 +56,12 @@ in
     pkgs.pv
     pkgs.magic-wormhole
     pkgs.kubetail
-    # pkgs.hurl broken
     pkgs.ffmpeg
     pkgs.imagemagick
+    pkgs.curl
+    # pkgs.hurl broken
+    pkgs.httpie
+    pkgs.age
   ];
 
   # direnv
