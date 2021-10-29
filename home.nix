@@ -1,5 +1,43 @@
 { config, pkgs, libs, ... }:
-
+let 
+  terminalPkgs = with pkgs; [
+    bottom
+    hexyl
+    tmux
+    exa
+    delta
+    fd
+    jq
+    upx
+    binaryen
+    wrangler
+    just
+    gh
+    youtube-dl
+    watch
+    shellcheck
+    ripgrep
+    pwgen
+    pv
+    magic-wormhole
+    ffmpeg
+    imagemagick
+    curl
+    # hurl
+    httpie
+    age
+    tldr
+  ];
+  rustPkgs = with pkgs; [
+    rustup
+    rust-analyzer
+  ];
+  k8sPkgs = with pkgs; [
+    kubetail
+    k9s
+    kubectl
+  ];
+in
 {
   imports = (import ./nix/pkgs);
 
@@ -25,35 +63,5 @@
   # changes in each release.
   home.stateVersion = "21.11";
 
-  home.packages = with pkgs; [
-    bottom
-    hexyl
-    tmux
-    exa
-    delta
-    fd
-    jq
-    upx
-    binaryen
-    wrangler
-    just
-    rustup
-    gh
-    youtube-dl
-    watch
-    shellcheck
-    rust-analyzer
-    ripgrep
-    pwgen
-    pv
-    magic-wormhole
-    kubetail
-    ffmpeg
-    imagemagick
-    curl
-    # hurl
-    httpie
-    age
-    tldr
-  ];
+  home.packages = terminalPkgs ++ rustPkgs ++ k8sPkgs;
 }
