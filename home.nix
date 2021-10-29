@@ -1,19 +1,9 @@
 { config, pkgs, libs, ... }:
-let 
-  bs4Overlay = import ./nix/overlays/bs4.nix;
-in 
 {
-  imports = [
-    ./nix/pkgs/zsh.nix
-    ./nix/pkgs/git.nix
-    ./nix/pkgs/tmux.nix
-    ./nix/pkgs/bat.nix
-    ./nix/pkgs/fzf.nix
-    ./nix/pkgs/direnv.nix
-  ];
+  imports = (import ./nix/pkgs);
 
   nixpkgs.overlays = [
-    bs4Overlay
+    (import ./nix/overlays/bs4.nix)
   ];
 
   # Let Home Manager install and manage itself.
