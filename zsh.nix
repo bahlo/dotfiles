@@ -12,26 +12,48 @@
     initExtra = ''
       # Enable 256 colors
       [[ "$TERM" == "xterm" ]] && export TERM=xterm-256color
+
       # Load p10k
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh 
-      # Vi mode
-      bindkey -v
-      # Exports
-      export EDITOR=vim
+
       # Keybindings
       bindkey "^[[2~" yank                    # Insert
       bindkey "^[[3~" delete-char             # Del
       bindkey "^[[A"  up-line-or-search       # Up arrow for back-history-search.
       bindkey "^[[B"  down-line-or-search     # Down arrow for fwd-history-search.
       bindkey " "     magic-space             # Do history expansion on space.
-      # Load functions
-      fpath+=~/.dotfiles/zshfunctions
-      autoload git-commit-co-author gpsu
+
+      # gpsu = git push --set-upstream origin <current-branch>
+      function gpsu() {
+        local branch=$(git rev-parse --abbrev-ref HEAD)
+        git push --set-upstream origin "$branch"
+      }
+
+      # Thanks https://github.com/hpcsc/dotfiles/blob/63f194aa553ef83f9edec76991f2265f7962b00e/link/common/zsh/.functions/fzf-functions/fcm
+      function git-commit-co-author() {
+        SELECTED_AUTHORS=$(git shortlog -sne | awk '{$1=""}1' | fzf -m)
+
+        MESSAGE="\n\n"
+        # convert newline-delimited string to array, zsh way: https://stackoverflow.com/a/2930519
+        AUTHORS=("''${(f)SELECTED_AUTHORS}")
+        for AUTHOR in $AUTHORS[@]; do
+          MESSAGE="''${MESSAGE}Co-authored-by: ''${AUTHOR}\n"
+        done
+
+        if [[ "$1" == "-m" ]]; then
+          git commit -m "$2$(echo -e ''${MESSAGE})"
+        else 
+          git commit $@ -t <(echo -e ''${MESSAGE})
+        fi
+      }
+
       # Load local settings
       if [[ -f .localrc ]]; then
         source .localrc
       fi
     '';
+
+    defaultKeymap = "viins";
 
     shellAliases = {
       ls = "exa";
@@ -58,6 +80,10 @@
       dc = "docker compose";
       ctx = "kubectl config use-context";
       nsh = "nix-shell";
+    };
+
+    sessionVariables = {
+      EDITOR = "vim";
     };
 
     plugins = [
