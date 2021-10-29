@@ -1,5 +1,7 @@
 { config, pkgs, libs, ... }:
-
+let 
+  bs4Overlay = import ./bs4_overlay.nix;
+in 
 {
   imports = [
     ./zsh.nix
@@ -9,6 +11,9 @@
     ./fzf.nix
   ];
 
+  nixpkgs.overlays = [
+    bs4Overlay
+  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -50,6 +55,7 @@
     pkgs.ripgrep
     pkgs.pwgen
     pkgs.pv
+    pkgs.magic-wormhole
   ];
 
   # direnv
