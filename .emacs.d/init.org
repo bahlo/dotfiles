@@ -7,58 +7,58 @@ This is my literate emacs configuration. It's largley based on [[https://www.luc
 ** Install emacs
 *** macOS
 #+begin_src shell
-	brew install emacs-plus@28 --with-xwidgets --with-nobu417-big-sur-icon
+brew install emacs-plus@28 --with-xwidgets --with-nobu417-big-sur-icon
 #+end_src
 ** How to tangle
 Run the following command to generate the emacs-lisp code:
 #+begin_src shell
-	emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "init.org")'
+emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "init.org")'
 #+end_src
 
 If you want to exclusively use this configuration, run emacs like this:
 #+begin_src shell
-	emacs -Q --load init.el init.org
+emacs -Q --load init.el init.org
 #+end_src
 * early-init.el and init.el
 ** early-init.el
 Taken from DOOM's early init
 #+begin_src emacs-lisp :tangle early-init.el
-	;;; early-init.el --- Early Init File -*- lexical-binding: t; no-byte-compile: t -*-
+;;; early-init.el --- Early Init File -*- lexical-binding: t; no-byte-compile: t -*-
 
-	;; Defer garbage collection further back in the startup process
-	(setq gc-cons-threshold most-positive-fixnum
-				gc-cons-percentage 0.6)
+;; Defer garbage collection further back in the startup process
+(setq gc-cons-threshold most-positive-fixnum
+			gc-cons-percentage 0.6)
 
-	;; In Emacs 27+, package initialization occurs before `user-init-file' is
-	;; loaded, but after `early-init-file'. Doom handles package initialization, so
-	;; we must prevent Emacs from doing it early!
-	(setq package-enable-at-startup nil)
-	;; Do not allow loading from the package cache (same reason).
-	(setq package-quickstart nil)
+;; In Emacs 27+, package initialization occurs before `user-init-file' is
+;; loaded, but after `early-init-file'. Doom handles package initialization, so
+;; we must prevent Emacs from doing it early!
+(setq package-enable-at-startup nil)
+;; Do not allow loading from the package cache (same reason).
+(setq package-quickstart nil)
 
-	;; Prevent the glimpse of un-styled Emacs by disabling these UI elements early.
-	(push '(menu-bar-lines . 0) default-frame-alist)
-	(push '(tool-bar-lines . 0) default-frame-alist)
-	(push '(vertical-scroll-bars) default-frame-alist)
+;; Prevent the glimpse of un-styled Emacs by disabling these UI elements early.
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(tool-bar-lines . 0) default-frame-alist)
+(push '(vertical-scroll-bars) default-frame-alist)
 
-	;; Resizing the Emacs frame can be a terribly expensive part of changing the
-	;; font. By inhibiting this, we easily halve startup times with fonts that are
-	;; larger than the system default.
-	(setq frame-inhibit-implied-resize t)
+;; Resizing the Emacs frame can be a terribly expensive part of changing the
+;; font. By inhibiting this, we easily halve startup times with fonts that are
+;; larger than the system default.
+(setq frame-inhibit-implied-resize t)
 
-	;; Disable GUI elements
-	(menu-bar-mode -1)
-	(tool-bar-mode -1)
-	(scroll-bar-mode -1)
-	(setq inhibit-splash-screen t)
-	(setq use-file-dialog nil)
+;; Disable GUI elements
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(setq inhibit-splash-screen t)
+(setq use-file-dialog nil)
 
-	;; Prevent unwanted runtime builds in gccemacs (native-comp); packages are
-	;; compiled ahead-of-time when they are installed and site files are compiled
-	;; when gccemacs is installed.
-	(setq comp-deferred-compilation nil)
+;; Prevent unwanted runtime builds in gccemacs (native-comp); packages are
+;; compiled ahead-of-time when they are installed and site files are compiled
+;; when gccemacs is installed.
+(setq comp-deferred-compilation nil)
 
-	;;; early-init.el ends here
+;;; early-init.el ends here
 #+end_src
 ** init.el: startup optimization
 Taken from DOOM's init
@@ -121,15 +121,6 @@ Taken from DOOM's init
 	;; This is a variable that has been renamed but straight still refers when
 	;; doing :straight (:no-native-compile t)
 	(setq comp-deferred-compilation-black-list nil)
-#+end_src
-* Debugging
-:PROPERTIES:
-:header-args: :emacs-lisp :tangle init.el
-:END:
-** bug-hunter
-Find bugs in emacs configuration
-#+begin_src emacs-lisp
-	(use-package bug-hunter)
 #+end_src
 * Emacs
 :PROPERTIES:
@@ -250,18 +241,6 @@ Stolen from DOOM
 		:config
 		(gcmh-mode 1))
 #+end_src
-** Helpful
-#+begin_src emacs-lisp
-	(use-package helpful
-		:after evil
-		:init
-		(setq evil-lookup-func #'helpful-at-point)
-		:bind
-		([remap describe-function] . helpful-callable)
-		([remap describe-command] . helpful-command)
-		([remap describe-variable] . helpful-variable)
-		([remap describe-key] . helpful-key))
-#+end_src
 ** No littering
 #+begin_src emacs-lisp
 	(use-package no-littering
@@ -286,111 +265,56 @@ Stolen from DOOM
 			:type 'string
 			:group 'ab)
 
+		(defcustom ab/default-font-size 160
+			"Font size"
+			:type 'int
+			:group 'ab)
+
 		(defcustom ab/variable-pitch-font-family "Inter"
 			"Variable pitch font family"
 			:type 'string
 			:group 'ab)
 
-		(defcustom ab/font-size 150
+		(defcustom ab/variable-pitch-font-size 150
 			"Font size"
 			:type 'int
 			:group 'ab)
 
-		(set-face-attribute 'default nil :font ab/default-font-family :height ab/font-size)
-		(set-face-attribute 'fixed-pitch nil :font ab/default-font-family :height ab/font-size)
-		(set-face-attribute 'variable-pitch nil :font ab/variable-pitch-font-family :height ab/font-size :weight 'regular)
+		(set-face-attribute 'default nil
+      :font ab/default-font-family
+      :height ab/default-font-size)
+		(set-face-attribute 'fixed-pitch nil
+      :font ab/default-font-family
+      :height ab/default-font-size)
+		(set-face-attribute 'variable-pitch nil
+      :font ab/variable-pitch-font-family
+      :height ab/variable-pitch-font-size
+      :weight 'regular)
 		)
-#+end_src
-
-Load ligatures
-#+begin_src emacs-lisp
-	(use-package pragmatapro
-		:straight (pragmatapro :type git :host github :repo "fabrizioschiavi/pragmatapro" :files ("emacs_snippets/pragmatapro-prettify-symbols-v0.829.el"))
-		)	
 #+end_src
 ** Theme
 #+begin_src emacs-lisp
-	(use-package bespoke-themes
-		:straight (:host github :repo "mclear-tools/bespoke-themes" :branch "main")
-		:config
-		;; Set evil cursor colors
-		(setq bespoke-set-evil-cursors t)
-		;; Set use of italics
-		(setq bespoke-set-italic-comments t
-					bespoke-set-italic-keywords t)
-		;; Set variable pitch
-		(setq bespoke-set-variable-pitch t)
-		;; Set initial theme variant
-		(setq bespoke-set-theme 'light)
-		;; Use mode line visual bell
-		(setq bespoke-set-visual-bell t)
-		;; Set mode-line cleaner
-		(setq bespoke-set-mode-line-cleaner t)
-		;; Show diff lines in modeline
-		(setq bespoke-set-git-diff-mode-line t)
-		;; Load theme
-		(load-theme 'bespoke t))
+;; (use-package spacemacs-theme
+;;  :init (load-theme 'spacemacs-light t))
+(use-package base16-theme
+ :init (load-theme 'base16-unikitty-light t)) ; TODO Fix loading
 
-	;; See https://github.com/d12frosted/homebrew-emacs-plus#system-appearance-change
-	(defun ab/system-apply-theme (appearance)
-		"Load theme, taking current system APPEARANCE into consideration."
-		(mapc #'disable-theme custom-enabled-themes)
-		(pcase appearance
-			('light (progn
-								(setq bespoke-set-theme 'light)
-								(load-theme 'bespoke t)
-								(setq active-theme 'light-theme)
-								))
-			('dark (progn
-							 (setq bespoke-set-theme 'dark)
-							 (load-theme 'bespoke t)
-							 (setq active-theme 'dark-theme)
-							 ))))
+;; See https://github.com/d12frosted/homebrew-emacs-plus#system-appearance-change
+(defun ab/system-apply-theme (appearance)
+  "Load theme, taking current system APPEARANCE into consideration."
+  (mapc #'disable-theme custom-enabled-themes)
+  (pcase appearance
+    ('light (progn
+      (load-theme 'spacemacs-light t)))
+    ('dark (progn
+      (load-theme spacemacs-dark t)))))
 
-	(add-hook 'ns-system-appearance-change-functions #'ab/system-apply-theme)
-#+end_src
-** Better window divider
-#+begin_src emacs-lisp
-	;; Vertical window divider
-	(use-package frame
-		:straight (:type built-in)
-		:custom
-		(window-divider-default-right-width 12)
-		(window-divider-default-bottom-width 1)
-		(window-divider-default-places 'right-only)
-		(window-divider-mode t))
-
-	(setq-default default-frame-alist
-								(append (list
-												 '(font . "PragmataPro Mono Liga:style=medium:size=15") ;; NOTE: substitute whatever font you prefer here
-												 '(internal-border-width . 20)
-												 '(left-fringe    . 0)
-												 '(right-fringe   . 0)
-												 '(tool-bar-lines . 0)
-												 '(menu-bar-lines . 0)
-												 '(vertical-scroll-bars . nil))))
-	(setq-default window-resize-pixelwise t)
-	(setq-default frame-resize-pixelwise t)
-
-	;; Make sure new frames use window-divider
-	(add-hook 'before-make-frame-hook 'window-divider-mode)
+(add-hook 'ns-system-appearance-change-functions #'ab/system-apply-theme)
 #+end_src
 ** Modeline
 #+begin_src emacs-lisp
-	(use-package bespoke-modeline
-		:straight (:type git :host github :repo "mclear-tools/bespoke-modeline") 
-		:init
-		;; Set header line
-		(setq bespoke-modeline-position 'top)
-		;; Set mode-line height
-		(setq bespoke-modeline-size 3)
-		;; Show diff lines in mode-line
-		(setq bespoke-modeline-git-diff-mode-line t)
-		;; Set mode-line cleaner
-		(setq bespoke-modeline-cleaner t)
-		;; Use mode-line visual bell
-		(setq bespoke-modeline-visual-bell t)
-		(bespoke-modeline-mode))
+(use-package doom-modeline
+ :hook (after-init . doom-modeline-mode))
 #+end_src
 * Keybindings
 :PROPERTIES:
@@ -492,7 +416,7 @@ Add evil-collection for evil magit and more.
 ** which-key
 #+begin_src emacs-lisp
 	(use-package which-key
-		:demand t
+:demand t
 		:init
 		(setq which-key-separator " ")
 		(setq which-key-prefix-prefix "+")
@@ -540,26 +464,32 @@ Add evil-collection for evil magit and more.
 
 ** org-mode
 #+begin_src emacs-lisp
-	(use-package org
-		:hook ((org-mode . prettify-symbols-mode)
-					 (org-mode . visual-line-mode)
-					 (org-mode . variable-pitch-mode))
-		:init
-		;; general settings
-		(when (file-directory-p "~/org")
-			(setq org-directory "~/org"
-						org-default-notes-file "~/org/todo.org"
-						org-agenda-files (list org-directory)
-						))  
-		;; do not put two spaces on the left
-		(setq org-src-preserve-indentation t) 
-		;; custom ellipsis
-		(setq org-ellipsis " ▾")
-		;; disable modules for faster startup
-		(setq org-modules
-					'(ol-docview
-						org-habit))
-		)
+(use-package org
+	:hook ((org-mode . prettify-symbols-mode)
+				 (org-mode . visual-line-mode)
+				 (org-mode . variable-pitch-mode))
+	:init
+	;; General settings
+	(when (file-directory-p "~/org")
+		(setq org-directory "~/org"
+					org-default-notes-file "~/org/todo.org"
+					org-agenda-files (list org-directory)
+					))
+	;; Do not put two spaces on the left
+	(setq org-src-preserve-indentation t) 
+	;; Hide emphasis markers
+	(setq org-hide-emphasis-markers t)
+	;; Custom ellipsis
+	;;(setq org-ellipsis " ▾")
+	;; Disable modules for faster startup
+	(setq org-modules
+				'(ol-docview
+					org-habit))
+	;; Replace - with • in lists
+	(font-lock-add-keywords 'org-mode
+													'(("^ *\\([-]\\) "
+														 (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+	)
 #+end_src
 *** org-bullets
 #+begin_src emacs-lisp
@@ -568,6 +498,12 @@ Add evil-collection for evil magit and more.
 		)
 #+end_src
 
+*** mixed-pitch
+#+begin_src emacs-lisp
+(use-package mixed-pitch
+  :hook
+  (text-mode . mixed-pitch-mode))
+#+end_src
 ** evil-nerd-commenter
 #+begin_src emacs-lisp
 	(use-package evil-nerd-commenter
@@ -575,6 +511,24 @@ Add evil-collection for evil magit and more.
 		(general-nvmap
 			"gc" 'evilnc-comment-operator)
 		)
+#+end_src
+** projectile
+#+begin_src emacs-lisp
+(use-package projectile
+  :demand
+  :general
+  (ab/leader-keys
+    :states 'normal
+    "p" '(:keymap projectile-command-map :which-key "project")
+    "p <escape>" 'keyboard-escape-quit
+    "p a" '(projectile-add-known-project :wk "add known"))
+  :init
+  (projectile-mode +1)
+  ;; Do not include straight repos (emacs packages) to project list
+  (setq projectile-ignored-project-function
+    (lambda (project-root)
+      (string-prefix-p (expand-file-name "straight/" user-emacs-directory) project-root)))
+)
 #+end_src
 * Future work
 ** Roadmap
@@ -588,14 +542,16 @@ Add evil-collection for evil magit and more.
 [[https://github.com/mclear-tools/bespoke-modeline]]
 
 *** DONE Add help on SPC
+*** DONE Fix agenda
+*** DONE Org mode heading glyphs
+*** DONE Variable pitch font in org
 *** TODO org-roam (cutom config for arnes notes)
 *** TODO Add ligature support
 *** TODO Rust mode
-*** DONE Fix agenda
-*** TODO Org mode heading glyphs
 ** Cool emacs configs
 - [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html]]
 - [[https://github.com/mclear-tools/dotemacs]]
 - [[https://github.com/Artawower/.doom]]
 - [[https://github.com/rougier/nano-emacs]]
 - [[https://github.com/natecox/dotfiles/blob/master/workspaces/shared/symlinks/emacs/.emacs.d/nathancox.org]]
+	
