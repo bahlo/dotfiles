@@ -5,6 +5,7 @@
     ./zsh.nix
     ./git.nix
     ./tmux.nix
+    ./bat.nix
   ];
 
 
@@ -29,7 +30,6 @@
   home.packages = [
     pkgs.htop
     pkgs.neovim
-    pkgs.bat
     pkgs.hexyl
     pkgs.fzf
     pkgs.tmux
