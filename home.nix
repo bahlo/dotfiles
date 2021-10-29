@@ -29,14 +29,12 @@
   home.stateVersion = "21.11";
 
   home.packages = [
-    pkgs.htop
-    pkgs.neovim
+    pkgs.bottom
     pkgs.hexyl
     pkgs.tmux
     pkgs.exa
     pkgs.delta
     pkgs.fd
-    pkgs.vim
     pkgs.jq
     pkgs.httpie
     pkgs.upx
@@ -44,6 +42,14 @@
     pkgs.wrangler
     pkgs.just
     pkgs.rustup
+    pkgs.gh
+    pkgs.youtube-dl
+    pkgs.watch
+    pkgs.shellcheck
+    pkgs.rust-analyzer
+    pkgs.ripgrep
+    pkgs.pwgen
+    pkgs.pv
   ];
 
   # direnv
