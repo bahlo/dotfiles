@@ -4,6 +4,7 @@
   imports = [
     ./zsh.nix
     ./git.nix
+    ./tmux.nix
   ];
 
 
@@ -42,6 +43,7 @@
     pkgs.binaryen
     pkgs.wrangler
     pkgs.just
+    pkgs.rustup
   ];
 
   # direnv
