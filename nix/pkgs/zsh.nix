@@ -81,6 +81,7 @@
       nsh = "nix-shell";
 
       cat = "bat";
+      code = "codium";
     };
 
     sessionVariables = {

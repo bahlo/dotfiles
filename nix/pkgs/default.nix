@@ -5,4 +5,5 @@
   ./bat.nix
   ./fzf.nix
   ./direnv.nix
+  ./vscode.nix
 ]
