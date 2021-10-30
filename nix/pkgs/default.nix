@@ -6,4 +6,5 @@
   ./fzf.nix
   ./direnv.nix
   ./vscode.nix
+  ./go.nix
 ]
