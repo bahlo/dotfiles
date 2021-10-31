@@ -95,6 +95,7 @@
         eamodio.gitlens
         github.github-vscode-theme
         github.vscode-pull-request-github
+        bbenoist.nix
     ];
   };
 }
