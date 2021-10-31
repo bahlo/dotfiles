@@ -37,7 +37,7 @@
       };
       push.default = "simple";
       pull.rebase = "true";
-      init.defultBranch = "main";
+      init.defaultBranch = "main";
     };
     includes = [
       {
