@@ -4,7 +4,7 @@
 {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.vscode;
 
     userSettings = {
       "editor.tabSize" = 2;
@@ -89,7 +89,7 @@
         golang.go
         vscodevim.vim
         file-icons.file-icons
-        matklad.rust-analyzer
+        # matklad.rust-analyzer
         # ms-python.python
         # ms-python.vscode-pylance
         eamodio.gitlens
