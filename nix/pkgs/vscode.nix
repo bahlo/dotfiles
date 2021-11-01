@@ -37,7 +37,7 @@
 
       "window.autoDetectColorScheme" = true;
 
-      "workbench.colorTheme" = "GitHub Dark Default";
+      "workbench.colorTheme" = "GitHub Light Default";
       "workbench.iconTheme" = "file-icons";
       "workbench.preferredDarkColorTheme" = "GitHub Dark Default";
       "workbench.preferredLightColorTheme" = "GitHub Light Default";
