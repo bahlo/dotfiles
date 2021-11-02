@@ -1,7 +1,7 @@
 { config, pkgs, libs, ... }:
 let 
   terminalPkgs = with pkgs; [
-    # hurl
+    hurl
     age
     awscli
     binaryen
