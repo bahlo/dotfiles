@@ -1,7 +1,6 @@
 { config, pkgs, libs, ... }:
 let 
   terminalPkgs = with pkgs; [
-    hurl
     age
     awscli
     binaryen
@@ -14,6 +13,7 @@ let
     gh
     hexyl
     httpie
+    hurl
     imagemagick
     jq
     just
