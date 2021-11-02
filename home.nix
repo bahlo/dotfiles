@@ -27,6 +27,7 @@ let
     httpie
     age
     tldr
+    awscli
   ];
   rustPkgs = with pkgs; [
     rustup
@@ -44,6 +45,11 @@ in
   nixpkgs.overlays = [
     (import ./nix/overlays/bs4.nix)
   ];
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnsupportedSystem = true;
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
