@@ -26,6 +26,12 @@
     };
     delta = {
       enable = true;
+      options = {
+        syntax-theme = "base16";
+        navigate = true;
+        side-by-side = true;
+        line-numbers = false;
+      };
     };
     extraConfig = {
       apply.whitespace = "fix";
