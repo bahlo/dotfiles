@@ -27,6 +27,7 @@
     delta = {
       enable = true;
       options = {
+        light = true;
         syntax-theme = "base16";
         navigate = true;
         side-by-side = true;
