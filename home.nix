@@ -1,42 +1,43 @@
 { config, pkgs, libs, ... }:
 let 
   terminalPkgs = with pkgs; [
-    bottom
-    hexyl
-    tmux
-    exa
-    delta
-    fd
-    jq
-    upx
-    binaryen
-    wrangler
-    just
-    gh
-    youtube-dl
-    watch
-    shellcheck
-    ripgrep
-    pwgen
-    pv
-    magic-wormhole
-    ffmpeg
-    imagemagick
-    curl
     # hurl
-    httpie
     age
-    tldr
     awscli
+    binaryen
+    bottom
+    curl
+    delta
+    exa
+    fd
+    ffmpeg
+    gh
+    hexyl
+    httpie
+    imagemagick
+    jq
+    just
+    magic-wormhole
+    pv
+    pwgen
+    ripgrep
+    shellcheck
+    tealdeer
+    tmux
+    tokei
+    upx
+    watch
+    wrangler
+    youtube-dl
   ];
   rustPkgs = with pkgs; [
-    rustup
     rust-analyzer
+    rustup
   ];
   k8sPkgs = with pkgs; [
-    kubetail
     k9s
     kubectl
+    kubetail
   ];
 in
 {
