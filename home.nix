@@ -20,7 +20,7 @@ let
     magic-wormhole
     pv
     pwgen
-    ripgrep
+    # ripgrep
     shellcheck
     tealdeer
     tmux
@@ -28,6 +28,7 @@ let
     upx
     watch
     wrangler
+    vim
     youtube-dl
   ];
   rustPkgs = with pkgs; [
