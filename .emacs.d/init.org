@@ -297,7 +297,7 @@ Stolen from DOOM
 ;; (use-package spacemacs-theme
 ;;  :init (load-theme 'spacemacs-light t))
 (use-package base16-theme
- :init (load-theme 'base16-unikitty-light t)) ; TODO Fix loading
+:init (load-theme 'base16-unikitty-light t))
 
 ;; See https://github.com/d12frosted/homebrew-emacs-plus#system-appearance-change
 (defun ab/system-apply-theme (appearance)
@@ -305,9 +305,9 @@ Stolen from DOOM
   (mapc #'disable-theme custom-enabled-themes)
   (pcase appearance
     ('light (progn
-      (load-theme 'spacemacs-light t)))
+      (load-theme 'base16-unikitty-light t)))
     ('dark (progn
-      (load-theme spacemacs-dark t)))))
+      (load-theme 'base16-unikitty-dark t)))))
 
 (add-hook 'ns-system-appearance-change-functions #'ab/system-apply-theme)
 #+end_src
@@ -545,6 +545,7 @@ Add evil-collection for evil magit and more.
 *** DONE Fix agenda
 *** DONE Org mode heading glyphs
 *** DONE Variable pitch font in org
+*** DONE Fix theme loading
 *** TODO org-roam (cutom config for arnes notes)
 *** TODO Add ligature support
 *** TODO Rust mode
