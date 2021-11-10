@@ -521,10 +521,8 @@ If you get =No EmacSQL SQLite binary available, aborting=, make sure you have a 
 (use-package org-roam
 	:init
 	(setq org-roam-v2-ack t)
-  (org-roam-db-autosync-mode)
-	:config
-  (setq org-roam-directory (file-truename "~/org/notes"))
-	)
+	(setq org-roam-directory (file-truename "~/Developer/GitHub/arnes-notes"))
+  (org-roam-db-autosync-mode))
 #+end_src
 * Packages
 :PROPERTIES:
