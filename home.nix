@@ -6,6 +6,7 @@ let
     binaryen
     bottom
     curl
+    clang
     delta
     exa
     fd
