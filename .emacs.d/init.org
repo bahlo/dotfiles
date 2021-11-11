@@ -319,20 +319,40 @@ Stolen from DOOM
 (use-package doom-modeline
 	:hook (after-init . doom-modeline-mode))
 #+end_src
+** Line numbers
+We only want line numbers in prog mode.
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
+	(defun ab/enable-line-numbers ()
+		"Enable relative line numbers"
+		(interactive)
+		(display-line-numbers-mode)
+		(setq display-line-numbers 'relative)
+  )
+	(add-hook 'prog-mode-hook #'ab/enable-line-numbers))
+#+end_src
 ** Fancy titlebar for macOS
 #+begin_src emacs-lisp
 (use-package emacs
 	:init
 	(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-	(add-to-list 'default-frame-alist '(ns-appearance . dark))
+	(add-to-list 'default-frame-alist '(ns-appearance . light))
 	(setq ns-use-proxy-icon  nil)
 	(setq frame-title-format nil)
 	)
 #+end_src
 ** Enlarge window
 #+begin_src emacs-lisp
-(add-to-list 'default-frame-alist '(height . 40))
-(add-to-list 'default-frame-alist '(width . 100))
+(add-to-list 'default-frame-alist '(height . 50))
+(add-to-list 'default-frame-alist '(width . 110))
+#+end_src
+** git-gutter
+#+begin_src emacs-lisp
+(use-package git-gutter
+	:init
+  (global-git-gutter-mode +1)
+)
 #+end_src
 * Keybindings
 :PROPERTIES:
@@ -793,10 +813,15 @@ If you get =No EmacSQL SQLite binary available, aborting=, make sure you have a 
 *** DONE Fix theme loading
 *** DONE org-roam (cutom config for arnes notes)
 *** DONE Add nyan status
-*** TODO Add relative line numbers (not on org mode?)
-*** TODO Fix window size on startup
+*** DONE Add relative line numbers (not on org mode?)
+*** DONE Fix window size on startup
 *** TODO Add ivy
 *** TODO Improve org-agenda usability
+- [ ] Make ~SPC m t t~ cycle states (and save)
+- [ ] Make ~SPC m t s~ edit scheduled (and save)
+- [ ] Make ~SPC m t d~ edit deadline (and save)
+- [ ] Make ~SPC m t o~ to to todo source
+*** TODO Add dashboard
 *** TODO Add ligature support
 *** TODO Rust mode
 ** Cool emacs configs
