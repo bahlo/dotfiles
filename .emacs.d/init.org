@@ -19,7 +19,7 @@ If you want to exclusively use this configuration, run emacs like this:
 #+begin_src shell
 emacs -Q --load init.el init.org
 #+end_src
-* early-init.el and init.el
+* Setup
 ** early-init.el
 Taken from DOOM's early init
 #+begin_src emacs-lisp :tangle early-init.el
@@ -60,8 +60,8 @@ Taken from DOOM's early init
 
 ;;; early-init.el ends here
 #+end_src
-** init.el: startup optimization
-Taken from DOOM's init
+** init.el
+Mostly taken from DOOM's init
 #+begin_src emacs-lisp :tangle init.el
 	;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
 
@@ -88,8 +88,11 @@ Taken from DOOM's init
 	)
 ;; Ensure Doom is running out of this file's directory
 (setq user-emacs-directory (file-truename (file-name-directory load-file-name)))
+
+;; Add nix home-manager path
+(setenv "PATH" (concat "~/.nix-profile/bin:" (getenv "PATH")))
 #+end_src
-* Package manager
+** Package manager
 #+begin_src emacs-lisp :tangle init.el
 ;; Make =use-package= use straight by default
 (setq straight-use-package-by-default t)
@@ -369,9 +372,9 @@ Stolen from DOOM
 		"bd"  'kill-current-buffer
 
 		"g" '(:ignore t :which-key "git") ;; magit
-
 		"o" '(:ignore t :which-key "org") ;; org-mode
-		)
+		"w" '(:ignore t :which-key "window")
+	  )
 
 	(ab/local-leader-keys
 		:states 'normal
@@ -446,7 +449,7 @@ Add evil-collection for evil magit and more.
 				 (org-mode . variable-pitch-mode))
 	:general
 	(ab/leader-keys
-		"f t" '(org-babel-tangle :wk "tangle")
+		"o t" '(org-babel-tangle :wk "tangle")
 		"o C" '(org-capture :wk "capture")
 		)
 	(ab/local-leader-keys
@@ -517,12 +520,12 @@ Add evil-collection for evil magit and more.
 ** org-roam
 If you get =No EmacSQL SQLite binary available, aborting=, make sure you have a C compiler installed.
 #+begin_src emacs-lisp
-(use-package emacsql-sqlite3)
-(use-package org-roam
-	:init
-	(setq org-roam-v2-ack t)
-	(setq org-roam-directory (file-truename "~/Developer/GitHub/arnes-notes"))
-  (org-roam-db-autosync-mode))
+;; (use-package emacsql-sqlite3)
+;; (use-package org-roam
+;; 	:init
+;; 	(setq org-roam-v2-ack t)
+;; 	(setq org-roam-directory (file-truename "~/Developer/GitHub/arnes-notes"))
+;;   (org-roam-db-autosync-mode))
 #+end_src
 * Packages
 :PROPERTIES:
@@ -739,6 +742,28 @@ If you get =No EmacSQL SQLite binary available, aborting=, make sure you have a 
 					(string-prefix-p (expand-file-name "straight/" user-emacs-directory) project-root)))
 	)
 #+end_src
+** restart-emacs
+#+begin_src emacs-lisp
+(use-package restart-emacs
+	:general
+	(ab/leader-keys
+		"e" '(:ignore true :wk "emacs")
+		"e e" '(ab/edit-emacs-config :wk "edit") 
+		"e R" '(restart-emacs :wk "restart")
+		"e L" '(ab/reload-emacs :wk "reload"))
+	:init
+	(defun ab/reload-emacs ()
+		"Tangle the literate config and reload"
+		(interactive)
+		(require 'org)
+		(org-babel-tangle-file "~/.emacs.d/init.org")
+		(restart-emacs)
+		)
+  (defun ab/edit-emacs-config ()
+		"Open the literate config"
+		(interactive)
+		(find-file "~/.emacs.d/init.org")))
+#+end_src
 * Future work
 ** Roadmap
 *** DONE Install evil
@@ -755,7 +780,11 @@ If you get =No EmacSQL SQLite binary available, aborting=, make sure you have a 
 *** DONE Org mode heading glyphs
 *** DONE Variable pitch font in org
 *** DONE Fix theme loading
-*** TODO org-roam (cutom config for arnes notes)
+*** DONE org-roam (cutom config for arnes notes)
+*** TODO Fix window size on startup
+*** TODO Add nyan status
+*** TODO Add ivy
+*** TODO Improve org-agenda usability
 *** TODO Add ligature support
 *** TODO Rust mode
 ** Cool emacs configs
