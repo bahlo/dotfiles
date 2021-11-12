@@ -389,20 +389,23 @@ We only want line numbers in prog mode.
 		:global-prefix "SPC m")
 
 	(ab/leader-keys
-		"SPC" '(execute-extended-command :which-key "execute command")
-
+		; "SPC" '(execute-extended-command :which-key "execute command")
+    "x" '(execute-extended-command :which-key "execute command")
 		";" '(eval-expression :which-key "eval sexp")
 
 		"b" '(:ignore t :which-key "buffer")
+		"b <escape>" '(keyboard-escape-quit :wk t)
 		"bd"  'kill-current-buffer
 
 		"g" '(:ignore t :which-key "git") ;; magit
 		"o" '(:ignore t :which-key "org") ;; org-mode
+		"p" '(:ignore t :which-key "projectile") ;; projectile
 		"w" '(:ignore t :which-key "window")
 	  )
 
 	(ab/local-leader-keys
 		:states 'normal
+		"<escape>" '(keyboard-escape-quit :wk t)
 		"d" '(:ignore t :which-key "debug")
 		"e" '(:ignore t :which-key "eval")
 		"t" '(:ignore t :which-key "test")))
@@ -415,8 +418,9 @@ Set up evil mode.
 	:general
 	;; Split windows like vim
 	(ab/leader-keys
-		"wv" 'evil-window-vsplit
-		"ws" 'evil-window-split)
+		"w <escape>" '(keyboard-escape-quit :wk t)
+		"w v" 'evil-window-vsplit
+		"w s" 'evil-window-split)
 	:init
 	(setq evil-want-integration t)
 	(setq evil-want-keybinding nil) ; Required for evil-collection
@@ -474,6 +478,7 @@ Add evil-collection for evil magit and more.
 				 (org-mode . variable-pitch-mode))
 	:general
 	(ab/leader-keys
+		"o <escape>" '(keyboard-escape-quit :wk t)
 		"o t" '(org-babel-tangle :wk "tangle")
 		"o C" '(org-capture :wk "capture")
 		)
@@ -729,10 +734,11 @@ Prescient improves the selectrum ordering.
 (use-package magit
 	:general
 	(ab/leader-keys
-		"g b" 'magit-blame
-		"g g" 'magit-status
-		"g G" 'magit-status-here
-		"g l" 'magit-log)
+		"g <escape>" '(keyboard-escape-quit :wk t)
+		"g b" '(magit-blame :wk "blame")
+		"g g" '(magit-status :wk "status")
+		"g G" '(magit-status-here :wk "status here")
+		"g l" '(magit-log :wk "log"))
 	(general-nmap
 		:keymaps '(magit-status-mode-map
 							 magit-stash-mode-map
@@ -779,9 +785,12 @@ Prescient improves the selectrum ordering.
 	:general
 	(ab/leader-keys
 		:states 'normal
-		"p" '(:keymap projectile-command-map :which-key "project")
-		"p <escape>" 'keyboard-escape-quit
-		"p a" '(projectile-add-known-project :wk "add known"))
+		"SPC" '(projectile-find-file :wk "find file")
+		"p <escape>" '(keyboard-escape-quit :wk t)
+		"p p" '(projectile-find-dir :wk "find project")
+		"p a" '(projectile-add-known-project :wk "add project")
+	  "p r" '(projectile-remove-known-project :wk "remove project")
+	)
 	:init
 	(projectile-mode +1)
 	;; Do not include straight repos (emacs packages) to project list
@@ -796,6 +805,7 @@ Prescient improves the selectrum ordering.
 	:general
 	(ab/leader-keys
 		"e" '(:ignore true :wk "emacs")
+		"e <escape>" '(keyboard-escape-quit :wk t)
 		"e e" '(ab/edit-emacs-config :wk "edit") 
 		"e R" '(restart-emacs :wk "restart")
 		"e L" '(ab/reload-emacs :wk "reload"))
@@ -838,7 +848,7 @@ Prescient improves the selectrum ordering.
 *** DONE Add nyan status
 *** DONE Add relative line numbers (not on org mode?)
 *** DONE Fix window size on startup
-*** TODO Add ivy
+*** DONE Add ivy
 *** TODO Improve org-agenda usability
 - [ ] Make ~SPC m t t~ cycle states (and save)
 - [ ] Make ~SPC m t s~ edit scheduled (and save)
