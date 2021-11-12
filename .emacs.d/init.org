@@ -418,26 +418,24 @@ Add evil-collection for evil magit and more.
 #+end_src
 ** Theme
 #+begin_src emacs-lisp
-;; (use-package base16-theme
-;; :init (load-theme 'base16-unikitty-light t))
 ;; (use-package flucui-themes ;; No centaur support
 ;; 	:init (load-theme 'flucui-light t))
-(use-package chocolate-theme
-	:init (load-theme 'chocolate t))
-;; (use-package modus-themes
-;; 	:init (load-theme 'modus-operandi t))
+;; (use-package chocolate-theme ;; No light mode
+;; 	:init (load-theme 'chocolate t))
+(use-package modus-themes
+	:init (load-theme 'modus-operandi t))
 
 ;; See https://github.com/d12frosted/homebrew-emacs-plus#system-appearance-change
-;; (defun ab/system-apply-theme (appearance)
-;; 	"Load theme, taking current system APPEARANCE into consideration."
-;; 	(mapc #'disable-theme custom-enabled-themes)
-;; 	(pcase appearance
-;; 		('light (progn
-;; 							(load-theme 'flucui-light t)))
-;; 		('dark (progn
-;; 						 (load-theme 'flucui-dark t)))))
+(defun ab/system-apply-theme (appearance)
+	"Load theme, taking current system APPEARANCE into consideration."
+	(mapc #'disable-theme custom-enabled-themes)
+	(pcase appearance
+		('light (progn
+							(load-theme 'modus-operandi t)))
+		('dark (progn
+						 (load-theme 'modus-vivendi t)))))
 
-;; (add-hook 'ns-system-appearance-change-functions #'ab/system-apply-theme)
+(add-hook 'ns-system-appearance-change-functions #'ab/system-apply-theme)
 #+end_src
 ** Modeline
 #+begin_src emacs-lisp
@@ -515,7 +513,8 @@ Disabled because the current theme doesn't support them.
   :config
   (centaur-tabs-mode t)
   (centaur-tabs-group-by-projectile-project)
-	(centaur-tabs-change-fonts ab/default-font-family ab/default-font-size))
+	(centaur-tabs-change-fonts ab/default-font-family ab/default-font-size)
+	)
 #+end_src
 * Org
 :PROPERTIES:
