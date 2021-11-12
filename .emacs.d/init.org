@@ -375,6 +375,10 @@ Add evil-collection for evil magit and more.
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle init.el
 :END:
+** All the icons
+#+begin_src emacs-lisp
+(use-package all-the-icons)
+#+end_src
 ** Fonts
 #+begin_src emacs-lisp
 (use-package emacs
@@ -416,25 +420,31 @@ Add evil-collection for evil magit and more.
 #+begin_src emacs-lisp
 ;; (use-package base16-theme
 ;; :init (load-theme 'base16-unikitty-light t))
-(use-package flucui-themes
-	:init (load-theme 'flucui-light t))
+;; (use-package flucui-themes ;; No centaur support
+;; 	:init (load-theme 'flucui-light t))
+(use-package chocolate-theme
+	:init (load-theme 'chocolate t))
+;; (use-package modus-themes
+;; 	:init (load-theme 'modus-operandi t))
 
 ;; See https://github.com/d12frosted/homebrew-emacs-plus#system-appearance-change
-(defun ab/system-apply-theme (appearance)
-	"Load theme, taking current system APPEARANCE into consideration."
-	(mapc #'disable-theme custom-enabled-themes)
-	(pcase appearance
-		('light (progn
-							(load-theme 'flucui-light t)))
-		('dark (progn
-						 (load-theme 'flucui-dark t)))))
+;; (defun ab/system-apply-theme (appearance)
+;; 	"Load theme, taking current system APPEARANCE into consideration."
+;; 	(mapc #'disable-theme custom-enabled-themes)
+;; 	(pcase appearance
+;; 		('light (progn
+;; 							(load-theme 'flucui-light t)))
+;; 		('dark (progn
+;; 						 (load-theme 'flucui-dark t)))))
 
-(add-hook 'ns-system-appearance-change-functions #'ab/system-apply-theme)
+;; (add-hook 'ns-system-appearance-change-functions #'ab/system-apply-theme)
 #+end_src
 ** Modeline
 #+begin_src emacs-lisp
 (use-package doom-modeline
 	:hook (after-init . doom-modeline-mode))
+;; (use-package spaceline
+;; 	:hook (after-init . spaceline-spacemacs-theme))
 #+end_src
 ** Line numbers
 We only want line numbers in prog mode.
@@ -460,27 +470,52 @@ We only want line numbers in prog mode.
 	)
 #+end_src
 ** git-gutter
-#+begin_src emacs-lisp
-(use-package git-gutter
-	:init
+ #+begin_src emacs-lisp
+ (use-package git-gutter
+ 	:init
   (global-git-gutter-mode +1)
-)
-#+end_src
+ )
+ #+end_src
 ** centered-cursor-mode
-#+begin_src emacs-lisp
-(use-package centered-cursor-mode
-  :general
-  (ab/leader-keys
-    "=" '((lambda () (interactive) (centered-cursor-mode 'toggle)) :wk "center cursor")))
-#+end_src
+ #+begin_src emacs-lisp
+ (use-package centered-cursor-mode
+   :general
+   (ab/leader-keys
+     "=" '((lambda () (interactive) (centered-cursor-mode 'toggle)) :wk "center cursor")))
+ #+end_src
 ** highlight-indent-guides
+ #+begin_src emacs-lisp
+ (use-package highlight-indent-guides
+   :hook (prog-mode . highlight-indent-guides-mode)
+   :init
+   (setq highlight-indent-guides-method 'character)
+   (setq highlight-indent-guides-character ?|)
+   (setq highlight-indent-guides-responsive 'top))
+#+end_src
+** Tabs
+Disabled because the current theme doesn't support them.
 #+begin_src emacs-lisp
-(use-package highlight-indent-guides
-  :hook (prog-mode . highlight-indent-guides-mode)
+(use-package centaur-tabs
+  :hook (emacs-startup . centaur-tabs-mode)
+  :general
+  (general-nmap
+    "C-l" 'centaur-tabs-forward
+    "C-h" 'centaur-tabs-backward)
+  (ab/leader-keys
+    "b K" '(centaur-tabs-kill-other-buffers-in-current-group :wk "kill other buffers"))
   :init
-  (setq highlight-indent-guides-method 'character)
-  (setq highlight-indent-guides-character ?|)
-  (setq highlight-indent-guides-responsive 'top))
+	(setq centaur-tabs-style "bar")
+  (setq centaur-tabs-set-icons t)
+  (setq centaur-tabs-set-modified-marker t
+        centaur-tabs-modified-marker "M"
+        centaur-tabs-cycle-scope 'tabs)
+  (setq centaur-tabs-set-close-button nil)
+  (setq centaur-tabs-enable-ido-completion nil) ;; Disabling ido enables selectrum
+	(setq centaur-tabs-show-new-tab-button nil)
+  :config
+  (centaur-tabs-mode t)
+  (centaur-tabs-group-by-projectile-project)
+	(centaur-tabs-change-fonts ab/default-font-family ab/default-font-size))
 #+end_src
 * Org
 :PROPERTIES:
@@ -803,7 +838,7 @@ Prescient improves the selectrum ordering.
 		:states 'normal
 		"SPC" '(projectile-find-file :wk "find file")
 		"p <escape>" '(keyboard-escape-quit :wk t)
-		"p p" '(projectile-find-dir :wk "find project")
+		"p p" '(projectile-switch-project :wk "switch project")
 		"p a" '(projectile-add-known-project :wk "add project")
 	  "p r" '(projectile-remove-known-project :wk "remove project")
 	)
@@ -865,6 +900,7 @@ Prescient improves the selectrum ordering.
 *** DONE Add relative line numbers (not on org mode?)
 *** DONE Fix window size on startup
 *** DONE Add ivy
+*** TODO Find good light theme with centaur support
 *** TODO Improve org-agenda usability
 - [ ] Make ~SPC m t t~ cycle states (and save)
 - [ ] Make ~SPC m t s~ edit scheduled (and save)
