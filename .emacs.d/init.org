@@ -1,5 +1,5 @@
 #+title: Arnes literate Emacs config
-#+startup: content
+#+startup: overview
 
 * Introduction
 ** This file
@@ -590,11 +590,13 @@ Disabled because the current theme doesn't support them.
 	(setq org-agenda-files (list org-directory))
 	)
 #+end_src
-** org-bullets
+** org-superstar
 #+begin_src emacs-lisp
-(use-package org-bullets
-	:hook (org-mode . org-bullets-mode)
-	)
+(use-package org-superstar
+  :hook (org-mode . org-superstar-mode)
+	:config
+	(org-superstar-configure-like-org-bullets)
+  (setq org-ellipsis " ↴ "))
 #+end_src
 
 ** org-roam
@@ -902,7 +904,7 @@ Prescient improves the selectrum ordering.
 *** DONE Add relative line numbers (not on org mode?)
 *** DONE Fix window size on startup
 *** DONE Add ivy
-*** TODO Find good light theme with centaur support
+*** DONE Find good light theme with centaur support
 *** TODO Improve org-agenda usability
 - [ ] Make ~SPC m t t~ cycle states (and save)
 - [ ] Make ~SPC m t s~ edit scheduled (and save)
@@ -910,6 +912,10 @@ Prescient improves the selectrum ordering.
 - [ ] Make ~SPC m t o~ to to todo source
 *** TODO Add dashboard
 *** TODO Add ligature support
+*** TODO Add lsp-mode
+https://github.com/emacs-lsp/lsp-mode
+*** TODO Add yasnippet
+https://github.com/joaotavora/yasnippet
 *** TODO Rust mode
 ** Cool emacs configs
 - [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html]]
