@@ -805,6 +805,9 @@ Prescient improves the selectrum ordering.
 	(evil-define-key* '(normal visual) magit-mode-map
 		"zz" #'evil-scroll-line-to-center)
 	)
+
+(use-package forge
+  :after magit)
 #+end_src
 ** rainbow parenthesis
 #+begin_src emacs-lisp
