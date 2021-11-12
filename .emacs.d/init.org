@@ -346,20 +346,6 @@ Set up evil mode.
 	)
 #+end_src
 
-Make sure it works with org.
-#+begin_src emacs-lisp
-(use-package evil-org-mode
-	:straight (evil-org-mode :type git :host github :repo "hlissner/evil-org-mode")
-	:hook ((org-mode . evil-org-mode)
-				 (org-mode . (lambda () 
-											 (require 'evil-org)
-											 (evil-normalize-keymaps)
-											 (evil-org-set-key-theme '(textobjects))
-											 (require 'evil-org-agenda)
-											 (evil-org-agenda-set-keys))))
-	)
-#+end_src
-
 Add evil-collection for evil magit and more.
 #+begin_src emacs-lisp
 (use-package evil-collection
