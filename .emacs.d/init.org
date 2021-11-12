@@ -92,6 +92,11 @@ Mostly taken from DOOM's init
 ;; Add nix home-manager path
 (setenv "PATH" (concat "~/.nix-profile/bin:" (getenv "PATH")))
 #+end_src
+** Enlarge window
+#+begin_src emacs-lisp :tangle init.el
+(add-to-list 'default-frame-alist '(height . 50))
+(add-to-list 'default-frame-alist '(width . 110))
+#+end_src
 ** Package manager
 #+begin_src emacs-lisp :tangle init.el
 ;; Make =use-package= use straight by default
@@ -342,11 +347,6 @@ We only want line numbers in prog mode.
 	(setq frame-title-format nil)
 	)
 #+end_src
-** Enlarge window
-#+begin_src emacs-lisp
-(add-to-list 'default-frame-alist '(height . 50))
-(add-to-list 'default-frame-alist '(width . 110))
-#+end_src
 ** git-gutter
 #+begin_src emacs-lisp
 (use-package git-gutter
@@ -552,50 +552,6 @@ If you get =No EmacSQL SQLite binary available, aborting=, make sure you have a 
 ;; 	(setq org-roam-directory (file-truename "~/Developer/GitHub/arnes-notes"))
 ;;   (org-roam-db-autosync-mode))
 #+end_src
-* Packages
-:PROPERTIES:
-:header-args: :emacs-lisp :tangle init.el
-:END:
-** magit
-#+begin_src emacs-lisp
-(use-package magit
-	:general
-	(ab/leader-keys
-		"g b" 'magit-blame
-		"g g" 'magit-status
-		"g G" 'magit-status-here
-		"g l" 'magit-log)
-	(general-nmap
-		:keymaps '(magit-status-mode-map
-							 magit-stash-mode-map
-							 magit-revision-mode-map
-							 magit-process-mode-map
-							 magit-diff-mode-map)
-		"TAB" #'magit-section-toggle
-		"<escape>" #'transient-quit-one)
-	:init
-	(setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-	(setq magit-log-arguments '("--graph" "--decorate" "--color"))
-	(setq git-commit-fill-column 72)
-	:config
-	(evil-define-key* '(normal visual) magit-mode-map
-		"zz" #'evil-scroll-line-to-center)
-	)
-#+end_src
-** rainbow parenthesis
-#+begin_src emacs-lisp
-(use-package rainbow-delimiters
-	:hook ((emacs-lisp-mode . rainbow-delimiters-mode)
-				 (clojure-mode . rainbow-delimiters-mode))
-	)
-#+end_src
-
-** mixed-pitch
-#+begin_src emacs-lisp
-(use-package mixed-pitch
-	:hook
-	(text-mode . mixed-pitch-mode))
-#+end_src
 ** evil-org-mode
 #+begin_src emacs-lisp
 (use-package evil-org-mode
@@ -740,6 +696,76 @@ If you get =No EmacSQL SQLite binary available, aborting=, make sure you have a 
 					 (+org--toggle-inline-images-in-subtree
 						(org-element-property :begin context)
 						(org-element-property :end context))))))))
+#+end_src
+* Completion
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle init.el
+:END:
+** selectrum
+Incremental narrowing, alternative to Helm, Ivy or Ido.
+#+begin_src emacs-lisp
+(use-package selectrum
+  :demand
+  :general
+  (selectrum-minibuffer-map "C-j" 'selectrum-next-candidate
+                            "C-k" 'selectrum-previous-candidate)
+  :config
+  (selectrum-mode t))
+#+end_src
+** prescient
+Prescient improves the selectrum ordering.
+#+begin_src emacs-lisp
+(use-package selectrum-prescient
+  :after selectrum
+  :demand
+  :config
+  (prescient-persist-mode t)
+  (selectrum-prescient-mode t)
+  )
+#+end_src
+* Other packages
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle init.el
+:END:
+** magit
+#+begin_src emacs-lisp
+(use-package magit
+	:general
+	(ab/leader-keys
+		"g b" 'magit-blame
+		"g g" 'magit-status
+		"g G" 'magit-status-here
+		"g l" 'magit-log)
+	(general-nmap
+		:keymaps '(magit-status-mode-map
+							 magit-stash-mode-map
+							 magit-revision-mode-map
+							 magit-process-mode-map
+							 magit-diff-mode-map)
+		"TAB" #'magit-section-toggle
+		"<escape>" #'transient-quit-one)
+	:init
+	(setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+	(setq magit-log-arguments '("--graph" "--decorate" "--color"))
+	(setq git-commit-fill-column 72)
+	:config
+	(evil-define-key* '(normal visual) magit-mode-map
+		"zz" #'evil-scroll-line-to-center)
+	)
+#+end_src
+** rainbow parenthesis
+#+begin_src emacs-lisp
+(use-package rainbow-delimiters
+	:hook ((emacs-lisp-mode . rainbow-delimiters-mode)
+				 (clojure-mode . rainbow-delimiters-mode))
+	)
+#+end_src
+
+** mixed-pitch
+#+begin_src emacs-lisp
+(use-package mixed-pitch
+	:hook
+	(text-mode . mixed-pitch-mode))
 #+end_src
 ** evil-nerd-commenter
 #+begin_src emacs-lisp
