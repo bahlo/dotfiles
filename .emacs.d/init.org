@@ -763,7 +763,7 @@ Prescient improves the selectrum ordering.
   (selectrum-prescient-mode t)
   )
 #+end_src
-* Other packages
+* Utility packages
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle init.el
 :END:
@@ -869,45 +869,52 @@ Prescient improves the selectrum ordering.
 	:init
   (nyan-mode))
 #+end_src
+** undo fu
+#+begin_src emacs-lisp
+(use-package undo-fu
+  :demand
+  :general
+  (:states 'normal
+           "u" 'undo-fu-only-undo
+           "\C-r" 'undo-fu-only-redo))
+#+end_src
+** vterm
+#+begin_src emacs-lisp
+(use-package vterm
+  :config
+  (setq vterm-shell (executable-find "zsh")
+        vterm-max-scrollback 10000))
+
+(use-package vterm-toggle
+  :general
+  (ab/leader-keys
+    "'" 'vterm-toggle))
+#+end_src
+
+* Programming
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle init.el
+:END:
+** tree-sitter
+#+begin_src emacs-lisp
+(use-package tree-sitter
+  :straight (tree-sitter :host github :repo "ubolonton/emacs-tree-sitter" :depth full))
+
+(use-package tree-sitter-langs
+  :straight (tree-sitter-langs :host github :repo "ubolonton/emacs-tree-sitter" :depth full))
+#+end_src
+** nix
+#+begin_src emacs-lisp
+(use-package nix-mode
+  :mode "\\.nix\\'")
+#+end_src
 * Future work
 ** Roadmap
-*** DONE Install evil
-*** DONE Configure font
-*** DONE Configure basic settings
-*** DONE Install bespoke-theme
-[[https://github.com/mclear-tools/bespoke-themes]]
-*** DONE Install magit
-*** DONE Install bespoke-modeline
-[[https://github.com/mclear-tools/bespoke-modeline]]
-
-*** DONE Add help on SPC
-*** DONE Fix agenda
-*** DONE Org mode heading glyphs
-*** DONE Variable pitch font in org
-*** DONE Fix theme loading
-*** DONE org-roam (cutom config for arnes notes)
-*** DONE Add nyan status
-*** DONE Add relative line numbers (not on org mode?)
-*** DONE Fix window size on startup
-*** DONE Add ivy
-*** DONE Find good light theme with centaur support
-*** TODO Improve org-agenda usability
-- [ ] Make ~SPC m t t~ cycle states (and save)
-- [ ] Make ~SPC m t s~ edit scheduled (and save)
-- [ ] Make ~SPC m t d~ edit deadline (and save)
-- [ ] Make ~SPC m t o~ to to todo source
 *** TODO Add dashboard
 *** TODO Add ligature support
-*** TODO Add lsp-mode
-https://github.com/emacs-lsp/lsp-mode
+*** TODO Add lsp-mode, lsp-ui 
+https://github.com/emacs-lsp/lsp-mode 
 *** TODO Add yasnippet
 https://github.com/joaotavora/yasnippet
 *** TODO Rust mode
-** Cool emacs configs
-- [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html]]
-- [[https://github.com/mclear-tools/dotemacs]]
-- [[https://github.com/Artawower/.doom]]
-- [[https://github.com/rougier/nano-emacs]]
-- [[https://github.com/natecox/dotfiles/blob/master/workspaces/shared/symlinks/emacs/.emacs.d/nathancox.org]]
-	
-	
+*** TODO Go mode

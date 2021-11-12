@@ -7,10 +7,12 @@ let
     bottom
     curl
     clang
+		cmake
     delta
     exa
     fd
     ffmpeg
+    gcc
     gh
     hexyl
     httpie
