@@ -706,9 +706,6 @@ Incremental narrowing, alternative to Helm, Ivy or Ido.
 #+begin_src emacs-lisp
 (use-package selectrum
   :demand
-  :general
-  (selectrum-minibuffer-map "C-j" 'selectrum-next-candidate
-                            "C-k" 'selectrum-previous-candidate)
   :config
   (selectrum-mode t))
 #+end_src
