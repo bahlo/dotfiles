@@ -967,6 +967,10 @@ This provides text completion.
   :hook
   (go-mode . lsp-deferred))
 #+end_src
+** Gherkin
+#+begin_src emacs-lisp
+(use-package feature-mode)
+#+end_src
 * Future work
 ** Roadmap
 *** TODO Add dashboard
