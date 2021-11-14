@@ -385,7 +385,7 @@ Add evil-collection for evil magit and more.
 		:type 'string
 		:group 'ab)
 
-	(defcustom ab/variable-pitch-font-size 150
+	(defcustom ab/variable-pitch-font-size 160
 		"Font size"
 		:type 'int
 		:group 'ab)
@@ -574,7 +574,7 @@ Disabled because the current theme doesn't support them.
 		)
 	:init
 	(setq org-agenda-files (list org-directory))
-	)
+	(setq org-agenda-window-setup 'only-window))
 #+end_src
 ** org-superstar
 #+begin_src emacs-lisp
@@ -903,10 +903,45 @@ Prescient improves the selectrum ordering.
 (use-package tree-sitter-langs
   :straight (tree-sitter-langs :host github :repo "ubolonton/emacs-tree-sitter" :depth full))
 #+end_src
-** nix
+** Nix
 #+begin_src emacs-lisp
 (use-package nix-mode
   :mode "\\.nix\\'")
+#+end_src
+** LSP
+#+begin_src emacs-lisp
+(use-package lsp-mode
+  :commands
+  (lsp lsp-deferred)
+  :hook
+  ((lsp-mode . (lambda () (setq-local evil-lookup-func #'lsp-describe-thing-at-point)))
+   (lsp-mode . lsp-enable-which-key-integration))
+  :general
+  (ab/local-leader-keys
+    :states 'normal
+    "i" '(:ignore t :which-key "import")
+    "i o" '(lsp-organize-imports :wk "optimize")
+    "l" '(:keymap lsp-command-map :wk "lsp")
+    "r" '(lsp-rename :wk "rename"))
+  (lsp-mode-map
+   :states 'normal
+   "gd" 'lsp-find-references))
+
+(use-package lsp-ui
+  :hook
+  ((lsp-mode . lsp-ui-mode))
+  :general
+  (ab/local-leader-keys
+    "h" 'lsp-ui-doc-show
+    "H" 'lsp-ui-doc-hide))
+#+end_src
+** Go
+#+begin_src emacs-lisp
+(use-package go-mode)
+
+(use-package lsp-mode
+  :hook
+  (go-mode . lsp-deferred))
 #+end_src
 * Future work
 ** Roadmap
