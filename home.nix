@@ -6,7 +6,7 @@ let
     binaryen
     bottom
     curl
-    clang
+    # clang
 		cmake
     delta
     exa
@@ -14,6 +14,7 @@ let
     ffmpeg
     gcc
     gh
+    gopls
     hexyl
     httpie
     hurl

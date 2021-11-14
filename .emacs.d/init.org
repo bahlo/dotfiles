@@ -90,7 +90,7 @@ Mostly taken from DOOM's init
 (setq user-emacs-directory (file-truename (file-name-directory load-file-name)))
 
 ;; Add nix home-manager path
-(setenv "PATH" (concat "~/.nix-profile/bin:" (getenv "PATH")))
+(setenv "PATH" (concat "/Users/arne/.nix-profile/bin:" (getenv "PATH")))
 #+end_src
 ** Enlarge window
 #+begin_src emacs-lisp :tangle init.el
@@ -270,7 +270,7 @@ Stolen from DOOM
 	:init
 	(setq which-key-separator " ")
 	(setq which-key-prefix-prefix "+")
-	;; (setq which-key-idle-delay 0.5)
+	(setq which-key-idle-delay 0.5)
 	:config
 	(which-key-mode))
 #+end_src
@@ -426,9 +426,7 @@ Add evil-collection for evil magit and more.
 ** Modeline
 #+begin_src emacs-lisp
 (use-package doom-modeline
-	:hook (after-init . doom-modeline-mode))
-;; (use-package spaceline
-;; 	:hook (after-init . spaceline-spacemacs-theme))
+  :hook (after-init . doom-modeline-mode))
 #+end_src
 ** Line numbers
 We only want line numbers in prog mode.
@@ -501,6 +499,26 @@ Disabled because the current theme doesn't support them.
   (centaur-tabs-group-by-projectile-project)
 	(centaur-tabs-change-fonts ab/default-font-family ab/default-font-size)
 	)
+#+end_src
+** Treemacs
+#+begin_src emacs-lisp
+(use-package treemacs
+	:general
+	(ab/leader-keys
+  "t" '(treemacs :wk "treemacs")))
+
+(use-package treemacs-evil
+  :after (treemacs evil))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile))
+
+(use-package treemacs-magit
+  :after (treemacs magit)
+  :ensure t)
+
+(use-package treemacs-all-the-icons
+  :after treemacs)
 #+end_src
 * Org
 :PROPERTIES:
@@ -903,11 +921,6 @@ Prescient improves the selectrum ordering.
 (use-package tree-sitter-langs
   :straight (tree-sitter-langs :host github :repo "ubolonton/emacs-tree-sitter" :depth full))
 #+end_src
-** Nix
-#+begin_src emacs-lisp
-(use-package nix-mode
-  :mode "\\.nix\\'")
-#+end_src
 ** LSP
 #+begin_src emacs-lisp
 (use-package lsp-mode
@@ -919,25 +932,36 @@ Prescient improves the selectrum ordering.
   :general
   (ab/local-leader-keys
     :states 'normal
-    "i" '(:ignore t :which-key "import")
-    "i o" '(lsp-organize-imports :wk "optimize")
     "l" '(:keymap lsp-command-map :wk "lsp")
-    "r" '(lsp-rename :wk "rename"))
-  (lsp-mode-map
-   :states 'normal
-   "gd" 'lsp-find-references))
+    "r" '(lsp-rename :wk "rename")
+		; "gd" '(lsp-find-definition :wk "find definition") // handled in evil gd
+		"u" '(lsp-find-references :wk "find references") ; find usage
+  ))
 
 (use-package lsp-ui
   :hook
   ((lsp-mode . lsp-ui-mode))
-  :general
-  (ab/local-leader-keys
-    "h" 'lsp-ui-doc-show
-    "H" 'lsp-ui-doc-hide))
+	:config
+  (setq lsp-ui-sideline-show-diagnostics t)
+  (setq lsp-ui-sideline-show-code-actions t)
+  (setq lsp-ui-sideline-update-mode t))
+#+end_src
+** Company mode
+This provides text completion.
+#+begin_src emacs-lisp
+(use-package company
+	:hook (after-init . global-company-mode))
+#+end_src
+** Nix
+#+begin_src emacs-lisp
+(use-package nix-mode
+  :mode "\\.nix\\'")
 #+end_src
 ** Go
 #+begin_src emacs-lisp
-(use-package go-mode)
+(use-package go-mode
+	:hook
+  (before-save . gofmt-before-save))
 
 (use-package lsp-mode
   :hook
@@ -947,9 +971,6 @@ Prescient improves the selectrum ordering.
 ** Roadmap
 *** TODO Add dashboard
 *** TODO Add ligature support
-*** TODO Add lsp-mode, lsp-ui 
-https://github.com/emacs-lsp/lsp-mode 
 *** TODO Add yasnippet
 https://github.com/joaotavora/yasnippet
 *** TODO Rust mode
-*** TODO Go mode
