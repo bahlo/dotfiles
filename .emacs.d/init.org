@@ -427,6 +427,11 @@ Add evil-collection for evil magit and more.
 #+begin_src emacs-lisp
 (use-package doom-modeline
   :hook (after-init . doom-modeline-mode))
+;; (use-package spaceline
+;;   :config
+;; 	(use-package spaceline-config
+;; 		:config
+;; 		(spaceline-emacs-theme)))
 #+end_src
 ** Line numbers
 We only want line numbers in prog mode.
@@ -465,7 +470,7 @@ We only want line numbers in prog mode.
    (ab/leader-keys
      "=" '((lambda () (interactive) (centered-cursor-mode 'toggle)) :wk "center cursor")))
  #+end_src
-** highlight-indent-guides
+** highlightindent-guides
  #+begin_src emacs-lisp
  (use-package highlight-indent-guides
    :hook (prog-mode . highlight-indent-guides-mode)
@@ -970,6 +975,10 @@ This provides text completion.
 ** Gherkin
 #+begin_src emacs-lisp
 (use-package feature-mode)
+#+end_src
+** YAML
+#+begin_src emacs-lisp
+(use-package yaml-mode)
 #+end_src
 * Future work
 ** Roadmap
