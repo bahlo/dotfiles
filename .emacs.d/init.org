@@ -404,12 +404,10 @@ Add evil-collection for evil magit and more.
 #+end_src
 ** Theme
 #+begin_src emacs-lisp
-;; (use-package flucui-themes ;; No centaur support
-;; 	:init (load-theme 'flucui-light t))
-;; (use-package chocolate-theme ;; No light mode
-;; 	:init (load-theme 'chocolate t))
-(use-package modus-themes
-	:init (load-theme 'modus-operandi t))
+;; (use-package modus-themes
+;; 	:init (load-theme 'modus-operandi t)) ;; and modus-vivendi for dark
+(use-package color-theme-sanityinc-tomorrow
+  :init (load-theme 'sanityinc-tomorrow-day))
 
 ;; See https://github.com/d12frosted/homebrew-emacs-plus#system-appearance-change
 (defun ab/system-apply-theme (appearance)
@@ -417,9 +415,9 @@ Add evil-collection for evil magit and more.
 	(mapc #'disable-theme custom-enabled-themes)
 	(pcase appearance
 		('light (progn
-							(load-theme 'modus-operandi t)))
+							(load-theme 'sanityinc-tomorrow-day t)))
 		('dark (progn
-						 (load-theme 'modus-vivendi t)))))
+						 (load-theme 'sanityinc-tomorrow-night t)))))
 
 (add-hook 'ns-system-appearance-change-functions #'ab/system-apply-theme)
 #+end_src
