@@ -572,6 +572,7 @@ Disabled because the current theme doesn't support them.
 	(setq org-modules
 				'(ol-docview
 					org-habit))
+	(setq org-todo-keywords '((type "TODO" "WAITING" "|" "DONE")))
 	;; Replace - with • in lists
 	(font-lock-add-keywords 'org-mode
 													'(("^ *\\([-]\\) "
@@ -819,6 +820,9 @@ Prescient improves the selectrum ordering.
 	)
 
 (use-package forge
+  :after magit)
+
+(use-package magit-todos
   :after magit)
 #+end_src
 ** rainbow parenthesis
