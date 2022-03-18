@@ -70,6 +70,11 @@
               "gc_details" = true;
           };
       };
+
+      # Needs https://marketplace.visualstudio.com/items?itemName=iocave.customize-ui
+      "window.titleBarStyle" = "native";
+      "customizeUI.titleBar" = "inline";
+      "customizeUI.activityBar" = "wide";
     };
 
     keybindings = [
@@ -88,16 +93,18 @@
     ];
 
     extensions = with pkgs.vscode-extensions; [
-        golang.go
+        bbenoist.nix
+        eamodio.gitlens
         vscodevim.vim
         file-icons.file-icons
-        # matklad.rust-analyzer
-        # ms-python.python
-        # ms-python.vscode-pylance
-        eamodio.gitlens
+        github.copilot
         github.github-vscode-theme
         github.vscode-pull-request-github
-        bbenoist.nix
+        golang.go
+        gruntfuggly.todo-tree
+        # iocave.customize-ui (uncomment as soon as this exists)
+        matklad.rust-analyzer
+        usernamehw.errorlens
     ];
   };
 }
