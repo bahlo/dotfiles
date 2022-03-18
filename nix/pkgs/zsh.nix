@@ -14,7 +14,7 @@
       [[ "$TERM" == "xterm" ]] && export TERM=xterm-256color
 
       # Load p10k
-      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh 
+      [[ ! -f ~/.dotfiles/p10k.zsh ]] || source ~/.dotfiles/p10k.zsh 
 
       # Keybindings
       bindkey "^[[2~" yank                    # Insert
