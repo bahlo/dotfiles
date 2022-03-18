@@ -72,9 +72,9 @@
       };
 
       # Needs https://marketplace.visualstudio.com/items?itemName=iocave.customize-ui
-      "window.titleBarStyle" = "native";
-      "customizeUI.titleBar" = "inline";
-      "customizeUI.activityBar" = "wide";
+      # "window.titleBarStyle" = "native";
+      # "customizeUI.titleBar" = "inline";
+      # "customizeUI.activityBar" = "wide";
     };
 
     keybindings = [
