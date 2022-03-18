@@ -12,7 +12,7 @@ let
     exa
     fd
     ffmpeg
-    gcc
+    # gcc
     gh
     gopls
     hexyl
@@ -21,6 +21,7 @@ let
     imagemagick
     jq
     just
+    kubetail
     magic-wormhole
     pv
     pwgen

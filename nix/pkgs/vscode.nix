@@ -17,6 +17,7 @@
       "editor.fontFamily" = "PragmataPro Mono Liga";
       "editor.fontSize" = 15;
       "editor.formatOnSave" = true;
+      "editor.renderWhitespace" = "all";
       "editor.autoClosingBrackets" = "always";
       "editor.inlineSuggest.enabled" = true;
       "editor.fontLigatures" = true;
@@ -34,6 +35,7 @@
           ];
       };
       "editor.bracketPairColorization.enabled" = true;
+      "editor.guides.bracketPairs" = true;
 
       "window.autoDetectColorScheme" = true;
 

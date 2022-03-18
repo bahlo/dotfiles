@@ -20,6 +20,8 @@
       ".vscode"
       "__debug_bin"
       ".envrc"
+      ".direnv"
+      ".nova"
     ];
     lfs = {
       enable = true;
