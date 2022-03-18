@@ -7,7 +7,7 @@ let
     bottom
     curl
     # clang
-		cmake
+    cmake
     delta
     exa
     fd
@@ -25,7 +25,7 @@ let
     magic-wormhole
     pv
     pwgen
-    # ripgrep
+    ripgrep
     shellcheck
     tealdeer
     tmux
