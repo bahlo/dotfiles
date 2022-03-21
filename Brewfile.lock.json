@@ -1,0 +1,149 @@
+{
+  "entries": {
+    "cask": {
+      "iterm2-beta": {
+        "version": "3.5.0beta5",
+        "options": {
+          "full_name": "iterm2-beta"
+        }
+      },
+      "signal": {
+        "version": "5.35.0",
+        "options": {
+          "full_name": "signal"
+        }
+      },
+      "slack": {
+        "version": "4.24.1",
+        "options": {
+          "full_name": "slack"
+        }
+      },
+      "logseq": {
+        "version": "0.6.3",
+        "options": {
+          "full_name": "logseq"
+        }
+      },
+      "firefox": {
+        "version": "98.0.1",
+        "options": {
+          "full_name": "firefox"
+        }
+      },
+      "plexamp": {
+        "version": "4.0.3",
+        "options": {
+          "full_name": "plexamp"
+        }
+      },
+      "bartender": {
+        "version": "4.1.40,41040",
+        "options": {
+          "full_name": "bartender"
+        }
+      },
+      "studiolinkstandalone": {
+        "version": "21.05.0",
+        "options": {
+          "full_name": "studiolinkstandalone"
+        }
+      },
+      "tableplus": {
+        "version": "4.6.2,410",
+        "options": {
+          "full_name": "tableplus"
+        }
+      },
+      "boxcryptor": {
+        "version": "2.45.1655",
+        "options": {
+          "full_name": "boxcryptor"
+        }
+      },
+      "docker": {
+        "version": "4.6.0,75818",
+        "options": {
+          "full_name": "docker"
+        }
+      },
+      "raycast": {
+        "version": "1.30.3",
+        "options": {
+          "full_name": "raycast"
+        }
+      },
+      "gpg-suite": {
+        "version": "2022.1",
+        "options": {
+          "full_name": "gpg-suite"
+        }
+      },
+      "zoom": {
+        "version": "5.9.6.4993",
+        "options": {
+          "full_name": "zoom"
+        }
+      },
+      "discord": {
+        "version": "0.0.266",
+        "options": {
+          "full_name": "discord"
+        }
+      }
+    },
+    "brew": {
+      "starship": {
+        "version": "1.4.2",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_monterey": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/starship/blobs/sha256:8b6c86661aa5e0e853f98bef10047e6d18acddb9b8b135fe8f27068a348e2487",
+              "sha256": "8b6c86661aa5e0e853f98bef10047e6d18acddb9b8b135fe8f27068a348e2487"
+            },
+            "arm64_big_sur": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/starship/blobs/sha256:558354061a0fc2cfb5d63fd44ee54af623c8e866f9dd00b71dca662367a1a290",
+              "sha256": "558354061a0fc2cfb5d63fd44ee54af623c8e866f9dd00b71dca662367a1a290"
+            },
+            "monterey": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/starship/blobs/sha256:7318ddbd100d42c6e6dc079553dc10f11e61151bd2a3141eb0d74c81c876ac12",
+              "sha256": "7318ddbd100d42c6e6dc079553dc10f11e61151bd2a3141eb0d74c81c876ac12"
+            },
+            "big_sur": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/starship/blobs/sha256:0c3727771244c2e99b0d3dd1b81ab0001182b7410b18156c0aacac9a2980fe3b",
+              "sha256": "0c3727771244c2e99b0d3dd1b81ab0001182b7410b18156c0aacac9a2980fe3b"
+            },
+            "catalina": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/starship/blobs/sha256:6ccc6cc7c759ffb8a458a3037430fddfd1ea29c1b420dfe6ba8ab6a414050ea5",
+              "sha256": "6ccc6cc7c759ffb8a458a3037430fddfd1ea29c1b420dfe6ba8ab6a414050ea5"
+            },
+            "x86_64_linux": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/starship/blobs/sha256:d4cee0a79c56869f092a0269fb78b210f8782cd2bfa4c5217cda6663fc5f7f37",
+              "sha256": "d4cee0a79c56869f092a0269fb78b210f8782cd2bfa4c5217cda6663fc5f7f37"
+            }
+          }
+        }
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "monterey": {
+        "HOMEBREW_VERSION": "3.4.2",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "49a320c2907ec72197cc16eb8ff8125c10d8e57e",
+        "CLT": "13.3.0.0.1.1645755326",
+        "Xcode": "13.2.1",
+        "macOS": "12.2.1"
+      }
+    }
+  }
+}

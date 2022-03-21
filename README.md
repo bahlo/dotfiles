@@ -4,6 +4,8 @@ My personal dotfiles
 
 ## Install
 
+### Nix
+
 1. Install [Nix](https://nixos.org/download.html) and [home-manager](https://github.com/nix-community/home-manager)
 2. Clone this repository: 
    ```shell
@@ -13,4 +15,9 @@ My personal dotfiles
    ```nix
    imports = [ /Users/arne/.dotfiles/home.nix ];
    ```
+4. Run `home-manager switch`
 
+### Homebrew
+
+1. Install [Homebrew](https://brew.sh)
+2. Run `brew bundle` in `~/.dotfiles` to install all applications in the <Brewfile>
