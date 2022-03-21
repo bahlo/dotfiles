@@ -90,6 +90,12 @@
         "options": {
           "full_name": "discord"
         }
+      },
+      "font-inter": {
+        "version": "3.19",
+        "options": {
+          "full_name": "font-inter"
+        }
       }
     },
     "brew": {
@@ -166,6 +172,11 @@
       "1Blocker": {
         "id": "1365531024",
         "version": "4.1.4"
+      }
+    },
+    "tap": {
+      "homebrew/cask-fonts": {
+        "revision": "8a4081241faa95481f158132756ba452702c2e47"
       }
     }
   },

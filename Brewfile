@@ -28,3 +28,7 @@ mas "1Blocker", id: 1365531024
 
 # Starship is broken with Nix on arm64
 brew "starship"
+
+# Fonts
+tap "homebrew/cask-fonts"
+cask "font-inter"
