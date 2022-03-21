@@ -26,8 +26,9 @@ mas "Transmit", id: 1436522307
 mas "Deliveries", id: 290986013
 mas "1Blocker", id: 1365531024
 
-# Starship is broken with Nix on arm64
-brew "starship"
+# CLI utilities that aren't installed with Nix
+brew "starship" # Starship is broken with Nix on arm64
+brew "postgresql" # We want brew to autostart and manage
 
 # Fonts
 tap "homebrew/cask-fonts"
