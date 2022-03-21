@@ -8,13 +8,11 @@
     enableSyntaxHighlighting = true;
     autocd = true;
 
-    initExtraBeforeCompInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
     initExtra = ''
+      eval "$(starship init zsh)"
+
       # Enable 256 colors
       [[ "$TERM" == "xterm" ]] && export TERM=xterm-256color
-
-      # Load p10k
-      [[ ! -f ~/.dotfiles/p10k.zsh ]] || source ~/.dotfiles/p10k.zsh 
 
       # Keybindings
       bindkey "^[[2~" yank                    # Insert
@@ -88,15 +86,6 @@
     };
 
     plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.fetchFromGitHub {
-          owner = "romkatv";
-          repo = "powerlevel10k";
-          rev = "v1.15.0";
-          sha256 = "1b3j2riainx3zz4irww72z0pb8l8ymnh1903zpsy5wmjgb0wkcwq";
-        };
-      }
       {
         name = "zsh-nix-shell";
         file = "nix-shell.plugin.zsh";

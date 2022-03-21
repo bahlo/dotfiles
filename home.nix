@@ -23,6 +23,7 @@ let
     just
     kubetail
     magic-wormhole
+    nixUnstable
     pv
     pwgen
     ripgrep
@@ -57,6 +58,10 @@ in
     allowUnfree = true;
     allowUnsupportedSystem = true;
   };
+
+  xdg.configFile."nix/nix.conf".text = ''
+  experimental-features = nix-command flakes
+'';
 
   home.packages = terminalPkgs ++ rustPkgs ++ k8sPkgs;
 }
