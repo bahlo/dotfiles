@@ -21,3 +21,12 @@ My personal dotfiles
 
 1. Install [Homebrew](https://brew.sh)
 2. Run `brew bundle` in `~/.dotfiles` to install all applications in the <Brewfile>
+   
+### Manual setup
+Here's a list of things that can't be automated easily:
+- [ ] Set DuckDuckGo as default search engine in Safari, Firefox
+- [ ] Map the capslock key to escape
+- [ ] Set up FastMail
+- [ ] Install PragmataPro
+- [ ] Import GPG keys
+- [ ] Set up K8s contexts
