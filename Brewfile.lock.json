@@ -132,6 +132,41 @@
           }
         }
       }
+    },
+    "mas": {
+      "Tot": {
+        "id": "1491071483",
+        "version": "1.2.4"
+      },
+      "1Password": null,
+      "Things": {
+        "id": "904280696",
+        "version": "3.15.14"
+      },
+      "Fantastical": {
+        "id": "975937182",
+        "version": "3.6.3"
+      },
+      "Instapaper": {
+        "id": "288545208",
+        "version": "8.0.1"
+      },
+      "Hand Mirror": {
+        "id": "1502839586",
+        "version": "1.5"
+      },
+      "Transmit": {
+        "id": "1436522307",
+        "version": "5.8.4"
+      },
+      "Deliveries": {
+        "id": "290986013",
+        "version": "9.3.1"
+      },
+      "1Blocker": {
+        "id": "1365531024",
+        "version": "4.1.4"
+      }
     }
   },
   "system": {
