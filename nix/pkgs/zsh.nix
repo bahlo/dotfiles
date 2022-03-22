@@ -27,6 +27,13 @@
         git push --set-upstream origin "$branch"
       }
 
+      # No go.nix, but we need those folders and envs
+      export GOPATH=$HOME/go
+      export GOBIN=$GOPATH/bin
+      export PATH=$PATH:$GOBIN
+      export GOPRIVATE=github.com/bahlo,github.com/axiomhq
+      mkdir -p $GOPATH/src $GOPATH/pkg $GOPATH/bin
+
       # Thanks https://github.com/hpcsc/dotfiles/blob/63f194aa553ef83f9edec76991f2265f7962b00e/link/common/zsh/.functions/fzf-functions/fcm
       function git-commit-co-author() {
         SELECTED_AUTHORS=$(git shortlog -sne | awk '{$1=""}1' | fzf -m)
