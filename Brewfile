@@ -14,6 +14,7 @@ cask "raycast"
 cask "gpg-suite"
 cask "zoom"
 cask "discord"
+cask "fig"
 
 # App Store
 mas "1Password", id: 1333542190

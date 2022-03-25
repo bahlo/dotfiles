@@ -36,6 +36,7 @@
       };
       "editor.bracketPairColorization.enabled" = true;
       "editor.guides.bracketPairs" = true;
+      "editor.accessibilitySupport" = "off";
 
       "window.autoDetectColorScheme" = true;
 
