@@ -4,7 +4,6 @@ cask "signal"
 cask "slack"
 cask "logseq"
 cask "firefox"
-cask "plexamp"
 cask "bartender"
 cask "studiolinkstandalone"
 cask "tableplus"
@@ -14,10 +13,13 @@ cask "raycast"
 cask "gpg-suite"
 cask "zoom"
 cask "discord"
-cask "fig"
+cask "1password-beta"
+cask "mullvadvpn"
+cask "linear-linear"
+cask "tandem"
 
 # App Store
-mas "1Password", id: 1333542190
+# mas "1Password", id: 1333542190
 mas "Things", id: 904280696
 mas "Fantastical", id: 975937182
 mas "Instapaper", id: 288545208
@@ -30,6 +32,8 @@ mas "1Blocker", id: 1365531024
 # CLI utilities that aren't installed with Nix
 brew "starship" # Starship is broken with Nix on arm64
 brew "postgresql" # We want brew to autostart and manage
+brew "ocrmypdf" # Broken on Nix
+brew "tesseract-lang" # Dependency of ^
 
 # Fonts
 tap "homebrew/cask-fonts"

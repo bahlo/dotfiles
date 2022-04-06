@@ -51,7 +51,7 @@
     includes = [
       {
         path = "~/.config/git/config-axiom";
-        condition = "gitdir:~/Developer/Axiom/";
+        condition = "gitdir:~/Developer/axiomhq/";
       }
     ];
   };

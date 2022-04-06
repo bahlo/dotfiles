@@ -42,7 +42,7 @@
         # convert newline-delimited string to array, zsh way: https://stackoverflow.com/a/2930519
         AUTHORS=("''${(f)SELECTED_AUTHORS}")
         for AUTHOR in $AUTHORS[@]; do
-          MESSAGE="''${MESSAGE}Co-authored-by: ''${AUTHOR}\n"
+          MESSAGE="''${MESSAGE}Co-authored-by:''${AUTHOR}\n"
         done
 
         if [[ "$1" == "-m" ]]; then
