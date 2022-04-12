@@ -14,7 +14,6 @@ cask "gpg-suite"
 cask "zoom"
 cask "discord"
 cask "1password-beta"
-cask "mullvadvpn"
 cask "linear-linear"
 cask "tandem"
 
