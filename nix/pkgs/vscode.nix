@@ -76,6 +76,8 @@
       # "window.titleBarStyle" = "native";
       # "customizeUI.titleBar" = "inline";
       # "customizeUI.activityBar" = "wide";
+
+      "svelte.enable-ts-plugin" = "true";
     };
 
     keybindings = [
