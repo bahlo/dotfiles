@@ -230,8 +230,10 @@ require('packer').startup(function(use)
     'akinsho/toggleterm.nvim', tag = '*', 
     config = function()
       require("toggleterm").setup {
-        open_mapping = [[<Leader>s]],
+        open_mapping = [[<c-\>]], -- We don't use this
       }
+
+      vim.keymap.set('n', '<Leader>s', ':ToggleTerm<cr>', { desc = 'Toggle terminal' })
     end
   }
 
