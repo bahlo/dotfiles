@@ -87,10 +87,19 @@ require('packer').startup(function(use)
   -- Git
   use { 
     'TimUntersberger/neogit', 
-    requires = 'nvim-lua/plenary.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim'
+    },
     config = function() 
       local neogit = require('neogit')
-      neogit.setup()
+
+      neogit.setup {
+        integrations = {
+          diffview = true
+        }
+      }
+
       vim.keymap.set('n', '<leader>g', neogit.open, { desc = 'Neogit' })
     end
   }
@@ -100,16 +109,37 @@ require('packer').startup(function(use)
   }
 
   -- UI
+  -- use {
+  --   "projekt0n/circles.nvim",
+  --   requires = {"nvim-tree/nvim-web-devicons"},
+  --   config = function()
+  --     require("circles").setup()
+  --   end
+  -- }
   use {
-    "projekt0n/circles.nvim",
-    requires = {"nvim-tree/nvim-web-devicons"},
+    'kdheepak/tabline.nvim',
     config = function()
-      require("circles").setup()
-    end
+      require'tabline'.setup {enable = false}
+
+      vim.keymap.set('n', '<C-h>', ':TablineBufferPrevious<cr>', {})
+      vim.keymap.set('n', '<C-l>', ':TablineBufferNext<cr>', {})
+    end,
+    requires = {'hoob3rt/lualine.nvim', 'kyazdani42/nvim-web-devicons'}
   }
   use { 'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
-    config = function() require('lualine').setup() end
+    config = function() 
+      require('lualine').setup {
+        tabline = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = { require'tabline'.tabline_buffers },
+          lualine_x = { require'tabline'.tabline_tabs },
+          lualine_y = {},
+          lualine_z = {},
+        }
+      }
+    end
   }
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
@@ -194,6 +224,14 @@ require('packer').startup(function(use)
           end,
       })
       auto_dark_mode.init()
+    end
+  }
+  use {
+    'akinsho/toggleterm.nvim', tag = '*', 
+    config = function()
+      require("toggleterm").setup {
+        open_mapping = [[<Leader>s]],
+      }
     end
   }
 
