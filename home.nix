@@ -22,7 +22,7 @@ let
     jq
     just
     kubetail
-    magic-wormhole
+    # magic-wormhole
     nixUnstable
     pv
     pwgen

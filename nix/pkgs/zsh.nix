@@ -89,7 +89,7 @@
     };
 
     sessionVariables = {
-      EDITOR = "vim";
+      EDITOR = "nvim";
     };
 
     plugins = [

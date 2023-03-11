@@ -12,6 +12,8 @@
     aliases = {
       wip = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads";
       l = "log --graph --format='%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(blue)%an %Creset'";
+      cleanup = "!git branch --merged | grep -v master | grep -v main | xargs -n 1 git branch -d";
+      fixlast = "commit --amend --no-edit";
     };
     ignores = [
       ".DS_STORE"
@@ -25,16 +27,6 @@
     ];
     lfs = {
       enable = true;
-    };
-    delta = {
-      enable = true;
-      options = {
-        light = true;
-        syntax-theme = "base16";
-        navigate = true;
-        side-by-side = true;
-        line-numbers = false;
-      };
     };
     extraConfig = {
       apply.whitespace = "fix";
