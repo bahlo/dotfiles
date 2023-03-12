@@ -8,7 +8,7 @@ require('packer').startup(function(use)
     run = ':TSUpdate',
     config = function() 
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { "lua", "rust", "toml", "go", "typescript" },
+        ensure_installed = { "lua", "rust", "toml", "go", "typescript", "astro" },
         auto_install = true,
         highlight = {
           enable = true,
@@ -253,12 +253,29 @@ require('packer').startup(function(use)
       rt.inlay_hints.enable()
     end
   }
+  use {
+    'ray-x/go.nvim',
+    requires = {{'neovim/nvim-lspconfig'}, {'nvim-treesitter/nvim-treesitter'}},
+    config = function()
+      require("go").setup()
+
+      -- vim.cmd [[autocmd BufWritePre (InsertLeave?) <buffer> go vim.lsp.buf.formatting_sync(nil, 500)]]
+      local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*.go",
+        callback = function()
+          require('go.format').goimport()
+        end,
+        group = format_sync_grp,
+      })
+    end
+  }
 end)
 
 -- Configure mason
 require('mason').setup()
 require('mason-lspconfig').setup {
-  ensure_installed = { 'lua_ls', 'rust_analyzer', 'gopls' },
+  ensure_installed = { 'lua_ls', 'rust_analyzer', 'gopls', 'astro' },
 }
 
 -- Configure cmp
@@ -306,3 +323,5 @@ cmp.setup({
       end,
   },
 })
+
+require'lspconfig'.gopls.setup{}
