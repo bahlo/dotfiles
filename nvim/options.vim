@@ -30,7 +30,3 @@ set clipboard=unnamedplus
 filetype plugin on
 set ttyfast
 set noswapfile
-
-" Clear search highlight with esc
-nnoremap <esc> :noh<return><esc>
-nnoremap <esc>^[ <esc>^[
