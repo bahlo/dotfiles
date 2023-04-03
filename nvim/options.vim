@@ -30,3 +30,6 @@ set clipboard=unnamedplus
 filetype plugin on
 set ttyfast
 set noswapfile
+
+" Exit the terminal when pressing <C-w>
+tnoremap <C-w> <C-\><C-n><C-w>
