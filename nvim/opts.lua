@@ -16,3 +16,4 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 
 vim.keymap.set('n', '<leader>,', ':noh<return><esc>', { desc = 'Clear highlight' })
+
