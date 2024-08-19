@@ -9,6 +9,7 @@ return {
       "rust_analyzer",
       "tsserver",
       "yamlls",
+      "zls",
     },
     automatic_installation = true,
   },
