@@ -9,7 +9,8 @@
     autocd = true;
 
     initExtra = ''
-      eval "$(starship init zsh)"
+      eval "$(/opt/homebrew/bin/starship init zsh)"
+      # source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 
       # Enable 256 colors
       [[ "$TERM" == "xterm" ]] && export TERM=xterm-256color
@@ -53,8 +54,8 @@
       }
 
       # Load local settings
-      if [[ -f .localrc ]]; then
-        source .localrc
+      if [[ -f "$HOME/.localrc" ]]; then
+        source "$HOME/.localrc"
       fi
     '';
 
@@ -66,6 +67,7 @@
       ".." = "cd ..";
       "..." = "cd .. && cd ..";
       "...." = "cd .. && cd .. && cd ..";
+      cg = "cd $(git rev-parse --show-toplevel)";
 
       gco = "git checkout";
       gcob = "gco -b";

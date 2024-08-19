@@ -8,11 +8,11 @@ require('packer').startup(function(use)
     run = ':TSUpdate',
     config = function() 
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { "lua", "rust", "toml", "go", "typescript", "astro" },
+        ensure_installed = { "lua", "rust", "toml", "go", "typescript", "zig" },
         auto_install = true,
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting=false,
+          additional_vim_regex_highlighting = false,
         },
         ident = { enable = true }, 
         rainbow = {
@@ -81,7 +81,7 @@ require('packer').startup(function(use)
   use {
     'neovim/nvim-lspconfig',
     'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim'
+    'williamboman/mason-lspconfig.nvim',
   }
   use {
     'jose-elias-alvarez/null-ls.nvim',
@@ -110,12 +110,6 @@ require('packer').startup(function(use)
               desc = "[lsp] format on save",
             })
           end
-
-          if client.supports_method("textDocument/rangeFormatting") then
-            vim.keymap.set("x", "<Leader>f", function()
-              vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-            end, { buffer = bufnr, desc = "[lsp] format" })
-          end
         end,
       })
     end
@@ -130,14 +124,11 @@ require('packer').startup(function(use)
     },
     config = function() 
       local neogit = require('neogit')
+      neogit.setup {}
 
-      neogit.setup {
-        integrations = {
-          diffview = true
-        }
-      }
-
-      vim.keymap.set('n', '<leader>g', neogit.open, { desc = 'Neogit' })
+      vim.keymap.set('n', '<leader>g', function() 
+        neogit.open({ kind = 'split' })
+      end, { desc = 'Neogit' })
     end
   }
   use { 
@@ -266,11 +257,11 @@ require('packer').startup(function(use)
   --         update_interval = 1000,
   --         set_dark_mode = function()
   --             vim.api.nvim_set_option('background', 'dark')
-  --             vim.cmd('colorscheme github_dark')
+  --             -- vim.cmd('colorscheme github_dark')
   --         end,
   --         set_light_mode = function()
   --             vim.api.nvim_set_option('background', 'light')
-  --             vim.cmd('colorscheme github_light')
+  --             -- vim.cmd('colorscheme github_light')
   --         end,
   --     })
   --     auto_dark_mode.init()
@@ -330,12 +321,29 @@ require('packer').startup(function(use)
       require('prettier').setup {}
     end
   }
+
+  use {
+    'folke/noice.nvim',
+    requires = {'MunifTanjim/nui.nvim'},
+    config = function()
+      require('noice').setup {
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          }
+        }
+      }
+    end
+  }
 end)
 
 -- Configure mason
 require('mason').setup()
 require('mason-lspconfig').setup {
-  ensure_installed = { 'lua_ls', 'rust_analyzer', 'gopls', 'astro' },
+  ensure_installed = { 'lua_ls', 'rust_analyzer', 'gopls', 'astro', 'tsserver', 'zls' },
 }
 
 -- Configure cmp
@@ -387,7 +395,22 @@ cmp.setup({
 -- Configure LSP
 local lspconfig = require('lspconfig')
 lspconfig.gopls.setup{}
-lspconfig.tsserver.setup{}
+lspconfig.tsserver.setup{
+  on_attach = function(client)
+    -- Disable autoformat, null-ls is taking care of that
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end
+}
+lspconfig.astro.setup{}
+lspconfig.eslint.setup({
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+})
 
 vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, { desc = 'Open diagnostics' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -422,3 +445,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end, opts)
   end,
 })
+

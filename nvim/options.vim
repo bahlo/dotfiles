@@ -33,3 +33,9 @@ set noswapfile
 
 " Exit the terminal when pressing <C-w>
 tnoremap <C-w> <C-\><C-n><C-w>
+
+" Resize splits equally after resizing the terminal
+augroup Misc
+    autocmd!
+    autocmd VimResized * exe "normal! \<c-w>="
+augroup END
