@@ -7,6 +7,7 @@ brew "fd"
 brew "ripgrep"
 
 # Cool tools
+brew "eza"
 brew "htop"
 brew "httpie"
 brew "hurl"

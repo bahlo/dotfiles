@@ -14,8 +14,8 @@ M.init = function()
   map("n", "<leader>b", function()
     require('telescope.builtin').buffers()
   end, { silent = true, desc = "Buffers" })
-
-  vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+  map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+  map("n", "<leader>,", ":noh<CR>", { desc = "Clear search highlight" })
 end
 
 return M

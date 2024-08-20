@@ -1,0 +1,3 @@
+return {
+  "justinmk/vim-sneak",
+}
