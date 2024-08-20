@@ -1,6 +1,8 @@
-brew "neovim"
+# ZSH prompt
+brew "starship"
 
-# telescope.nvim dependencies
+# Neovim + telescope dependencies
+brew "neovim"
 brew "fd"
 brew "ripgrep"
 

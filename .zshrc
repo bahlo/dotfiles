@@ -1,3 +1,6 @@
+# Prompt
+eval "$(starship init zsh)"
+
 # Vim mode
 bindkey -v
 
