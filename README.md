@@ -28,9 +28,6 @@ ln -s "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
 # Link Starship config
 ln -s "$HOME/.dotfiles/starship.toml" "$HOME/.config/starship.toml"
 
-# Install tpm (Tmux Plugin Manager)
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 # Link Tmux config
 ln -s "$HOME/.dotfiles/.tmux.conf" "$HOME/.tmux.conf"
 ```

@@ -6,8 +6,11 @@ brew "neovim"
 brew "fd"
 brew "ripgrep"
 
-# Cool tools
+# Tools used in Tmux/ZSH
+brew "tpm"
 brew "eza"
+
+# Cool tools
 brew "htop"
 brew "httpie"
 brew "hurl"
