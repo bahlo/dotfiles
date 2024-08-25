@@ -16,6 +16,7 @@ M.init = function()
   end, { silent = true, desc = "Buffers" })
   map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
   map("n", "<leader>,", ":noh<CR>", { desc = "Clear search highlight" })
+  map("n", "<leader>a", "<cmd>AerialToggle!<CR>")
 end
 
 return M
