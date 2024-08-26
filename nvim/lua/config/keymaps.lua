@@ -17,6 +17,9 @@ M.init = function()
   map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
   map("n", "<leader>,", ":noh<CR>", { desc = "Clear search highlight" })
   map("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+
+  map("n", "<C-h>", ":bp<CR>", { desc = "Go to previous buffer" })
+  map("n", "<C-l>", ":bn<CR>", { desc = "Go to next buffer" })
 end
 
 return M
