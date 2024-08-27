@@ -9,6 +9,7 @@ brew "ripgrep"
 # Tools used in Tmux/ZSH
 brew "tpm"
 brew "eza"
+brew "tmuxinator"
 
 # Cool tools
 brew "htop"

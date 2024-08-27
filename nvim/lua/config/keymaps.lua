@@ -14,9 +14,14 @@ M.init = function()
   map("n", "<leader>b", function()
     require('telescope.builtin').buffers()
   end, { silent = true, desc = "Buffers" })
+
   map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
   map("n", "<leader>,", ":noh<CR>", { desc = "Clear search highlight" })
+
   map("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+  map("n", "<leader>}", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+  map("n", "<leader>}", "<cmd>AerialNext<CR>", { buffer = bufnr })
 
   map("n", "<C-h>", ":bp<CR>", { desc = "Go to previous buffer" })
   map("n", "<C-l>", ":bn<CR>", { desc = "Go to next buffer" })
