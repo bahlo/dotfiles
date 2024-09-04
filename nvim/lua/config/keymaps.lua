@@ -23,6 +23,8 @@ M.init = function()
   map("n", "<leader>}", "<cmd>AerialPrev<CR>", { buffer = bufnr })
   map("n", "<leader>}", "<cmd>AerialNext<CR>", { buffer = bufnr })
 
+  map("n", "<leader>g", "<cmd>Neogit<CR>", { desc = "Neogit" })
+
   map("n", "<C-h>", ":bp<CR>", { desc = "Go to previous buffer" })
   map("n", "<C-l>", ":bn<CR>", { desc = "Go to next buffer" })
 end
