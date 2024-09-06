@@ -19,10 +19,6 @@ M.init = function()
 
   map("n", "<leader>,", ":noh<CR>", { desc = "Clear search highlight" })
 
-  map("n", "<leader>a", "<cmd>AerialToggle!<CR>")
-  map("n", "<leader>}", "<cmd>AerialPrev<CR>", { buffer = bufnr })
-  map("n", "<leader>}", "<cmd>AerialNext<CR>", { buffer = bufnr })
-
   map("n", "<leader>g", "<cmd>Neogit<CR>", { desc = "Neogit" })
 
   map("n", "<C-h>", ":bp<CR>", { desc = "Go to previous buffer" })

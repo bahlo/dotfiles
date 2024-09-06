@@ -2,6 +2,7 @@ add_newline = false
 
 format = """
 $directory\
+$git_branch\
 $cmd_duration\
 $jobs\
 $status\
