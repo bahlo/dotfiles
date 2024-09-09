@@ -23,6 +23,7 @@ function gpsu() {
   git push --set-upstream origin "$branch"
 }
 alias gwip="git for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads"
+alias gri="git rebase -i"
 
 # Directory navigation
 alias ..="cd .."

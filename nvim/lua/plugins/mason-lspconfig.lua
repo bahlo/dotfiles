@@ -10,6 +10,7 @@ return {
       "yamlls",
       "zls",
       "phpactor",
+      "pylsp",
     },
     automatic_installation = true,
   },

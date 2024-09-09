@@ -2,7 +2,7 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   opts = {
-    -- add any opts here
+    hints = { enabled = false },
   },
   dependencies = {
     "stevearc/dressing.nvim",
