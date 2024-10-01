@@ -1,0 +1,24 @@
+theme = "kanagawa"
+
+[editor]
+line-number = "relative"
+cursorline = true
+rulers = [80]
+
+# [editor.cursor-shape]
+# insert = "bar"
+# normal = "block"
+# select = "underline"
+
+# [editor.lsp]
+# display-inlay-hints = true
+
+# [editor.whitespace]
+# render = "all"
+
+# [editor.whitespace.characters]
+# space = "·"
+# nbsp = "⍽"
+# tab = "→"
+# newline = "⏎"
+# tabpad = "·" 
