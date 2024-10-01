@@ -11,19 +11,18 @@ alias vim="$EDITOR"
 alias nvim="$EDITOR"
 
 # Muscle memory
-alias gl="git log --graph --format='%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(blue)%an %Creset'"
-alias gco="git checkout"
-alias gcob="git checkout -b"
-alias gca="git add . && git commit -v"
-alias gri="git rebase -i"
+abbr --add gl "git log --graph --format='%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(blue)%an %Creset'"
+abbr --add gco "git checkout"
+abbr --add gcob "git checkout -b"
+abbr --add gca "git add . && git commit -v"
+abbr --add gri "git rebase -i"
 
 # Actually useful
-alias l "eza -lah"
-alias dc="docker compose"
-alias lg="lazygit"
+abbr --add l "eza -lah"
+abbr --add dc "docker compose"
+abbr --add lg lazygit
 function gpsu
-    set -l branch $(git rev-parse --abbrev-ref HEAD)
-    git push --set-upstream origin "$branch"
+    git push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)"
 end
 
 # Path stuff
@@ -35,3 +34,6 @@ set --global hydro_color_pwd cyan
 
 # Make GPG work (don't ask)
 set GPG_TTY $(tty)
+
+# English please
+export LANG="en_GB.UTF-8"
