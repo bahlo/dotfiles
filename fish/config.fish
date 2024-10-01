@@ -26,7 +26,7 @@ function gpsu
 end
 
 # Path stuff
-fish_add_path $HOME/.cargo/vin
+fish_add_path $HOME/.cargo/bin
 fish_add_path /opt/homebrew/bin
 
 # Configure hydro
