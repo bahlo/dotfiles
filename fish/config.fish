@@ -30,4 +30,8 @@ end
 fish_add_path $HOME/.cargo/vin
 fish_add_path /opt/homebrew/bin
 
-eval "$(starship init fish)"
+# Configure hydro
+set --global hydro_color_pwd cyan
+
+# Make GPG work (don't ask)
+set GPG_TTY $(tty)
