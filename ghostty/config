@@ -1,0 +1,7 @@
+font-size = 16
+font-family = PragmataPro Mono Liga
+theme = Kanagawa Wave
+keybind = super+alt+j=goto_split:bottom
+keybind = super+alt+k=goto_split:top
+keybind = super+alt+h=goto_split:left
+keybind = super+alt+l=goto_split:right

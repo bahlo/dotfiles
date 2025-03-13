@@ -1,6 +1,13 @@
-theme = "kanagawa"
+theme = "kanagawa" # adaptive
 
 [editor]
 line-number = "relative"
 cursorline = true
 rulers = [80]
+end-of-line-diagnostics = "hint"
+
+[editor.whitespace]
+render = "all"
+
+[editor.inline-diagnostics]
+cursor-line = "error"

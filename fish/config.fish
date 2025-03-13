@@ -5,12 +5,10 @@ end
 # No greeting pls
 set fish_greeting
 
-# Old habits die hard
-set EDITOR hx
-alias vim="$EDITOR"
-alias nvim="$EDITOR"
+set -x EDITOR hx
 
 # Muscle memory
+abbr --add gd "git diff"
 abbr --add gl "git log --graph --format='%C(yellow)%h%Creset - %s %Cgreen(%cr) %C(blue)%an %Creset'"
 abbr --add gco "git checkout"
 abbr --add gcob "git checkout -b"
@@ -27,6 +25,7 @@ end
 
 # Path stuff
 fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/go/bin
 fish_add_path /opt/homebrew/bin
 
 # Configure hydro
