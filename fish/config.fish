@@ -5,7 +5,7 @@ end
 # No greeting pls
 set fish_greeting
 
-set -x EDITOR hx
+set -x EDITOR nvim
 
 # Muscle memory
 abbr --add gd "git diff"
@@ -36,3 +36,11 @@ set GPG_TTY $(tty)
 
 # English please
 export LANG="en_GB.UTF-8"
+
+# Source cargo env
+source "$HOME/.cargo/env.fish"
+
+# Direnv
+direnv hook fish | source
+
+eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
