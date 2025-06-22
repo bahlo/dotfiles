@@ -1,0 +1,21 @@
+{
+  "Arnes's Weekly template": {
+    "prefix": "arnes-weekly",
+    "body": [
+      "---",
+      "title: \"${1} / ${2}\"",
+      "date: \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"",
+      "# tootOfTheWeek:",
+      "#   text: |",
+      "#     ${3}",
+      "#   url: \"${4}\"",
+      "#   author: \"${5}\"",
+      "categories:",
+      "  - title: \"Cutting Room Floor\"",
+      "    stories: []",
+      "---",
+      "${6}"
+    ],
+    "description": "Initialize the Markdown file for an issue of Arne's Weekly"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "plaintext",
+          "markdown",
+          "tex",
+          "html",
+          "global",
+          "all"
+        ],
+        "path": "./global.json"
+      },
+      {
+        "language": [
+          "markdown"
+        ],
+        "path": "./markdown.json"
+      },
+      {
+        "language": [
+          "rust"
+        ],
+        "path": "./rust.json"
+      },
+      {
+        "language": [
+          "plaintext",
+          "global",
+          "all"
+        ],
+        "path": "./license.json"
+      },
+      {
+        "language": [
+          "go"
+        ],
+        "path": "./go.json"
+      }
+    ]
+  }
+}
+

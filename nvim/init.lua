@@ -129,6 +129,20 @@ require("lazy").setup({
     end
   },
 
+  -- markdown preview
+  {
+    "iamcco/markdown-preview.nvim",
+    dependencies = {
+      "zhaozg/vim-diagram",
+      "aklt/plantuml-syntax",
+    },
+    cmd = { "MarkdownPreview" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+
   -- comment with gc
   { 'numToStr/Comment.nvim' },
 
@@ -213,28 +227,47 @@ require("lazy").setup({
     end,
   },
 
+  -- snippets
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" }})
+    end
+  },
+
   -- autocompletion
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
       "onsails/lspkind-nvim",
       "lukas-reineke/cmp-under-comparator",
     },
     config = function()
       local cmp = require("cmp")
-      local lspkind = require("lspkind")
-      local types = require("cmp.types")
-      local compare = require("cmp.config.compare")
+      local luasnip = require("luasnip")
+      -- local lspkind = require("lspkind")
+      -- local types = require("cmp.types")
+      -- local compare = require("cmp.config.compare")
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+      luasnip.config.setup {}
 
       require('cmp').setup {
         preselect = false,
         completion = {
             completeopt = "menu,menuone,preview,noselect",
+        },
+        snippet = {
+            expand = function(args)
+              luasnip.lsp_expand(args.body)
+            end,
         },
         mapping = cmp.mapping.preset.insert {
           ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -242,10 +275,15 @@ require("lazy").setup({
           ['<C-d>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<CR>'] = cmp.mapping.confirm { select = true },
+          ["<Tab>"] = cmp.mapping.confirm { select = true },
         },
         sources = {
           { name = 'nvim_lsp' },
+          { name = "luasnip", keyword_length = 2},
           { name = "buffer", keyword_length = 5},
+        },
+        performance = {
+          max_view_entries = 20,
         },
       }
     end

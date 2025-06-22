@@ -2,3 +2,6 @@
 /fish/fish_variables
 /fish/functions/
 /fish/completions
+/nvim/*
+!/nvim/init.lua
+!/nvim/snippets
