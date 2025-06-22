@@ -1,0 +1,1 @@
+vim.cmd('TSDisable highlight')
